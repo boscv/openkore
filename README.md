@@ -1,110 +1,69 @@
-![logo](https://upload.wikimedia.org/wikipedia/commons/b/b5/Kore_2g_logo.png)
+[![Perl](https://img.shields.io/badge/perl-%2339457E.svg?style=for-the-badge&logo=perl&logoColor=white)](https://strawberryperl.com/)
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/OpenKore/openkore)
+# GordoKore
+_Ferramenta de automação para o Ragnarök Online_
 
-![Language](https://img.shields.io/badge/language-Perl-blue.svg)
+>Este _fork_ foi atualizado para a versão LATAM (**Lat**im **Am**erica) do jogo! <br> Não é garantido o funcionamento em outras versões, apesar de ser possível.
 
-![Stars](https://img.shields.io/github/stars/OpenKore/openkore)
-![Fork](https://img.shields.io/github/forks/OpenKore/openkore?label=Fork)
-![Watch](https://img.shields.io/github/watchers/OpenKore/openkore?label=Watch)
+## Pré-requisitos
 
-![Issues](https://img.shields.io/github/issues/OpenKore/openkore)
-![Pull Requests](https://img.shields.io/github/issues-pr/OpenKore/openkore.svg)
-![Contributors](https://img.shields.io/github/contributors/OpenKore/openkore.svg)
+Algumas dependências são necessárias para o OpenKore funcionar:
+* [Página dos requisitos na Wiki (em Inglês)](https://openkore.com/wiki/How_to_run_OpenKore#Requirements)
+* [Página dos requisitos na Wiki (traduzida pela comunidade)](https://openkorebrasilwiki.miraheze.org/wiki/Como_rodar_o_openkore)
 
-![Github_Workflow_status](https://img.shields.io/github/actions/workflow/status/OpenKore/openkore/build_XSTools.yml?branch=master)
-![Github_Workflow_CI](https://github.com/OpenKore/openkore/actions/workflows/build_XSTools.yml/badge.svg)
+## Por onde começar
 
-* OpenKore is a custom client and intelligent automated assistant for Ragnarok Online.
-* It is a **free**, open source and cross-platform program _(Linux, Windows and MacOS are supported)_.
+1. [Baixe o OpenKore](https://github.com/Brunnexo/GordoKore/archive/refs/heads/master.zip) e extraia onde quiser. Alternativamente, você pode pressionar **Windows + R**, digitar `cmd` e `Enter`. Execute o seguinte comando para clonar:
 
-## Prerequisites
-
-To run OpenKore you will need:
-* [Read the Requirements page on our wiki](https://openkore.com/wiki/How_to_run_OpenKore#Requirements)
-
-## Quickstart
-
-1. [Download OpenKore](https://github.com/OpenKore/openkore/archive/master.zip) and extract it. Alternatively, you could press the **Windows Key + R**, type in ``cmd`` & enter. Run the following command in the cmd to clone.
-***Note: [Git](https://git-scm.com/) required.***
+***Nota: necessário ter [Git](https://git-scm.com/) instalado.***
 ```
-git clone https://github.com/OpenKore/openkore.git
+git clone https://github.com/Brunnexo/GordoKore.git
 ```
 
-2. Configure OpenKore: [documentation](https://openkore.com/wiki/Category:control).
-3. Run openkore.pl _(You can run start.exe or wxstart.exe if you use Windows)_.
+3. Configure o OpenKore: [documentação (em Inglês)](https://openkore.com/wiki/Category:control).
+4. Execute `openkore.pl` _(Você pode usar start.exe ou wxstart.exe se estiver usando Windows¹)_.
 
-## F.A.Q. (Frequently Asked Questions)
-<!-- Source: https://forums.openkore.com/viewtopic.php?f=0&t=11287 -->
- 1. **Have a problem?**
-    - Update your openkore or download a new one.
- 2. **Still having problems?**
-    - Search in [Wiki](https://openkore.com/wiki/).
-    - Search in [Forum](https://forums.openkore.com/).
-    - Search in [Github issues](https://github.com/openkore/openkore/issues?utf8=%E2%9C%93&q=).
- 3. **Cant find what you need? / Do not understand?**
-    - Ask in [Discord](https://discord.com/invite/hdAhPM6).
- 4. **Is it a problem in Openkore?**
-    - Read [things to know](https://github.com/OpenKore/openkore#things-to-know) before [reporting](https://github.com/OpenKore/openkore/issues/new).
+## Status do funcionamento do OpenKore nos servidores oficiais
 
-## Things to know
+Principais servidores para o **público brasileiro**:
 
-* Make sure you've read [FAQ](https://github.com/OpenKore/openkore#faq-frequently-asked-questions) especially to [run latest commit on master branch](https://github.com/OpenKore/openkore/commits/master) & checking [existed issue for your request.](https://github.com/OpenKore/openkore/issues?utf8=%E2%9C%93&q=)
-* Please post in English.
-* Please use the issue template.
-* Please include informations about your server & any changes you did in your configuration.
-* Briefly explain what happened, take a screenhot & include the error message _(If available)_.
-* Please be advised any developers here are doing this on their free time. Please give some time for anyone to respond.
-
-## Status of botting on Official Servers
-
-| Server | Description | Protection | Status | Supporter |
+| Servidor| Descrição | Proteção | Status | Apoiador |
 | --- | --- | --- | --- | --- |
-| [aRO Baphomet](https://www.gnjoy.asia/) | Asia RO | CheatDefender | Not working | N/A |
-| [bRO](https://playragnarokonlinebr.com/) | Brazil RO | EAC | Not working | N/A |
-| [cRO](https://ro.zhaouc.com/) | China RO | nProtect | Not working | N/A |
-| [euRO Prime](https://eu.4game.com/roprime/) | Europe RO | Frost Security | Not working | N/A |
-| [iRO Сhaos/Thor/Freya](http://renewal.playragnarok.com/) | International RO | EAC | Not working | N/A |
-| [idRO Classic](https://roclassic.gnjoy.id/) | Indonesia RO | nProtect | Not Working | N/A |
-| [idRO Yggdrasil](https://ro.gnjoy.id/) | Indonesia RO (Forever Love) | EAC | Not Working | N/A |
-| [jRO](https://ragnarokonline.gungho.jp/) | Japan RO | nProtect | Not working | N/A |
-| [kRO](http://ro.gnjoy.com/) | Korea RO | nProtect | Not working | N/A |
-| [kRO Zero](http://roz.gnjoy.com/) | Korea RO | nProtect | Not working | N/A |
-| [ROla](https://www.gnjoylatam.com/) | Latam RO | nProtect | Not working | N/A |
-| [ruRO Prime](https://ru.4game.com/roprime/) | Russia RO | Frost Security | Not Working | ya4ept |
-| [tRO Chaos/Thor](https://ro.gnjoy.in.th/) | Thailand RO (Online) | nProtect | Not Working | N/A |
-| [tRO Classic](https://roc.gnjoy.in.th/) | Thailand RO (Classic) | nProtect | Not Working | N/A |
-| [tRO Baphomet](https://rolth.maxion.gg/) | Thailand (Landverse) | Custom | Not Working | N/A |
-| [tRO Baphomet](https://rolg.maxion.gg/) | Thailand (Landverse Genesis) | Custom | Not Working | N/A |
-| [twRO](https://ro.gnjoy.com.tw/) | Taiwan RO | CheatDefender | Not Working | N/A |
+| [bRO](https://playragnarokonlinebr.com/) | Brasil Ragnarök Online | nProtect GameGuard| ? | ? |
+| [ROla](https://www.gnjoylatam.com/) | Ragnarök Online LATAM | nProtect GameGuard | Funcional | ? |
+| [Landverse LATAM](https://rola.maxion.gg/) | Ragnarök Landverse LATAM | Proprietária | Funcional | ? |
 
-## Contributing
 
-OpenKore is developed by a [team](https://github.com/OpenKore/openkore/graphs/contributors) located around the world. Check out the [documentation](https://openkore.com/wiki/Manual) and if necessary, submit a pull request.
+## Contribua
 
-## Contacts
+OpenKore é desenvolvido por um [time](https://github.com/OpenKore/openkore/graphs/contributors) formado por pessoas ao redor do mundo. Leia a [documentação (em Inglês)](https://openkore.com/wiki/Manual) e se necessário, suba uma PR.
 
-* [OpenKore Wiki](https://openkore.com/wiki/)
-* [OpenKore forum](https://forums.openkore.com/)
-* [Discord](https://discord.com/invite/hdAhPM6)
-* [Russian Community](https://RO-fan.ru/)
+## Contatos
 
-## **Warning**
+* [Wiki OpenKore (em Inglês)](https://openkore.com/wiki/)
+* [Wiki OpenKore (traduzido pela comunidade)](https://openkorebrasilwiki.miraheze.org/wiki/P%C3%A1gina_principal)
+* [Fórum OpenKore (em Inglês)](https://forums.openkore.com/)
+* [Discord OpenKore RU (oficial)](https://discord.com/invite/hdAhPM6)
+* [Discord OpenKore LATAM (comunidade)²](https://discord.gg/HyJjHK5zB2)
+* [Comunidade Russa](https://RO-fan.ru/)
 
-Other communities or websites are not affiliated to openkore.com
+## Aviso
 
-## Other Links
+- Comunidades e sites de terceiros não são afiliados ao [openkore.com](https://discord.gg/HyJjHK5zB2)!
+- O projeto é gratuito e vendas são proibidas!
 
-1. [Openkore History](https://openkore.com/wiki/OpenKore)
-2. [Legacy Changelog](https://github.com/OpenKore/openkore/blob/master/LegacyChangelog.md)
-3. [Openkore RoadMap](https://openkore.com/wiki/roadmap)
-4. [Feature Requests and TODO Wiki](https://openkore.com/wiki/Category:Feature_Request) and [Feature Requests GitHub](https://github.com/OpenKore/openkore/issues?q=is%3Aopen+is%3Aissue+label%3A%22feature+request%22)
+## Licença
 
-## License
-
+**Em Inglês:**
+```txt
 This software is open source, licensed under the GNU General Public License, version 2.
 Basically, this means that you're free to use and allowed to modify and distribute this software.
-However, if you distribute modified versions, you **MUST** also distribute the source code.
+However, if you distribute modified versions, you MUST also distribute the source code.
+```
+Veja mais em: https://www.gnu.org/licenses/gpl-3.0.html
 
+![logo](https://upload.wikimedia.org/wikipedia/commons/b/b5/Kore_2g_logo.png)
 
-See https://www.gnu.org/licenses/gpl-3.0.html for the full license.
+<sup>¹ O RO LATAM possui GameGuard que pode detectar os executáveis, prefira executar o `openkore.pl`</sup>
+<br>
+<sup>² A comunidade brasileira do Discord não é afiliada ao openkore.com</sup>
