@@ -264,7 +264,7 @@ Esquiva#
 Velocidade de Ataque#
 Servidor Superpopulado.#
 Opção#
-Servidor Indisponível. Por favor, tente novamente em alguns minutos.#
+O e-mail não foi autenticado ou a conta está bloqueada.#
 Usuário ou senha incorretos. Tente novamente.#
 Escolha o penteado#
 Atq.#
@@ -2864,7 +2864,7 @@ Exibir ícones embaixo do mini-mapa#
 Não exibir ícones embaixo do mini-mapa#
 Membros online primeiro#
 Lealdade: %s#
-^777777N?o confirmada^000000#
+^777777Não confirmada^000000#
 Party Name#
 Party Leader#
 Exceed time limit. Shutting down client.#
@@ -2881,9 +2881,9 @@ Already registered on Macro watch list.#
 The Macro has registered.#
 Failed to register the image.#
 Failed to register the answer.#
-Hello. Checking for illegal programs.#
-Please enter the below characters within the designated time.#
-If failed 3 times, your account will be blocked permanently under the account policy.#
+Verificação de programa ilegal.#
+Digite o texto dentro do tempo.#
+Se falhar 6 vezes, terá punição.#
 Remaining Count : %d#
 Character#
 Range#
@@ -3259,10 +3259,10 @@ Você é líder desse grupo e não há ninguém online. Se sair, o grupo será d
  - 18 anos de idade ou mais#
  - Servidor pago#
  - Servidor gratuito#
-Confort?vel#
-M?dio#
+Tranquilo#
+Normal#
+Cheio#
 Lotado#
-Saturado#
 mapa#
 Apenas itens de invent?rio podem ser colocados dentro e fora do World Warehouse.#
 Ovos de estima??o n?o podem ser colocados no World Warehouse.#
@@ -3438,21 +3438,21 @@ Estrela Gel#
 Buff de conta#
 Servi?o de taxa fixa#
 A conexão está lenta no momento. Tente reconectar-se mais tarde.#
-MSI_REFUSE_RETRY_CONNECT_TC#
+La conexión se está retrasando, intenta volver a conectarte en breve.#
 Nomes que contenham palavras impr?prias n?o podem ser pesquisados.#
 O líder do grupo não pode aceitar pedidos agora.#
 Nenhum grupo encontrado.#
 Atacante#
 https://gnjoylatam.com#
-▲#
-▼#
++#
+-#
 J? ? amigo#
 N?o ? poss?vel encontrar um parceiro#
 Outro personagem j? est? solicitando um amigo#
 Exibir Invocações#
 Não exibir Invocações#
-Conta bloqueada temporariamente devido PIN incorreto. \n O Bloqueio será suspenso após %02dhoras %02dminutos, Análise do Bloqueio será feita através da Central de Suporte -> Escolha a opção "Conta Bloqueada" -> Preencha o formulário com a conta de jogo.#
-Voc? digitou a senha de seguran?a errada 3 vezes ou mais. Para seguran?a da conta, o acesso ao jogo ser? restrito por 24 horas.\n Para remover a restri??o de acesso, v? para a p?gina inicial -> Alterar informa??es pessoais -> Senha secund?ria e autentique-se.#
+Acesso restrito devido a uma senha secundária incorreta. \n A restrição será encerrará em %02d horas e %02d minutos.#
+Acesso restrito devido a uma senha secundária incorreta.#
 Gerenciamento#
 %dº dia de Logue e Ganhe#
 Ocorreu um erro ao carregar os dados da conta. (Reinicie o jogo e tente novamente.)#
@@ -3658,7 +3658,7 @@ Conta limitada#
 Período: %dm %dh %dd %dm#
 Uma vez por Conta#
 %d un. disponíveis#
->> ItemName: %s / Quantidade: %d / Per?odo de vendas: %d m?s:%d dia:%d hora:%d minuto ~ %d m?s:%d dia:%d hora:%d minuto#
+>> ItemName: %s / Quantidade: %d / Período de vendas: %d m?s:%d dia:%d hora:%d minuto ~ %d m?s:%d dia:%d hora:%d minuto#
 Esgotado#
 [%s] est? atualmente em uma ?rea que n?o pode ser invocada.#
 ~ %d m?s %d dia %d hora %d minuto#
@@ -3986,7 +3986,7 @@ Distribu?do uniformemente.\nO peso ou o tipo de membro do grupo excede o limite,
 [%s] obteve '+%d %s' de [%s].#
 Abra a caixa de correio novamente.#
 Voc? n?o pode invocar o Hom?nculo S em seu trabalho atual. Voc? precisa avan?ar para um trabalho superior.#
-N?o h? itens de equipamento que podem ser equipados com a carta.#
+Não há itens de equipamento que podem ser equipados com a carta.#
 Exibi??o de danos#
 Exibi??o de danos#
 ↖#
@@ -3998,7 +3998,7 @@ Iniciar rastreamento do alvo.#
 N?o h? alvos sendo rastreados.#
 Fim do rastreamento.#
 Tempo expirou, fim do rastreamento.#
-Destino n?o encontrado.#
+O usuário não foi encontrado.#
 ^0054FF[corre??o de habilidade] % d.%d %%^000000#
 Não é possível invocar mais NPCs.#
 Se voc? cometer %d n?mero de erros, voc? ser? bloqueado permanentemente de acordo com a pol?tica operacional.#
@@ -4065,13 +4065,13 @@ Aviso#
 Seu invent?rio est? mais de 70% cheio ou voc? n?o tem mais de 8 espa?os livres em seu invent?rio.#
 Quadro de miss?es#
 Informa??es da miss?o#
-Denunciar usu?rio#
-Voc? excedeu o limite de relat?rios di?rios e n?o pode mais denunciar.#
-Voc? denunciou %s.#
-O alvo est? sendo denunciado por outro jogador.#
-O alvo est? protegido por relat?rios.#
-Voc? excedeu o limite de relat?rios di?rios e n?o pode mais denunciar.#
-Voc? foi denunciado por outro jogador.#
+Reportar Usuário#
+Você ultrapassou o limite diário de reportes e não pode mais reportar.#
+Você reportou %s.#
+Esse usuário já está sendo reportado por outro jogador.#
+Esse usuário está imune a reportes.#
+Este usuário ultrapassou o limite diário de reportes e não pode mais ser reportado.#
+Alguém reportou você.#
 Desmontar %d#
 Erro desconhecido. Tente novamente.#
 N?o h? itens para desmontar.#
@@ -4094,7 +4094,7 @@ Dados inv?lidos do Rune Tablet. Tente novamente mais tarde.#
 Dados do Rune Tablet est?o sendo carregados. Tente novamente mais tarde.#
 Dados inv?lidos do Rune Tablet. Tente novamente mais tarde.#
 A IU n?o est? ativada.#
-Esta ? uma ?rea onde o relat?rio n?o ? poss?vel.#
+Não é possível reportar nesse mapa.#
 API Gráfica#
 MSI_PAY_CONFIRM_BY_ITEM#
 D#
@@ -4215,9 +4215,9 @@ O n?mero m?ximo de itens foi excedido.#
 A IU n?o est? aberta.#
 As informa??es n?o est?o na tabela.#
 >> ItemName: {0} / {1} ea / Período de vendas. {3}/{2} {4:02}:{5:02} ~ {8}/{7}/{6} {9:02}:{10:02}#
-Período de vendas: {1}/{0} {2:02}:{3:02}#
-~ {1}/{0}/{2} {3:02}:{4:02}#
-Será possível em poucos segundos.#
+   Período de vendas:{1}/{0} {2:02}:{3:02}#
+    ~ {1}/{0}/{2} {3:02}:{4:02}#
+Ser? poss?vel em poucos segundos.#
 C#
 Notifica??o de login#
 Outras configura??es#
@@ -4332,3 +4332,25 @@ O log do chat foi excluído com sucesso#
 Falha ao excluir o log do chat: Não há log de banimento do chat.#
 Ban: {0} minutos LogTime: {1} ano, {2} mês, {3} dia, {4} hora, {5} minuto, {6} segundos.#
 Calma lá!\nO jogo estará disponível apenas no dia 28 de Maio.\nMas o nome dos seus personagens já foram reservados, não se preocupe!\nObrigado!#
+O servidor atingiu sua capacidade máxima e você não conseguirá efetuar login.#
+Esse não é um formato de email válido.#
+Esta conta não pode fazer login. Para mais detalhes, entre em contato com a central de suporte.#
+Reporte#
+O que aconteceu?#
+Programa ilegal#
+Abuso de bug#
+Nome inapropriado#
+Reportes mentirosos serão punidos.#
+Reportar#
+Sentado#
+Andando#
+Atacando#
+Esperando#
+Morto#
+Pegando#
+[%s] obteve %s de [%s].#
+Parabéns, %s! Você conseguiu conseguiu %s!#
+[%s] refinou o item %s.#
+[%s] não refinou o item %s.#
+[%s] subiu o rank do item %s.#
+[%s] não subiu o rank do item %s.#

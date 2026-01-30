@@ -1,4 +1,3 @@
-영웅의 흔적 - 파트1 봉인
 //영웅의흔적1
 1@face.gnd#1@face.gnd#
 1@face.gat#1@face.gat#
@@ -10,7 +9,6 @@
 1@sara.rsw#1@sara.rsw#
 유저인터페이스\map\1@sara.bmp#유저인터페이스\map\1@sara.bmp#
 
-영웅의 흔적 - 파트2 봉인
 //영웅의흔적2
 dali02.gnd#dali.gnd#
 dali02.gat#dali.gat#
@@ -52,8 +50,6 @@ dali02.rsw#dali.rsw#
 1@spa.rsw#1@spa.rsw#
 유저인터페이스\map\1@spa.bmp#유저인터페이스\map\1@spa.bmp#
 
-/*
-영웅의 흔적 - 파트3 봉인
 //영웅의흔적3 20130923
 1@glast.gnd#1@glast.gnd#
 1@glast.gat#1@glast.gat#
@@ -69,7 +65,6 @@ dali02.rsw#dali.rsw#
 1@air1.gat#1@air1.gat#
 1@air1.rsw#1@air1.rsw#
 유저인터페이스\map\1@air1.bmp#유저인터페이스\map\1@air1.bmp#
-*/
 
 //몬스터웨이브
 1@def03.gnd#1@def03.gnd#
@@ -87,7 +82,6 @@ dali02.rsw#dali.rsw#
 1@def01.rsw#1@def01.rsw#
 유저인터페이스\map\1@def01.bmp#유저인터페이스\map\1@def01.bmp#
 
-글레스트 헤임 나이트 메어 봉인
 //고성메모리얼
 2@gl_k.gnd#2@gl_k.gnd#
 2@gl_k.gat#2@gl_k.gat#
@@ -121,11 +115,10 @@ gl_chyard_.rsw#gl_chyard_.rsw#
 유저인터페이스\map\2@gl_kh.bmp#유저인터페이스\map\2@gl_k.bmp#
 
 //공성전 TE 복사맵
-
-te_prt_gld.gnd#prt_gld.gnd#
-te_prt_gld.gat#prt_gld.gat#
-te_prt_gld.rsw#prt_gld.rsw#
-유저인터페이스\map\te_prt_gld.bmp#유저인터페이스\map\prt_gld.bmp#
+te_prt_gld.gnd#te_prt_gld.gnd#
+te_prt_gld.gat#te_prt_gld.gat#
+te_prt_gld.rsw#te_prt_gld.rsw#
+유저인터페이스\map\te_prt_gld.bmp#유저인터페이스\map\te_prt_gld.bmp#
 
 te_prtcas01.gnd#prtg_cas01.gnd#
 te_prtcas01.gat#prtg_cas01.gat#
@@ -1477,16 +1470,12 @@ ecl_tdun03.gat#ecl_tdun03.gat#
 ecl_tdun03.rsw#ecl_tdun03.rsw#
 유저인터페이스\map\ecl_tdun03.bmp#유저인터페이스\map\ecl_tdun03.bmp#
 
-/*
-호러 장난감 공장 봉인
 //----호러 장난감 공장 2016-03-21-----
 1@xm_d.gnd#1@xm_d.gnd#
 1@xm_d.gat#1@xm_d.gat#
 1@xm_d.rsw#1@xm_d.rsw#
 유저인터페이스\map\1@xm_d.bmp#유저인터페이스\map\1@xm_d.bmp#
-*/
 
-에피소드 14.3 봉인
 //14.3 2차
 1@eom.gnd#1@eom.gnd#
 1@eom.gat#1@eom.gat#
@@ -1518,7 +1507,6 @@ ecl_tdun03.rsw#ecl_tdun03.rsw#
 1@dth1.gat#1@dth1.gat#
 1@dth1.rsw#1@dth1.rsw#
 유저인터페이스\map\1@dth1.bmp#유저인터페이스\map\1@dth1.bmp#
-에피소드 14.3 봉인
 
 //EP.15.1
 1@mcd.gnd#1@mcd.gnd#
@@ -1526,8 +1514,6 @@ ecl_tdun03.rsw#ecl_tdun03.rsw#
 1@mcd.rsw#1@mcd.rsw#
 유저인터페이스\map\1@mcd.bmp#유저인터페이스\map\1@mcd.bmp#
 
-/*
-에피소드 15.2 봉인
 //EP.15.2
 1@uns.gnd#1@uns.gnd#
 1@uns.gat#1@uns.gat#
@@ -1538,8 +1524,6 @@ ecl_tdun03.rsw#ecl_tdun03.rsw#
 1@lab.gat#1@lab.gat#
 1@lab.rsw#1@lab.rsw#
 유저인터페이스\map\1@lab.bmp#유저인터페이스\map\1@lab.bmp#
-에피소드 15.2 봉인
-*/
 
 //iRO event
 epay_dun00l.gnd#pay_dun00.gnd#
@@ -1562,7 +1546,6 @@ enif_in.gat#nif_in.gat#
 enif_in.rsw#nif_in.rsw#
 유저인터페이스\map\enif_in.bmp#유저인터페이스\map\nif_in.bmp#
 
-/*
 //2015 EPISODE_16.1 메모리얼 던전
 1@sthb.gnd#1@sthb.gnd#
 1@sthb.gat#1@sthb.gat#
@@ -1594,7 +1577,6 @@ enif_in.rsw#nif_in.rsw#
 1@begi.gat#1@begi.gat#
 1@begi.rsw#1@begi.rsw#
 유저인터페이스\map\1@begi.bmp#유저인터페이스\map\1@begi.bmp#
-*/
 
 //201509 인트로, 크리투라학원 수정
 int_land01.gnd#int_land.gnd#
@@ -1911,3 +1893,69 @@ prt_mk_a.gnd#prt_mk.gnd#
 prt_mk_a.gat#prt_mk.gat#
 prt_mk_a.rws#prt_mk.rws#
 유저인터페이스\map\prt_mk_a.bmp#유저인터페이스\map\prt_mk.bmp#
+
+//퍼즐앤 드래곤 콜라보레이션 메모리얼 던전 2 무한회랑
+1@infi.gnd#1@infi.gnd#
+1@infi.gat#1@infi.gat#
+1@infi.rsw#1@infi.rsw#
+유저인터페이스\map\1@infi.bmp#유저인터페이스\map\1@infi.bmp#
+
+//2014 클랜퀘스트 
+1@ffp.gnd#1@ffp.gnd#
+1@ffp.gat#1@ffp.gat#
+1@ffp.rsw#1@ffp.rsw#
+유저인터페이스\map\1@ffp.bmp#유저인터페이스\map\1@ffp.bmp#
+
+// 2018 할로윈
+1@halo.gnd#1@halo.gnd#
+1@halo.gat#1@halo.gat#
+1@halo.rsw#1@halo.rsw#
+유저인터페이스\map\1@halo.bmp#유저인터페이스\map\1@halo.bmp#
+
+//201502 16.2
+1@swat.gnd#1@swat.gnd#
+1@swat.gat#1@swat.gat#
+1@swat.rsw#1@swat.rsw#
+유저인터페이스\map\1@swat.bmp#유저인터페이스\map\1@swat.bmp#
+
+1@slw.gnd#1@slw.gnd#
+1@slw.gat#1@slw.gat#
+1@slw.rsw#1@slw.rsw#
+유저인터페이스\map\1@slw.bmp#유저인터페이스\map\1@slw.bmp#
+
+//20161021_치킨모드
+1@gl_k2.gnd#1@gl_k.gnd#
+1@gl_k2.gat#1@gl_k.gat#
+1@gl_k2.rsw#1@gl_k.rsw#
+유저인터페이스\map\1@gl_k2.bmp#유저인터페이스\map\1@gl_k.bmp#
+
+2@gl_k2.gnd#2@gl_k.gnd#
+2@gl_k2.gat#2@gl_k.gat#
+2@gl_k2.rsw#2@gl_k.rsw#
+유저인터페이스\map\2@gl_k2.bmp#유저인터페이스\map\2@gl_k.bmp#
+
+1@xm_d2.gnd#1@xm_d.gnd#
+1@xm_d2.gat#1@xm_d.gat#
+1@xm_d2.rsw#1@xm_d.rsw#
+유저인터페이스\map\1@xm_d2.bmp#유저인터페이스\map\1@xm_d.bmp#
+
+// 에피소드 17.1 태동, 일루시온
+1@cor.gnd#1@cor.gnd#
+1@cor.gat#1@cor.gat#
+1@cor.rsw#1@cor.rsw#
+유저인터페이스\map\1@cor.bmp#유저인터페이스\map\1@cor.bmp#
+
+1@os_a.gnd#1@os_a.gnd#
+1@os_a.gat#1@os_a.gat#
+1@os_a.rsw#1@os_a.rsw#
+유저인터페이스\map\1@os_a.bmp#유저인터페이스\map\1@os_a.bmp#
+
+1@os_b.gnd#1@os_b.gnd#
+1@os_b.gat#1@os_b.gat#
+1@os_b.rsw#1@os_b.rsw#
+유저인터페이스\map\1@os_b.bmp#유저인터페이스\map\1@os_b.bmp#
+
+1@rgsr.gnd#1@rgsr.gnd#
+1@rgsr.gat#1@rgsr.gat#
+1@rgsr.rsw#1@rgsr.rsw#
+유저인터페이스\map\1@rgsr.bmp#유저인터페이스\map\1@rgsr.bmp#
