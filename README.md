@@ -16,12 +16,16 @@ Algumas dependências são necessárias para o OpenKore funcionar:
 1. [Baixe o OpenKore](https://github.com/Brunnexo/GordoKore/archive/refs/heads/master.zip) e extraia onde quiser. Alternativamente, você pode pressionar **Windows + R**, digitar `cmd` e `Enter`. Execute o seguinte comando para clonar:
 
 ***Nota: necessário ter [Git](https://git-scm.com/) instalado.***
-```
+```batch
 git clone https://github.com/Brunnexo/GordoKore.git
 ```
 
 3. Configure o OpenKore: [documentação (em Inglês)](https://openkore.com/wiki/Category:control).
 4. Execute `openkore.pl` _(Você pode usar start.exe ou wxstart.exe se estiver usando Windows¹)_.
+5. Assumindo que você já tenha instalado Strawberry Perl: abra o `cmd` e execute o seguinte comando:
+```batch
+cpanm FFI::Platypus
+```
 
 ## Status do funcionamento do OpenKore nos servidores oficiais
 
@@ -55,6 +59,7 @@ OpenKore é desenvolvido por um [time](https://github.com/OpenKore/openkore/grap
 ## Licença
 
 **Em Inglês:**
+
 ```txt
 This software is open source, licensed under the GNU General Public License, version 2.
 Basically, this means that you're free to use and allowed to modify and distribute this software.
