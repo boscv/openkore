@@ -2247,11 +2247,11 @@ typedef enum <unnamed-tag> {
 
 		if ($actor->isa('Actor::Player')) {
 			my $domain = existsInList($config{friendlyAID}, unpack("V", $actor->{ID})) ? 'parseMsg_presence' : 'parseMsg_presence/player';
+			
 			debug "Player Exists: " . $actor->name . " ($actor->{binID}) Level $actor->{lv} $sex_lut{$actor->{sex}} $jobs_lut{$actor->{jobID}} ($coordsFrom{x}, $coordsFrom{y})\n", $domain;
+			playerLog("player " .$actor->{name} ." is near (" .($field ? $field->{baseName} : 'unknown') .", lvl=" .$actor->{lv} .", job=" .$jobs_lut{$actor->{jobID}} .")") if ($field && !$field->isCity);
 
-			playerLog("player " .$actor->{name} ." is near (" .$field->{baseName} .", lvl=" .$actor->{lv} .", job=" .$jobs_lut{$actor->{jobID}} .")") if (!$field->isCity);
 			Plugins::callHook('player', {player => $actor}); #backwards compatibility
-
 			Plugins::callHook('player_exist', {player => $actor});
 
 		} elsif ($actor->isa('Actor::NPC')) {
@@ -8044,9 +8044,10 @@ sub received_login_token {
         );
     
     } elsif ($login_type == 400 || $login_type == 1000) {
-		# OTP request
+        die 'ERROR: otpSeed is not set in config.txt' unless $config{otpSeed};
+
         my $otp;
-        Plugins::callHook('request_otp_login', { otp => \$otp, username => $config{username} });
+        Plugins::callHook('request_otp_login', { otp => \$otp, seed => $config{otpSeed} });
     	unless (defined $otp && length $otp) { 
 			error "No Plugin returned a OTP code for account $config{username}\n", 'connection';
 			$otp = $interface->query(T(', please enter your OTP: ')); 
@@ -9548,28 +9549,18 @@ sub quit_response {
 
 sub private_airship_type {
 	my ($self, $args) = @_;
-	my $result = $args->{type};
-	if (!defined $result) {
-		warning T("Received Private Airship response without a result code.\n");
-		return;
-	}
-	my $item_id = $char->{last_private_airship_item};
-	my $item_name = defined $item_id ? itemNameSimple($item_id) : itemNameSimple(25464);
-	if ($result == 0) {
-		message T("Use Private Airship success.\n"), "info";
-	} elsif ($result == 1) {
-		error T("Please try PivateAirship again.\n");
-	} elsif ($result == 2) {
-		error TF("You do not have enough %s to use Private Airship.\n", $item_name);
-	} elsif ($result == 3) {
-		error T("Destination map is invalid.\n");
-	} elsif ($result == 4) {
-		error T("Source map is invalid.\n");
-	} elsif ($result == 5) {
-		my $required_item = itemNameSimple(25464);
-		error TF("%s cannot be used for Private Airship. Please use %s.\n", $item_name, $required_item);
-	} else {
-		warning TF("Unknown Private Airship response %d.\n", $result);
+	if ($args->{fail} == 0) {
+		message TF("Use Private Airship success.\n"),"info";
+	} elsif ($args->{fail} == 1) {
+		message TF("Please try PivateAirship again.\n"),"info";
+	} elsif ($args->{fail} == 2) {
+		message TF("You do not have enough Item to use PivateAirship.\n"), "info";
+	} elsif ($args->{fail} == 3) {
+		message TF("Destination map is invalid.\n"),"info";
+	} elsif ($args->{fail} == 4) {
+		message TF("Source map is invalid.\n"),"info";
+	} elsif ($args->{fail} == 5) {
+		message TF("Item unavailable for use PivateAirship.\n"),"info";
 	}
 }
 
@@ -9969,7 +9960,7 @@ sub special_item_obtain {
 	stripLanguageCode(\$holder);
 	if ($args->{type} == TYPE_BOXITEM) {
 		my $c = unpack 'c', $args->{etc};
-		my $unpack = ($c == 2) ?  'c/v' : 'c/V';
+		my $unpack = ($c == 2) ?  'c v' : 'c V';
 		@{$args}{qw(box_nameID)} = unpack $unpack, $args->{etc};
 
 		my $box_item_name = itemNameSimple($args->{box_nameID});
