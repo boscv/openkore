@@ -32,16 +32,16 @@ my $hooks = Plugins::addHooks(
 sub generate {
     my ($plugin, $args) = @_;
     my $otp = $args->{otp};
-
-    my $username = $args->{username};
-
+    my $seed = $args->{seed};
     my $totp = TOTP->new(
         digits   => 6,
         timestep => 30,
     );
 
-    $$otp = $totp->totp($username);
+    $$otp = $totp->totp($seed);
 }
+
+
 
 sub unload {
     Plugins::delHooks($hooks);
