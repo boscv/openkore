@@ -11,10 +11,10 @@ This dataset provides an LLM-oriented knowledge layer for OpenKore architecture,
 - **Practical usage**: code recipes, FAQ, glossary, learning path, and user prompt examples.
 
 ## Main artifact groups
-1. **Foundational architecture docs** (`01`-`05`, `20`)
+1. **Foundational architecture docs** (`01`-`05`, `11`-`14`, `20`, `21`)
 2. **Flow/diagram docs** (`06`-`10`, `26`, `27`)
-3. **Troubleshooting docs** (`15`, `16`, `22`)
-4. **Developer enablement docs** (`17`, `18`, `19`, `24`, `29`)
+3. **Troubleshooting docs** (`15`, `16`, `22`, `23`)
+4. **Developer enablement docs** (`17`, `18`, `19`, `24`, `29`, `30`)
 
 ## Intended users
 - Developers onboarding to OpenKore internals.
