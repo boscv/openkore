@@ -296,7 +296,7 @@ sub find_kite_position {
 			undef,
 			@{$pos}{qw(x y)},
 			noMapRoute => 1,
-			avoidWalls => 0,
+			avoidWalls => $config{$slave->{configPrefix}.'route_avoidWalls'},
 			randomFactor => 0,
 			useManhattan => 1,
 			runFromTarget => 1
@@ -605,7 +605,7 @@ sub main {
 				maxRouteTime => $config{$slave->{configPrefix}.'attackMaxRouteTime'},
 				attackID => $ID,
 				sendAttackWithMove => $sendAttackWithMove,
-				avoidWalls => 0,
+				avoidWalls => $config{$slave->{configPrefix}.'route_avoidWalls'},
 				randomFactor => 0,
 				useManhattan => 1,
 				meetingSubRoute => 1,

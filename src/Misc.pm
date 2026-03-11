@@ -2581,6 +2581,42 @@ sub getClosestWalls {
 	return \@closest_walls;
 }
 
+#
+# getPositionMobility(from_pos, [field_obj])
+# from_pos: source position hashref
+# field_obj: optional field object, defaults to current global field
+#
+# Returns: hashref with mobility metrics around a position.
+sub getPositionMobility {
+	my ($from_pos, $field_obj) = @_;
+	$field_obj ||= $field;
+	return { cardinal_openings => 0, walkable_neighbors => 0 } unless ($from_pos && $field_obj);
+
+	my @neighbor_offsets = (
+		[-1, -1], [0, -1], [1, -1],
+		[-1,  0],          [1,  0],
+		[-1,  1], [0,  1], [1,  1],
+	);
+	my @cardinal_offsets = ([0, -1], [1, 0], [0, 1], [-1, 0]);
+
+	my $walkable_neighbors = 0;
+	for my $offset (@neighbor_offsets) {
+		my ($dx, $dy) = @{$offset};
+		$walkable_neighbors++ if $field_obj->isWalkable($from_pos->{x} + $dx, $from_pos->{y} + $dy);
+	}
+
+	my $cardinal_openings = 0;
+	for my $offset (@cardinal_offsets) {
+		my ($dx, $dy) = @{$offset};
+		$cardinal_openings++ if $field_obj->isWalkable($from_pos->{x} + $dx, $from_pos->{y} + $dy);
+	}
+
+	return {
+		cardinal_openings => $cardinal_openings,
+		walkable_neighbors => $walkable_neighbors,
+	};
+}
+
 ##
 # manualMove(dx, dy)
 #
@@ -2634,6 +2670,7 @@ sub meetingPosition {
 	my $runFromTarget_dist;
 	my $runFromTarget_minStep;
 	my $runFromTarget_maxPathDistance;
+	my $runFromTarget_wallRange;
 
 	# actor is char
 	if ($actorType == 1) {
@@ -2641,6 +2678,7 @@ sub meetingPosition {
 		$runFromTarget_maxPathDistance = $config{runFromTarget_maxPathDistance} || 13;
 		$runFromTarget = $config{runFromTarget};
 		$runFromTarget_dist = $config{runFromTarget_dist};
+		$runFromTarget_wallRange = $config{runFromTarget_wallRange} || 0;
 		if ($runFromTargetActive == 2) {
 			$runFromTarget_minStep = $config{runFromTarget_noAttackMethodFallback_minStep};
 		} else {
@@ -2670,6 +2708,7 @@ sub meetingPosition {
 		$runFromTarget_maxPathDistance = $config{$actor->{configPrefix}.'runFromTarget_maxPathDistance'} || 20;
 		$runFromTarget = $config{$actor->{configPrefix}.'runFromTarget'};
 		$runFromTarget_dist = $config{$actor->{configPrefix}.'runFromTarget_dist'};
+		$runFromTarget_wallRange = $config{$actor->{configPrefix}.'runFromTarget_wallRange'} || 0;
 		if ($runFromTargetActive == 2) {
 			$runFromTarget_minStep =  $config{$actor->{configPrefix}.'runFromTarget_noAttackMethodFallback_minStep'};
 		} else {
@@ -2791,6 +2830,10 @@ sub meetingPosition {
 	my $best_targetPosInStep;
 	my $best_dist_to_target;
 	my $best_time;
+	my $best_closest_wall_distance;
+	my $best_closest_wall_count;
+	my $best_spot_mobility_score;
+	my $best_spot_cardinal_openings;
 
 	foreach my $x_spot (sort keys %allspots) {
 		foreach my $y_spot (sort keys %{$allspots{$x_spot}}) {
@@ -2866,11 +2909,49 @@ sub meetingPosition {
 
 			# We then choose the spot which takes the least amount of time to reach
 			# TODO: Maybe this is not the best idea when runfromtarget is set
-			if (!defined($best_time) || $time_actor_to_get_to_spot < $best_time) {
+			my $closest_wall_distance;
+			my $closest_wall_count;
+			if ($runFromTargetActive && $runFromTarget_wallRange > 0) {
+				my $closest_walls = getClosestWalls($spot, $runFromTarget_wallRange, $field);
+				$closest_wall_count = scalar @{$closest_walls};
+				$closest_wall_distance = $closest_wall_count ? distance($spot, $closest_walls->[0]) : ($runFromTarget_wallRange + 1);
+			}
+
+			my $spot_mobility_score;
+			my $spot_cardinal_openings;
+			if ($runFromTargetActive) {
+				my $mobility = getPositionMobility($spot, $field);
+				$spot_cardinal_openings = $mobility->{cardinal_openings};
+				$spot_mobility_score = ($mobility->{cardinal_openings} * 100) + $mobility->{walkable_neighbors};
+			}
+
+			my $is_better = !defined($best_time);
+			if (!$is_better && $runFromTargetActive) {
+				$is_better = 1 if (!defined($best_spot_mobility_score) || $spot_mobility_score > $best_spot_mobility_score);
+				if (!$is_better && defined($best_spot_mobility_score) && $spot_mobility_score == $best_spot_mobility_score) {
+					$is_better = 1 if (!defined($best_spot_cardinal_openings) || $spot_cardinal_openings > $best_spot_cardinal_openings);
+				}
+			}
+			if (!$is_better && $runFromTargetActive && $runFromTarget_wallRange > 0 && defined($closest_wall_distance)) {
+				if (!defined($best_closest_wall_distance) || $closest_wall_distance > $best_closest_wall_distance) {
+					$is_better = 1;
+				} elsif (defined($best_closest_wall_distance) && $closest_wall_distance == $best_closest_wall_distance) {
+					$is_better = 1 if (!defined($best_closest_wall_count) || $closest_wall_count < $best_closest_wall_count);
+				}
+			}
+			if (!$is_better) {
+				$is_better = 1 if ($time_actor_to_get_to_spot < $best_time);
+			}
+
+			if ($is_better) {
 				$best_time = $time_actor_to_get_to_spot;
 				$best_spot = $spot;
 				$best_targetPosInStep = $targetPosInStep;
 				$best_dist_to_target = $dist_to_target;
+				$best_closest_wall_distance = $closest_wall_distance if defined $closest_wall_distance;
+				$best_closest_wall_count = $closest_wall_count if defined $closest_wall_count;
+				$best_spot_mobility_score = $spot_mobility_score if defined $spot_mobility_score;
+				$best_spot_cardinal_openings = $spot_cardinal_openings if defined $spot_cardinal_openings;
 			}
 		}
 	}
