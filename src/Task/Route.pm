@@ -35,7 +35,7 @@ use Network;
 use Field;
 use Translation qw(T TF);
 use Misc;
-use Utils qw(timeOut adjustedBlockDistance distance blockDistance calcPosFromPathfinding existsInList);
+use Utils qw(timeOut adjustedBlockDistance distance blockDistance calcPosFromPathfinding existsInList judgeSkillArea);
 use Utils::Exceptions;
 use Utils::Set;
 use Utils::PathFinding;
@@ -897,11 +897,15 @@ sub _getDangerSkillCells {
 		my $groundSkill = $spells{$ID};
 		next if !_isDangerSkillSource($groundSkill->{sourceID});
 
-		my $coord = $groundSkill->{pos}{x} . ',' . $groundSkill->{pos}{y};
-		$cells{$coord} = {
-			x => $groundSkill->{pos}{x},
-			y => $groundSkill->{pos}{y},
-		};
+		my $x = $groundSkill->{pos}{x};
+		my $y = $groundSkill->{pos}{y};
+		my $range = $groundSkill->{range};
+		if (!defined $range || $range < 0) {
+			$range = judgeSkillArea($groundSkill->{type});
+		}
+		$range = 0 if !defined $range || $range < 0;
+
+		_addCellsInRange(\%cells, $x, $y, $range);
 	}
 
 	for my $sourceID (keys %monsters) {
@@ -918,22 +922,28 @@ sub _getDangerSkillCells {
 		my $range = judgeSkillArea($skillID);
 		$range = 0 if !defined $range || $range < 0;
 
-		for (my $x = $cast->{x} - $range; $x <= $cast->{x} + $range; $x++) {
-			next if $x < 0 || $x >= $field->{width};
-			for (my $y = $cast->{y} - $range; $y <= $cast->{y} + $range; $y++) {
-				next if $y < 0 || $y >= $field->{height};
-				next if blockDistance({x => $cast->{x}, y => $cast->{y}}, {x => $x, y => $y}) > $range;
-
-				my $coord = $x . ',' . $y;
-				$cells{$coord} = {
-					x => $x,
-					y => $y,
-				};
-			}
-		}
+		_addCellsInRange(\%cells, $cast->{x}, $cast->{y}, $range);
 	}
 
 	return \%cells;
+}
+
+sub _addCellsInRange {
+	my ($cells, $centerX, $centerY, $range) = @_;
+
+	for (my $x = $centerX - $range; $x <= $centerX + $range; $x++) {
+		next if $x < 0 || $x >= $field->{width};
+		for (my $y = $centerY - $range; $y <= $centerY + $range; $y++) {
+			next if $y < 0 || $y >= $field->{height};
+			next if blockDistance({x => $centerX, y => $centerY}, {x => $x, y => $y}) > $range;
+
+			my $coord = $x . ',' . $y;
+			$cells->{$coord} = {
+				x => $x,
+				y => $y,
+			};
+		}
+	}
 }
 
 sub _isDangerSkillSource {
