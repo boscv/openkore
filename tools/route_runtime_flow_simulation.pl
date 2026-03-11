@@ -144,6 +144,33 @@ sub _simulate_attack_flow {
 	return \@trace;
 }
 
+sub _simulate_post_kill_flow {
+	my ($bot_start, $return_goal, $cast_center, $radius) = @_;
+	my $bot = {x => $bot_start->{x}, y => $bot_start->{y}};
+	my @trace = ({%{$bot}});
+
+	for my $tick (0 .. 4) {
+		%monsters = ();
+		@spellsID = ('SPELL1');
+		%spells = (
+			SPELL1 => {
+				sourceID => 'M1',
+				pos => { x => $cast_center->{x}, y => $cast_center->{y} },
+				range => $radius,
+				type => 0xDEAD,
+			}
+		);
+
+		my $path = _plan($bot, $return_goal);
+		last if @{$path} < 2;
+		$bot = {x => $path->[1]{x}, y => $path->[1]{y}};
+		push @trace, {%{$bot}};
+		last if $bot->{x} == $return_goal->{x} && $bot->{y} == $return_goal->{y};
+	}
+
+	return \@trace;
+}
+
 sub run {
 	local $quit;
 
@@ -167,18 +194,24 @@ sub run {
 	%spells = ();
 	%monsters = ();
 	my $baseline = _plan($start, $goal);
-	my $baseline_hit = _intersects_hazard($baseline, $hazard_real); # expected: can be true because no hazard is active yet
+	my $baseline_hit = _intersects_hazard($baseline, $hazard_real); # informative only
 
 	my $attack_trace = _simulate_attack_flow($start, $goal, $center, 1);
 	my $attack_hit = _intersects_hazard($attack_trace, $hazard_real);
 
+	my $post_start = $attack_trace->[-1];
+	my $post_kill_trace = _simulate_post_kill_flow($post_start, $start, $center, 1);
+	my $post_kill_hit = _intersects_hazard($post_kill_trace, $hazard_real);
+
 	print "[route-runtime-sim] map=" . $field->name . " bot_start=($start->{x},$start->{y}) monster=($goal->{x},$goal->{y}) skill_center=($center->{x},$center->{y})\n";
 	print "[route-runtime-sim] phase=baseline_to_target steps=" . scalar(@{$baseline}) . " intersects_future_hazard=$baseline_hit\n";
 	print "[route-runtime-sim] phase=attack_flow ticks=" . (scalar(@{$attack_trace}) - 1) . " intersects_hazard=$attack_hit\n";
+	print "[route-runtime-sim] phase=post_kill_flow ticks=" . (scalar(@{$post_kill_trace}) - 1) . " intersects_hazard=$post_kill_hit\n";
 
 	die "Simulation failed: attack-flow trace intersects hazard\n" if $attack_hit;
+	die "Simulation failed: post-kill trace intersects hazard\n" if $post_kill_hit;
 
-	print "[route-runtime-sim] OK: attack flow avoided skill area while monster casted + persisted ground skill.\n";
+	print "[route-runtime-sim] OK: attack flow and post-kill movement avoided persistent skill area.\n";
 
 	$quit = 1;
 }

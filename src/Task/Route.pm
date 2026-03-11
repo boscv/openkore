@@ -28,7 +28,7 @@ use Task::WithSubtask;
 use base qw(Task::WithSubtask);
 use Task::Move;
 
-use Globals qw($field $net %config %timeout $npcsList @spellsID %spells %monsters); # Legacy core naming: ground-skill instances are stored in @spellsID/%spells
+use Globals qw($field $net %config %timeout $npcsList @spellsID %spells %monsters %players %slaves $accountID);
 use AI qw(ai_useTeleport);
 use Log qw(message error debug warning);
 use Network;
@@ -948,10 +948,19 @@ sub _addCellsInRange {
 
 sub _isDangerSkillSource {
 	my ($sourceID) = @_;
+	return 0 if !defined $sourceID;
 
-	# Current behavior: avoid only monster-origin skill areas.
-	# This helper keeps naming neutral to support future PvP/player expansion.
-	return exists $monsters{$sourceID} ? 1 : 0;
+	# Visible monster source: always dangerous.
+	return 1 if exists $monsters{$sourceID};
+
+	# Explicitly safe/self-known non-monster sources.
+	return 0 if defined $accountID && $sourceID eq $accountID;
+	return 0 if exists $players{$sourceID};
+	return 0 if exists $slaves{$sourceID};
+
+	# If source actor disappeared (e.g. monster died/out of view) but the ground skill
+	# still persists, keep avoiding until the spell entry disappears from %spells.
+	return 1;
 }
 
 sub _routeIntersectsDangerSkillCells {
