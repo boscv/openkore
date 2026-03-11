@@ -28,7 +28,7 @@ use Task::WithSubtask;
 use base qw(Task::WithSubtask);
 use Task::Move;
 
-use Globals qw($field $net %config %timeout $npcsList);
+use Globals qw($field $net %config %timeout $npcsList @spellsID %spells %monsters); # Legacy core naming: ground-skill instances are stored in @spellsID/%spells
 use AI qw(ai_useTeleport);
 use Log qw(message error debug warning);
 use Network;
@@ -628,6 +628,24 @@ sub iterate {
 			}
 			@{$self->{next_pos}}{qw(x y)} = @{$solution->[$self->{step_index}]}{qw(x y)};
 
+			if ($config{$self->{actor}{configPrefix} . 'route_avoidSkillArea'}) {
+				if (_isSkillAreaCell($current_calc_pos->{x}, $current_calc_pos->{y})) {
+					debug TF("Route %s - current cell (%d, %d) is inside a skill area, recalculating route.\n",
+						$self->{actor}, $current_calc_pos->{x}, $current_calc_pos->{y}), 'route';
+					$self->{route_out_time} = time;
+					$self->resetRoute();
+					return;
+				}
+
+				if (_isSkillAreaCell($self->{next_pos}{x}, $self->{next_pos}{y})
+					|| _routeIntersectsDangerSkillCells($solution)) {
+					debug TF("Route %s - planned route intersects skill area cells, recalculating route.\n", $self->{actor}), 'route';
+					$self->{route_out_time} = time;
+					$self->resetRoute();
+					return;
+				}
+			}
+
 			# But first, check whether the distance of the next point isn't abnormally large.
 			# If it is, then we've moved to an unexpected place. This could be caused by auto-attack, for example.
 			# TODO: This should be calcDistFromPath or something like that
@@ -816,8 +834,7 @@ sub getRoute {
 		$pathfinding = new PathFinding();
 	}
 
-	# Calculate path
-	$pathfinding->reset(
+	my %pathfinding_args = (
 		start => $closest_start,
 		dest  => $closest_dest,
 		field => $field,
@@ -826,6 +843,18 @@ sub getRoute {
 		useManhattan => $useManhattan,
 		getRoute => 1
 	);
+
+	my $configPrefix = (ref($class) && $class->{actor}) ? $class->{actor}{configPrefix} : '';
+	if ($config{$configPrefix . 'route_avoidSkillArea'}) {
+		my $skillWeightMap = _getSkillAreaWeightMap();
+		if (@{$skillWeightMap}) {
+			$pathfinding_args{customWeights} = 1;
+			$pathfinding_args{secondWeightMap} = $skillWeightMap;
+		}
+	}
+
+	# Calculate path
+	$pathfinding->reset(%pathfinding_args);
 	return undef if (!$pathfinding);
 
 	my $ret;
@@ -836,6 +865,95 @@ sub getRoute {
 	}
 
 	return ($ret >= 0 ? 1 : 0);
+}
+
+sub _isSkillAreaCell {
+	my ($x, $y) = @_;
+	my $dangerSkillCells = _getDangerSkillCells();
+
+	return exists $dangerSkillCells->{$x . ',' . $y} ? 1 : 0;
+}
+
+sub _getSkillAreaWeightMap {
+	my $dangerSkillCells = _getDangerSkillCells();
+	my @weights;
+
+	for my $coord (keys %{$dangerSkillCells}) {
+		push @weights, {
+			x => $dangerSkillCells->{$coord}{x},
+			y => $dangerSkillCells->{$coord}{y},
+			weight => 255,
+		};
+	}
+
+	return \@weights;
+}
+
+sub _getDangerSkillCells {
+	my %cells;
+
+	for my $ID (@spellsID) {
+		next if !defined $ID || !$spells{$ID};
+		my $groundSkill = $spells{$ID};
+		next if !_isDangerSkillSource($groundSkill->{sourceID});
+
+		my $coord = $groundSkill->{pos}{x} . ',' . $groundSkill->{pos}{y};
+		$cells{$coord} = {
+			x => $groundSkill->{pos}{x},
+			y => $groundSkill->{pos}{y},
+		};
+	}
+
+	for my $sourceID (keys %monsters) {
+		my $sourceActor = $monsters{$sourceID};
+		next if !$sourceActor || !exists $sourceActor->{casting} || !$sourceActor->{casting};
+
+		my $cast = $sourceActor->{casting};
+		next unless ($cast->{x} != 0 || $cast->{y} != 0);
+		next if !defined $cast->{skill};
+
+		my $skillID = $cast->{skill}->getIDN();
+		next if !$skillID;
+
+		my $range = judgeSkillArea($skillID);
+		$range = 0 if !defined $range || $range < 0;
+
+		for (my $x = $cast->{x} - $range; $x <= $cast->{x} + $range; $x++) {
+			next if $x < 0 || $x >= $field->{width};
+			for (my $y = $cast->{y} - $range; $y <= $cast->{y} + $range; $y++) {
+				next if $y < 0 || $y >= $field->{height};
+				next if blockDistance({x => $cast->{x}, y => $cast->{y}}, {x => $x, y => $y}) > $range;
+
+				my $coord = $x . ',' . $y;
+				$cells{$coord} = {
+					x => $x,
+					y => $y,
+				};
+			}
+		}
+	}
+
+	return \%cells;
+}
+
+sub _isDangerSkillSource {
+	my ($sourceID) = @_;
+
+	# Current behavior: avoid only monster-origin skill areas.
+	# This helper keeps naming neutral to support future PvP/player expansion.
+	return exists $monsters{$sourceID} ? 1 : 0;
+}
+
+sub _routeIntersectsDangerSkillCells {
+	my ($solution) = @_;
+	my $dangerSkillCells = _getDangerSkillCells();
+
+	for my $step (@{$solution}) {
+		my $coord = $step->{x} . ',' . $step->{y};
+		return 1 if exists $dangerSkillCells->{$coord};
+	}
+
+	return 0;
 }
 
 sub mapChanged {
