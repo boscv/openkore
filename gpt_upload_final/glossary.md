@@ -1,0 +1,28 @@
+# Glossary
+---
+
+- **Actor**: Runtime entity abstraction (player, monster, NPC, portal) managed via `Actor` modules.
+- **AI queue**: Ordered AI intention/state processing that decides which action/task should run next.
+- **Task**: Executable unit with lifecycle (start/process/finish), e.g., move, route, NPC interaction.
+- **Plugin hook**: Callback registration point triggered by runtime events (`Plugins::addHooks`).
+- **Command handler**: Function bound to a command name through `Commands::register`.
+- **Packet handler**: Receive/send routine that decodes or encodes specific protocol packets.
+- **Route**: Planned path between coordinates/maps, later executed stepwise by movement tasks.
+- **Automacro**: Conditional automation rule that triggers scripted actions when conditions match.
+- **eventMacro**: Event/condition-driven macro framework with parser, runner, and trigger model.
+- **lockMap**: Configuration policy limiting movement/behavior to a designated map.
+- **saveMap**: Preferred map used for return/recovery behavior.
+- **Walkability**: Whether map cells are traversable according to field data and routing constraints.
+- **Client sync**: Consistency between bot internal state and visual game client state (important in XKore).
+- **Server packet**: Protocol message exchanged with the game server; parsed/encoded by network modules.
+- **ServerType**: Packet profile selection controlling opcode and packet layout mapping.
+- **Receive dispatch**: Mechanism mapping inbound opcode frames to concrete handler methods.
+- **Send pipeline**: Path from action intent to serialized outbound packet.
+- **XKore mode**: Bridged/proxy connection model variants (`XKore`, `XKore2`, `XKoreProxy`).
+- **Main loop tick**: One full iteration of runtime processing in `functions.pl`.
+- **Field data**: Map walkability/cell data used by route calculations.
+- **Desync**: Divergence between expected protocol/state and observed runtime behavior.
+- **Hook event**: Named runtime signal emitted for plugin subscribers.
+- **Task manager**: Scheduler coordinating active/pending tasks and transitions.
+- **Packet desync**: Failure mode where packet mappings no longer align with server behavior.
+- **Control files**: Operator-facing config files under `control/` that drive runtime policy.
