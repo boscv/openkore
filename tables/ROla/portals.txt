@@ -614,59 +614,31 @@ ice_dun03 149 19 ice_dun02 150 280
 ice_dun04 33 140 ice_dun03 149 130
 
 # Caverna de Magma
-mag_dun01 120 73 mag_dun01a 120 73 0 c r1
-mag_dun01 120 73 mag_dun01b 120 73 0 c r2
 mag_dun01 125 67 yuno_fild03 33 140
 mag_dun01 243 240 mag_dun02 48 33
-mag_dun01a 120 73 mag_dun01 120 73 0 c r0
-mag_dun01a 120 73 mag_dun01b 120 73 0 c r2
 mag_dun01a 125 67 yuno_fild03 37 140
 mag_dun01a 243 240 mag_dun02 48 37
-mag_dun01b 120 73 mag_dun01 120 73 0 c r0
-mag_dun01b 120 73 mag_dun01a 120 73 0 c r1
 mag_dun01b 125 67 yuno_fild03 37 140
 mag_dun01b 243 240 mag_dun02 48 37
-mag_dun02 43 45 mag_dun02a 43 45 0 c r1
-mag_dun02 43 45 mag_dun02b 43 45 0 c r2
 mag_dun02 48 33 mag_dun01 243 240
-mag_dun02a 43 45 mag_dun02 43 45 0 c r0
-mag_dun02a 43 45 mag_dun02b 43 45 0 c r2
 mag_dun02a 48 33 mag_dun01 243 240
-mag_dun02b 43 45 mag_dun02 43 45 0 c r0
-mag_dun02b 43 45 mag_dun02a 43 45 0 c r1
 mag_dun02b 48 33 mag_dun01 243 240
 
 # Caverna dos Orcs
 orcsdun01 183 8 orcsdun02 21 185
-orcsdun01 28 158 orcsdun01_a 28 158 0 c r1
-orcsdun01 28 158 orcsdun01_b 28 158 0 c r2
-orcsdun01 28 158 orcsdun01_c 28 158 0 c r3
 orcsdun01 32 172 in_orcs01 30 180
 orcsdun01_a 183 8 in_orcs02 21 185
-orcsdun01_a 28 158 orcsdun01 28 158 0 c r0
-orcsdun01_a 28 158 orcsdun01_b 28 158 0 c r2
-orcsdun01_a 28 158 orcsdun01_c 28 158 0 c r3
 orcsdun01_a 32 172 in_orcs01 30 180
 orcsdun01_b 183 8 in_orcs02 21 185
-orcsdun01_b 28 158 orcsdun01 28 158 0 c r0
-orcsdun01_b 28 158 orcsdun01_a 28 158 0 c r1
-orcsdun01_b 28 158 orcsdun01_c 28 158 0 c r3
 orcsdun01_b 32 172 in_orcs01 30 180
 orcsdun01_c 183 8 in_orcs02 21 185
-orcsdun01_c 28 158 orcsdun01 28 158 0 c r0
-orcsdun01_c 28 158 orcsdun01_a 28 158 0 c r1
-orcsdun01_c 28 158 orcsdun01_b 28 158 0 c r2
 orcsdun01_c 32 172 in_orcs01 30 180
 orcsdun02 180 15 in_orcs01 108 112
 orcsdun02 21 188 orcsdun01 183 11
 
 # Caverna Subterrânea do Lago do Abismo
 abyss_03a 115 25 abyss_02 145 275
-abyss_03a 118 40 abyss_03 118 40 0 c r0
-abyss_03a 118 40 abyss_03b 118 40 0 c r2
 abyss_03b 115 25 abyss_02 145 275
-abyss_03b 118 40 abyss_03 118 40 0 c r0
-abyss_03b 118 40 abyss_03a 118 40 0 c r1
 
 # Caverna Subterrânea do Lago do Abismo
 abyss_01 26 23 abyss_02 275 270
@@ -676,8 +648,6 @@ abyss_02 145 281 abyss_03 116 27
 abyss_02 278 270 abyss_01 26 26
 abyss_03 115 25 abyss_02 145 275
 abyss_03 116 24 abyss_02 145 278
-abyss_03 118 40 abyss_03a 118 40 0 c r1
-abyss_03 118 40 abyss_03b 118 40 0 c r2
 
 # Comodo
 comodo 115 291 cmd_in02 69 129
@@ -1015,14 +985,8 @@ dic_in01 46 288 dic_in01 45 286 r0
 # Caverna Scaraba
 dic_dun02 102 148 dic_dun01 290 99
 dic_dun02 102 148 dic_dun01 290 99
-dic_dun02 97 144 dic_dun02a 97 144 0 c r1
-dic_dun02 97 144 dic_dun02b 97 144 0 c r2
 dic_dun02a 102 148 dic_dun01 290 99
-dic_dun02a 97 144 dic_dun02 97 144 0 c r0
-dic_dun02a 97 144 dic_dun02b 97 144 0 c r2
 dic_dun02b 102 148 dic_dun01 290 99
-dic_dun02b 97 144 dic_dun02 97 144 0 c r0
-dic_dun02b 97 144 dic_dun02a 97 144 0 c r1
 
 # Monte Kamidal
 dic_fild01 146 281 dicastes01 199 41 c r0 n
@@ -1452,9 +1416,6 @@ gef_fild09 23 56 gef_fild13 380 56
 gef_fild09 225 25 gef_fild10 251 371
 gef_fild09 368 95 gef_fild01 16 102
 gef_fild10 63 337 in_orcs01 30 154
-gef_fild10 83 335 gef_fild10_a 83 335 0 c r1
-gef_fild10 83 335 gef_fild10_b 83 335 0 c r2
-gef_fild10 83 335 gef_fild10_c 83 335 0 c r3
 gef_fild10 104 21 gef_fild11 111 364
 gef_fild10 136 331 in_orcs01 124 171
 gef_fild10 138 284 in_orcs01 29 116
@@ -1463,9 +1424,6 @@ gef_fild10 223 205 in_orcs01 108 86
 gef_fild10 251 371 gef_fild09 225 25
 gef_fild10 370 56 gef_fild03 18 52
 gef_fild10_a 63 337 in_orcs01 30 157
-gef_fild10_a 83 335 gef_fild10 83 335 0 c r0
-gef_fild10_a 83 335 gef_fild10_b 83 335 0 c r2
-gef_fild10_a 83 335 gef_fild10_c 83 335 0 c r3
 gef_fild10_a 104 21 gef_fild11 114 360
 gef_fild10_a 136 331 in_orcs01 122 171
 gef_fild10_a 138 284 in_orcs01 29 114
@@ -1474,9 +1432,6 @@ gef_fild10_a 223 205 in_orcs01 108 89
 gef_fild10_a 251 371 gef_fild09 225 28
 gef_fild10_a 370 56 gef_fild03 21 52
 gef_fild10_b 63 337 in_orcs01 30 157
-gef_fild10_b 83 335 gef_fild10 83 335 0 c r0
-gef_fild10_b 83 335 gef_fild10_a 83 335 0 c r1
-gef_fild10_b 83 335 gef_fild10_c 83 335 0 c r3
 gef_fild10_b 104 21 gef_fild11 114 360
 gef_fild10_b 136 331 in_orcs01 122 171
 gef_fild10_b 138 284 in_orcs01 29 114
@@ -1485,9 +1440,6 @@ gef_fild10_b 223 205 in_orcs01 108 89
 gef_fild10_b 251 371 gef_fild09 225 28
 gef_fild10_b 370 56 gef_fild03 21 52
 gef_fild10_c 63 337 in_orcs01 30 157
-gef_fild10_c 83 335 gef_fild10 83 335 0 c r0
-gef_fild10_c 83 335 gef_fild10_a 83 335 0 c r1
-gef_fild10_c 83 335 gef_fild10_b 83 335 0 c r2
 gef_fild10_c 104 21 gef_fild11 114 360
 gef_fild10_c 136 331 in_orcs01 122 171
 gef_fild10_c 138 284 in_orcs01 29 114
@@ -1517,18 +1469,12 @@ glast_01 77 193 gl_knt01 150 6
 # Abadia de Glastheim
 gl_church 156 4 glast_01 200 137
 gl_church 16 299 gl_chyard 147 287
-gl_church 160 10 gl_church_a 160 10 0 c r1
-gl_church 160 10 gl_church_b 160 10 0 c r2
 gl_church 301 46 gl_chyard 147 12
 gl_church_a 156 4 glast_01 200 134
 gl_church_a 16 299 gl_chyard 147 284
-gl_church_a 160 10 gl_church 160 10 0 c r0
-gl_church_a 160 10 gl_church_b 160 10 0 c r2
 gl_church_a 301 46 gl_chyard 147 15
 gl_church_b 156 4 glast_01 200 134
 gl_church_b 16 299 gl_chyard 147 284
-gl_church_b 160 10 gl_church 160 10 0 c r0
-gl_church_b 160 10 gl_church_a 160 10 0 c r1
 gl_church_b 301 46 gl_chyard 147 15
 
 # Biblioteca de Glastheim
@@ -2274,16 +2220,10 @@ jupe_cave 29 52 juperos_01 54 246
 # Ruínas de Juperos
 juperos_01 245 87 ver_eju 13 148
 juperos_01 51 249 jupe_cave 29 52
-juperos_01 53 237 juperos_01a 53 237 0 c r1
-juperos_01 53 237 juperos_01b 53 237 0 c r2
 juperos_01a 245 87 ver_eju 13 148
 juperos_01a 51 249 jupe_cave 29 52
-juperos_01a 53 237 juperos_01 53 237 0 c r0
-juperos_01a 53 237 juperos_01b 53 237 0 c r2
 juperos_01b 245 87 ver_eju 13 148
 juperos_01b 51 249 jupe_cave 29 52
-juperos_01b 53 237 juperos_01 53 237 0 c r0
-juperos_01b 53 237 juperos_01a 53 237 0 c r1
 
 # Ruína Oeste de Juperos
 ver_eju 10 148 juperos_01 242 84
@@ -2625,16 +2565,10 @@ lou_in02 249 173 louyang 136 97
 lou_in02 72 28 louyang 130 63
 
 # Arredores de Louyang
-lou_fild01 188 113 lou_fild01a 188 113 0 c r1
-lou_fild01 188 113 lou_fild01b 188 113 0 c r2
 lou_fild01 190 100 alberta 235 45 0 c r0 n
 lou_fild01 233 356 louyang 218 22
-lou_fild01a 188 113 lou_fild01 188 113 0 c r0
-lou_fild01a 188 113 lou_fild01b 188 113 0 c r2
 lou_fild01a 190 100 alberta 235 45 0 c r0
 lou_fild01a 233 356 louyang 218 22
-lou_fild01b 188 113 lou_fild01 188 113 0 c r0
-lou_fild01b 188 113 lou_fild01a 188 113 0 c r1
 lou_fild01b 190 100 alberta 235 45 0 c r0
 lou_fild01b 233 356 louyang 218 22
 lou_fild01c 233 356 louyang 218 22
@@ -2806,14 +2740,8 @@ abbey02 149 290 abbey03 120 9
 abbey02 149 8 abbey01 321 99
 abbey03 119 5 abbey02 149 285
 abbey03 119 5 abbey02 149 287
-abbey03 124 13 abbey03a 124 13 0 c r1
-abbey03 124 13 abbey03b 124 13 0 c r2
 abbey03a 119 5 abbey02 149 285
-abbey03a 124 13 abbey03 124 13 0 c r0
-abbey03a 124 13 abbey03b 124 13 0 c r2
 abbey03b 119 5 abbey02 149 285
-abbey03b 124 13 abbey03 124 13 0 c r0
-abbey03b 124 13 abbey03a 124 13 0 c r1
 
 # Monte Mjolnir
 mjolnir_01 284 18 gef_fild04 261 362
@@ -2839,8 +2767,6 @@ mjolnir_06 382 377 mjolnir_07 16 377
 mjolnir_06 383 74 mjolnir_07 17 77
 mjolnir_07 156 16 prt_fild00 159 383
 mjolnir_07 16 377 mjolnir_06 382 377
-mjolnir_07 160 22 mjolnir_07a 160 22 0 c r1
-mjolnir_07 160 22 mjolnir_07b 160 22 0 c r2
 mjolnir_07 17 77 mjolnir_06 383 74
 mjolnir_07 214 383 mjolnir_03 212 17
 mjolnir_07 214 383 mjolnir_03 212 20
@@ -2848,16 +2774,12 @@ mjolnir_07 383 233 mjolnir_08 30 234
 mjolnir_07 383 362 mjolnir_08 29 346
 mjolnir_07a 156 16 prt_fild00 159 383
 mjolnir_07a 16 377 mjolnir_06 382 377
-mjolnir_07a 160 22 mjolnir_07 160 22 0 c r0
-mjolnir_07a 160 22 mjolnir_07b 160 22 0 c r2
 mjolnir_07a 17 77 mjolnir_06 383 74
 mjolnir_07a 214 383 mjolnir_03 212 17
 mjolnir_07a 383 233 mjolnir_08 30 234
 mjolnir_07a 383 362 mjolnir_08 29 346
 mjolnir_07b 156 16 prt_fild00 159 383
 mjolnir_07b 16 377 mjolnir_06 382 377
-mjolnir_07b 160 22 mjolnir_07 160 22 0 c r0
-mjolnir_07b 160 22 mjolnir_07a 160 22 0 c r1
 mjolnir_07b 17 77 mjolnir_06 383 74
 mjolnir_07b 214 383 mjolnir_03 212 17
 mjolnir_07b 383 233 mjolnir_08 30 234
@@ -3276,24 +3198,12 @@ payon_in02 82 45 pay_arche 71 156
 # Caverna de Payon
 pay_dun00 184 33 pay_dun01 15 33
 pay_dun00 21 186 pay_arche 36 131
-pay_dun00 31 166 pay_dun00_a 31 166 0 c r1
-pay_dun00 31 166 pay_dun00_b 31 166 0 c r2
-pay_dun00 31 166 pay_dun00_c 31 166 0 c r3
 pay_dun00_a 184 33 pay_dun01 19 33
 pay_dun00_a 21 186 pay_arche 39 131
-pay_dun00_a 31 166 pay_dun00 31 166 0 c r0
-pay_dun00_a 31 166 pay_dun00_b 31 166 0 c r2
-pay_dun00_a 31 166 pay_dun00_c 31 166 0 c r3
 pay_dun00_b 184 33 pay_dun01 19 33
 pay_dun00_b 21 186 pay_arche 39 131
-pay_dun00_b 31 166 pay_dun00 31 166 0 c r0
-pay_dun00_b 31 166 pay_dun00_a 31 166 0 c r1
-pay_dun00_b 31 166 pay_dun00_c 31 166 0 c r3
 pay_dun00_c 184 33 pay_dun01 19 33
 pay_dun00_c 21 186 pay_arche 39 131
-pay_dun00_c 31 166 pay_dun00 31 166 0 c r0
-pay_dun00_c 31 166 pay_dun00_a 31 166 0 c r1
-pay_dun00_c 31 166 pay_dun00_b 31 166 0 c r2
 pay_dun01 15 33 pay_dun00 184 33
 pay_dun01 286 25 pay_dun02 16 63
 pay_dun02 137 128 pay_dun03 155 161
@@ -3475,12 +3385,6 @@ moc_para01 180 156 moc_para01 29 185
 moc_para01 180 156 moc_para01 29 187
 moc_para01 29 187 moc_para01 180 159
 moc_para01 30 10 prontera 116 72
-moc_para01 35 15 moc_para0a 35 15 0 c r1
-moc_para01 35 15 moc_para0b 35 15 0 c r2
-moc_para01 35 15 moc_para0c 35 15 0 c r3
-moc_para01 38 78 moc_para0a 38 78 0 c r1
-moc_para01 38 78 moc_para0b 38 78 0 c r2
-moc_para01 38 78 moc_para0c 38 78 0 c r3
 moc_para01 41 187 moc_para01 179 90
 moc_para01 41 187 moc_para01 179 93
 moc_para01 44 19 moc_fild20 342 198 c r0 # Agente para de gato no Eden para moc_fild20
@@ -3503,12 +3407,6 @@ moc_para0a 179 90 moc_para0a 41 185
 moc_para0a 180 156 moc_para0a 29 185
 moc_para0a 29 187 moc_para0a 180 159
 moc_para0a 30 10 prontera 116 72
-moc_para0a 35 15 moc_para01 35 15 0 c r0
-moc_para0a 35 15 moc_para0b 35 15 0 c r2
-moc_para0a 35 15 moc_para0c 35 15 0 c r3
-moc_para0a 38 78 moc_para01 38 78 0 c r0
-moc_para0a 38 78 moc_para0b 38 78 0 c r2
-moc_para0a 38 78 moc_para0c 38 78 0 c r3
 moc_para0a 41 187 moc_para0a 179 90
 moc_para0a 41 187 moc_para0a 179 93
 moc_para0a 44 19 moc_fild20 342 198 c r0 # Agente para de gato no Eden para moc_fild20
@@ -3534,12 +3432,6 @@ moc_para0b 180 156 moc_para0b 29 185
 moc_para0b 29 187 moc_para0b 180 159
 moc_para0b 30 10 moc_para0b 41 187
 moc_para0b 30 10 prontera 116 72
-moc_para0b 35 15 moc_para01 35 15 0 c r0
-moc_para0b 35 15 moc_para0a 35 15 0 c r1
-moc_para0b 35 15 moc_para0c 35 15 0 c r3
-moc_para0b 38 78 moc_para01 38 78 0 c r0
-moc_para0b 38 78 moc_para0a 38 78 0 c r1
-moc_para0b 38 78 moc_para0c 38 78 0 c r3
 moc_para0b 41 187 moc_para0b 179 90
 moc_para0b 41 187 moc_para0b 179 93
 moc_para0b 44 19 moc_fild20 342 198 c r0 # Agente para de gato no Eden para moc_fild20
@@ -3562,12 +3454,6 @@ moc_para0c 179 90 moc_para0c 41 185
 moc_para0c 180 156 moc_para0c 29 185
 moc_para0c 29 187 moc_para0c 180 159
 moc_para0c 30 10 prontera 116 72
-moc_para0c 35 15 moc_para01 35 15 0 c r0
-moc_para0c 35 15 moc_para0a 35 15 0 c r1
-moc_para0c 35 15 moc_para0b 35 15 0 c r2
-moc_para0c 38 78 moc_para01 38 78 0 c r0
-moc_para0c 38 78 moc_para0a 38 78 0 c r1
-moc_para0c 38 78 moc_para0b 38 78 0 c r2
 moc_para0c 41 187 moc_para0c 179 90
 moc_para0c 41 187 moc_para0c 179 93
 moc_para0c 44 19 moc_fild20 342 198 c r0 # Agente para de gato no Eden para moc_fild20
@@ -4221,13 +4107,9 @@ ra_fild10 384 287 ra_fild11 28 290
 
 # Planície de Ida
 ra_fild12a 149 374 ra_fild08 165 36
-ra_fild12a 289 209 ra_fild12 289 209 0 c r0
-ra_fild12a 289 209 ra_fild12b 289 209 0 c r2
 ra_fild12a 295 208 airplane_01 245 60
 ra_fild12a 36 225 rachel 270 125
 ra_fild12b 149 374 ra_fild08 165 36
-ra_fild12b 289 209 ra_fild12 289 209 0 c r0
-ra_fild12b 289 209 ra_fild12a 289 209 0 c r1
 ra_fild12b 295 208 airplane_01 245 60
 ra_fild12b 36 225 rachel 270 125
 
@@ -4242,8 +4124,6 @@ ra_fild11 21 290 ra_fild10 379 283
 ra_fild11 233 27 ve_fild01 243 363
 ra_fild11 360 226 rachel 30 125
 ra_fild12 149 374 ra_fild08 165 36
-ra_fild12 289 209 ra_fild12a 289 209 0 c r1
-ra_fild12 289 209 ra_fild12b 289 209 0 c r2
 ra_fild12 295 208 airplane_01 245 60
 ra_fild12 36 225 rachel 270 125
 
@@ -4267,19 +4147,13 @@ ra_fild09 29 343 ra_fild05 31 17
 # Santuário de Freya
 ra_san01a 139 13 ra_san02 213 275
 ra_san01a 139 139 ra_temin 27 314
-ra_san01a 142 18 ra_san01 142 18 0 c r0
-ra_san01a 142 18 ra_san01b 142 18 0 c r2
 ra_san01b 139 13 ra_san02 213 275
 ra_san01b 139 139 ra_temin 27 314
-ra_san01b 142 18 ra_san01 142 18 0 c r0
-ra_san01b 142 18 ra_san01a 142 18 0 c r1
 
 # Santuário de Freya
 ra_san01 139 13 ra_san01 139 139
 ra_san01 139 13 ra_san02 213 275
 ra_san01 139 139 ra_temin 27 314
-ra_san01 142 18 ra_san01a 142 18 0 c r1
-ra_san01 142 18 ra_san01b 142 18 0 c r2
 ra_san01 44 44 ra_san01 136 149
 ra_san02 213 280 ra_san01 140 19
 ra_san02 213 4 ra_san04 35 216
@@ -4359,20 +4233,14 @@ odin_tem02 153 349 odin_tem03 120 54
 odin_tem02 21 180 odin_tem01 373 182
 odin_tem02 21 334 odin_tem01 379 334
 odin_tem02 261 377 odin_tem03 247 40
-odin_tem02 35 188 odin_tem02a 35 188 0 c r1
-odin_tem02 35 188 odin_tem02b 35 188 0 c r2
 odin_tem02a 153 349 odin_tem03 120 54
 odin_tem02a 21 180 odin_tem01 373 182
 odin_tem02a 21 334 odin_tem01 379 334
 odin_tem02a 261 377 odin_tem03 247 40
-odin_tem02a 35 188 odin_tem02 35 188 0 c r0
-odin_tem02a 35 188 odin_tem02b 35 188 0 c r2
 odin_tem02b 153 349 odin_tem03 120 54
 odin_tem02b 21 180 odin_tem01 373 182
 odin_tem02b 21 334 odin_tem01 379 334
 odin_tem02b 261 377 odin_tem03 247 40
-odin_tem02b 35 188 odin_tem02 35 188 0 c r0
-odin_tem02b 35 188 odin_tem02a 35 188 0 c r1
 odin_tem03 121 49 odin_tem02 154 345
 odin_tem03 247 34 odin_tem02 263 372
 
@@ -4539,16 +4407,10 @@ ve_fild06 153 220 veins 218 355
 ve_fild06 81 177 ve_fild04 115 55
 ve_fild06 81 177 ve_fild05 354 191
 ve_fild07 147 371 veins 146 28
-ve_fild07 154 371 ve_fild07a 154 371 0 c r1
-ve_fild07 154 371 ve_fild07b 154 371 0 c r2
 ve_fild07a 127 130 nameless_n 257 217
 ve_fild07a 147 371 veins 146 28
-ve_fild07a 154 371 ve_fild07 154 371 0 c r0
-ve_fild07a 154 371 ve_fild07b 154 371 0 c r2
 ve_fild07b 127 130 nameless_n 257 217
 ve_fild07b 147 371 veins 146 28
-ve_fild07b 154 371 ve_fild07 154 371 0 c r0
-ve_fild07b 154 371 ve_fild07a 154 371 0 c r1
 
 # Fábrica de Veins
 ve_in02 13 19 veins 269 225
@@ -4559,14 +4421,8 @@ thor_v01 21 224 ve_fild03 168 235
 thor_v02 192 60 thor_v03 35 262
 thor_v02 73 203 thor_v01 196 37
 thor_v03 30 262 thor_v02 187 58
-thor_v03 34 269 thor_v03a 34 269 0 c r1
-thor_v03 34 269 thor_v03b 34 269 0 c r2
 thor_v03a 30 262 thor_v02 187 58
-thor_v03a 34 269 thor_v03 34 269 0 c r0
-thor_v03a 34 269 thor_v03b 34 269 0 c r2
 thor_v03b 30 262 thor_v02 187 58
-thor_v03b 34 269 thor_v03 34 269 0 c r0
-thor_v03b 34 269 thor_v03a 34 269 0 c r1
 
 # Acampamento da Expedição da Aliança
 mid_camp 13 143 spl_fild02 379 143 c r0 # Ash Vacuum para Campos Esplendidos (2) [spl_fild02]
@@ -4706,3 +4562,149 @@ ecl_tdun03 49 11 ecl_tdun02 50 11
 ecl_tdun03 50 46 ecl_tdun04 26 24
 ecl_tdun04 26 26 ecl_tdun03 50 44
 ecl_tdun04 34 17 ecl_fild01 183 73
+
+# Portal de Mudança de Canal
+orcsdun01 28 158 orcsdun01_a 28 158 0 c r1
+orcsdun01 28 158 orcsdun01_b 28 158 0 c r2
+orcsdun01 28 158 orcsdun01_c 28 158 0 c r3
+orcsdun01_b 28 158 orcsdun01 28 158 0 c r0
+orcsdun01_b 28 158 orcsdun01_a 28 158 0 c r1
+orcsdun01_b 28 158 orcsdun01_c 28 158 0 c r3
+orcsdun01_c 28 158 orcsdun01 28 158 0 c r0
+orcsdun01_c 28 158 orcsdun01_a 28 158 0 c r1
+orcsdun01_c 28 158 orcsdun01_b 28 158 0 c r2
+orcsdun01_a 28 158 orcsdun01 28 158 0 c r0
+orcsdun01_a 28 158 orcsdun01_b 28 158 0 c r2
+orcsdun01_a 28 158 orcsdun01_c 28 158 0 c r3
+ra_fild12b 289 209 ra_fild12 289 209 0 c r0
+ra_fild12b 289 209 ra_fild12a 289 209 0 c r1
+ra_fild12 289 209 ra_fild12a 289 209 0 c r1
+ra_fild12 289 209 ra_fild12b 289 209 0 c r2
+ra_fild12a 289 209 ra_fild12 289 209 0 c r0
+ra_fild12a 289 209 ra_fild12b 289 209 0 c r2
+ra_san01a 142 18 ra_san01 142 18 0 c r0
+ra_san01a 142 18 ra_san01b 142 18 0 c r2
+ra_san01b 142 18 ra_san01 142 18 0 c r0
+ra_san01b 142 18 ra_san01a 142 18 0 c r1
+ra_san01 142 18 ra_san01a 142 18 0 c r1
+ra_san01 142 18 ra_san01b 142 18 0 c r2
+mag_dun01a 120 73 mag_dun01 120 73 0 c r0
+mag_dun01a 120 73 mag_dun01b 120 73 0 c r2
+mag_dun01b 120 73 mag_dun01 120 73 0 c r0
+mag_dun01b 120 73 mag_dun01a 120 73 0 c r1
+mag_dun01 120 73 mag_dun01a 120 73 0 c r1
+mag_dun01 120 73 mag_dun01b 120 73 0 c r2
+pay_dun00 31 166 pay_dun00_a 31 166 0 c r1
+pay_dun00 31 166 pay_dun00_b 31 166 0 c r2
+pay_dun00 31 166 pay_dun00_c 31 166 0 c r3
+pay_dun00_a 31 166 pay_dun00 31 166 0 c r0
+pay_dun00_a 31 166 pay_dun00_b 31 166 0 c r2
+pay_dun00_a 31 166 pay_dun00_c 31 166 0 c r3
+pay_dun00_b 31 166 pay_dun00 31 166 0 c r0
+pay_dun00_b 31 166 pay_dun00_a 31 166 0 c r1
+pay_dun00_b 31 166 pay_dun00_c 31 166 0 c r3
+pay_dun00_c 31 166 pay_dun00 31 166 0 c r0
+pay_dun00_c 31 166 pay_dun00_a 31 166 0 c r1
+pay_dun00_c 31 166 pay_dun00_b 31 166 0 c r2
+mjolnir_07 160 22 mjolnir_07a 160 22 0 c r1
+mjolnir_07 160 22 mjolnir_07b 160 22 0 c r2
+mjolnir_07a 160 22 mjolnir_07 160 22 0 c r0
+mjolnir_07a 160 22 mjolnir_07b 160 22 0 c r2
+mjolnir_07b 160 22 mjolnir_07 160 22 0 c r0
+mjolnir_07b 160 22 mjolnir_07a 160 22 0 c r1
+gef_fild10 83 335 gef_fild10_a 83 335 0 c r1
+gef_fild10 83 335 gef_fild10_b 83 335 0 c r2
+gef_fild10 83 335 gef_fild10_c 83 335 0 c r3
+gef_fild10_a 83 335 gef_fild10 83 335 0 c r0
+gef_fild10_a 83 335 gef_fild10_b 83 335 0 c r2
+gef_fild10_a 83 335 gef_fild10_c 83 335 0 c r3
+gef_fild10_b 83 335 gef_fild10 83 335 0 c r0
+gef_fild10_b 83 335 gef_fild10_a 83 335 0 c r1
+gef_fild10_b 83 335 gef_fild10_c 83 335 0 c r3
+gef_fild10_c 83 335 gef_fild10 83 335 0 c r0
+gef_fild10_c 83 335 gef_fild10_a 83 335 0 c r1
+gef_fild10_c 83 335 gef_fild10_b 83 335 0 c r2
+gl_church 160 10 gl_church_a 160 10 0 c r1
+gl_church 160 10 gl_church_b 160 10 0 c r2
+gl_church_a 160 10 gl_church 160 10 0 c r0
+gl_church_a 160 10 gl_church_b 160 10 0 c r2
+gl_church_b 160 10 gl_church 160 10 0 c r0
+gl_church_b 160 10 gl_church_a 160 10 0 c r1
+ve_fild07a 154 371 ve_fild07 154 371 0 c r0
+ve_fild07a 154 371 ve_fild07b 154 371 0 c r2
+ve_fild07b 154 371 ve_fild07 154 371 0 c r0
+ve_fild07b 154 371 ve_fild07a 154 371 0 c r1
+ve_fild07 154 371 ve_fild07a 154 371 0 c r1
+ve_fild07 154 371 ve_fild07b 154 371 0 c r2
+lou_fild01a 188 113 lou_fild01 188 113 0 c r0
+lou_fild01a 188 113 lou_fild01b 188 113 0 c r2
+lou_fild01b 188 113 lou_fild01 188 113 0 c r0
+lou_fild01b 188 113 lou_fild01a 188 113 0 c r1
+lou_fild01 188 113 lou_fild01a 188 113 0 c r1
+lou_fild01 188 113 lou_fild01b 188 113 0 c r2
+abbey03a 124 13 abbey03 124 13 0 c r0
+abbey03a 124 13 abbey03b 124 13 0 c r2
+abbey03b 124 13 abbey03 124 13 0 c r0
+abbey03b 124 13 abbey03a 124 13 0 c r1
+abbey03 124 13 abbey03a 124 13 0 c r1
+abbey03 124 13 abbey03b 124 13 0 c r2
+moc_para0a 38 78 moc_para01 38 78 0 c r0
+moc_para0a 38 78 moc_para0b 38 78 0 c r2
+moc_para0a 38 78 moc_para0c 38 78 0 c r3
+moc_para0b 38 78 moc_para01 38 78 0 c r0
+moc_para0b 38 78 moc_para0a 38 78 0 c r1
+moc_para0b 38 78 moc_para0c 38 78 0 c r3
+moc_para0c 38 78 moc_para01 38 78 0 c r0
+moc_para0c 38 78 moc_para0a 38 78 0 c r1
+moc_para0c 38 78 moc_para0b 38 78 0 c r2
+moc_para01 38 78 moc_para0a 38 78 0 c r1
+moc_para01 38 78 moc_para0b 38 78 0 c r2
+moc_para01 38 78 moc_para0c 38 78 0 c r3
+moc_para0a 35 15 moc_para01 35 15 0 c r0
+moc_para0a 35 15 moc_para0b 35 15 0 c r2
+moc_para0a 35 15 moc_para0c 35 15 0 c r3
+moc_para0b 35 15 moc_para01 35 15 0 c r0
+moc_para0b 35 15 moc_para0a 35 15 0 c r1
+moc_para0b 35 15 moc_para0c 35 15 0 c r3
+moc_para0c 35 15 moc_para01 35 15 0 c r0
+moc_para0c 35 15 moc_para0a 35 15 0 c r1
+moc_para0c 35 15 moc_para0b 35 15 0 c r2
+moc_para01 35 15 moc_para0a 35 15 0 c r1
+moc_para01 35 15 moc_para0b 35 15 0 c r2
+moc_para01 35 15 moc_para0c 35 15 0 c r3
+odin_tem02a 35 188 odin_tem02 35 188 0 c r0
+odin_tem02a 35 188 odin_tem02b 35 188 0 c r2
+odin_tem02b 35 188 odin_tem02 35 188 0 c r0
+odin_tem02b 35 188 odin_tem02a 35 188 0 c r1
+odin_tem02 35 188 odin_tem02a 35 188 0 c r1
+odin_tem02 35 188 odin_tem02b 35 188 0 c r2
+abyss_03a 118 40 abyss_03 118 40 0 c r0
+abyss_03a 118 40 abyss_03b 118 40 0 c r2
+abyss_03b 118 40 abyss_03 118 40 0 c r0
+abyss_03b 118 40 abyss_03a 118 40 0 c r1
+abyss_03 118 40 abyss_03a 118 40 0 c r1
+abyss_03 118 40 abyss_03b 118 40 0 c r2
+mag_dun02a 43 45 mag_dun02 43 45 0 c r0
+mag_dun02a 43 45 mag_dun02b 43 45 0 c r2
+mag_dun02b 43 45 mag_dun02 43 45 0 c r0
+mag_dun02b 43 45 mag_dun02a 43 45 0 c r1
+mag_dun02 43 45 mag_dun02a 43 45 0 c r1
+mag_dun02 43 45 mag_dun02b 43 45 0 c r2
+thor_v03a 34 269 thor_v03 34 269 0 c r0
+thor_v03a 34 269 thor_v03b 34 269 0 c r2
+thor_v03b 34 269 thor_v03 34 269 0 c r0
+thor_v03b 34 269 thor_v03a 34 269 0 c r1
+thor_v03 34 269 thor_v03a 34 269 0 c r1
+thor_v03 34 269 thor_v03b 34 269 0 c r2
+juperos_01a 53 237 juperos_01 53 237 0 c r0
+juperos_01a 53 237 juperos_01b 53 237 0 c r2
+juperos_01b 53 237 juperos_01 53 237 0 c r0
+juperos_01b 53 237 juperos_01a 53 237 0 c r1
+juperos_01 53 237 juperos_01a 53 237 0 c r1
+juperos_01 53 237 juperos_01b 53 237 0 c r2
+dic_dun02a 97 144 dic_dun02 97 144 0 c r0
+dic_dun02a 97 144 dic_dun02b 97 144 0 c r2
+dic_dun02b 97 144 dic_dun02 97 144 0 c r0
+dic_dun02b 97 144 dic_dun02a 97 144 0 c r1
+dic_dun02 97 144 dic_dun02a 97 144 0 c r1
+dic_dun02 97 144 dic_dun02b 97 144 0 c r2
