@@ -439,25 +439,7 @@ bat_room 169 211 bat_room 154 150
 #(chatroom) bat_room 169 205 bat_c01 147 56
 bat_c01 148 54 bat_room 154 150 0 c
 
-# Eden Teleport Officer
-iz_ac01 106 36 moc_para01 31 14 0 c r0 c
-
-# Garden
-iz_ac01 45 80 new_1-3 95 171 0 c r0 c
-new_1-3 96 176 iz_ac01 49 73
-
-# Second floor
-iz_ac01 78 25 iz_ac02 104 27
-iz_ac01 122 25 iz_ac02 104 27
-iz_ac02 94 27 iz_ac01 78 28
-iz_ac02 113 27 iz_ac01 122 28
-
 # Free Warps (Kafra)
-iz_ac01 95 46 iz_ac01 97 86 0 c c c r2 c c c r1 r0
-iz_ac01 95 46 iz_ac02 104 179 0 c c c r2 c c c r1 r1
-iz_ac01 95 46 izlude 128 98 0 c c c r2 c c c r1 r2 c r1
-iz_ac02 101 176 iz_ac01 97 86 0 c c c r2 c c c r1 r0
-iz_ac02 101 176 izlude 128 98 0 c c c r2 c c c r1 r2 c r1
 alb_ship 26 166 alberta 170 170
 alb_ship 37 174 alb_ship 68 99
 alb_ship 41 163 alberta 178 165
@@ -1450,10 +1432,6 @@ nif_fild02 373 235 niflheim 19 154
 nif_fild02 22 311 nif_fild01 344 322
 niflheim 189 210 nif_in 23 11
 niflheim 19 154 nif_fild02 378 235
-orcsdun01 32 172 in_orcs01 30 182
-orcsdun01 183 8 orcsdun02 21 188
-orcsdun02 21 188 orcsdun01 183 8
-orcsdun02 180 15 in_orcs01 108 114
 payon 267 89 pay_fild08 17 75
 payon 228 329 pay_arche 81 22
 payon 122 27 pay_fild01 333 356
@@ -3241,7 +3219,6 @@ dew_fild01 48 65 dew_dun02 302 30
 dew_dun02 305 30 dew_fild01 50 65
 
 # Lasagna
-izlude 195 213 lasagna 206 297 200 c c r0 n
 lasagna 205 325 izlude 193 209 200 c c r1 n
 lasagna 205 325 malangdo 193 209 200 c c r2 n
 lasa_fild02 348 244 lasa_dun01 24 143
@@ -3386,26 +3363,7 @@ un_bunker 366 164 un_bunker 31 51
 un_bunker 27 52 un_bunker 361 163
 
 # Apprentice Field
-iz_int 27 30 iz_int 51 30
-iz_int 47 30 iz_int 27 30
-iz_int 56 15 int_land 85 107
-int_land 49 57 izlude 196 209
-iz_int01 27 30 iz_int01 51 30
-iz_int01 47 30 iz_int01 27 30
-iz_int01 56 15 int_land01 85 107
-int_land01 49 57 izlude 196 209
-iz_int02 27 30 iz_int02 51 30
-iz_int02 47 30 iz_int02 27 30
-iz_int02 56 15 int_land02 85 107
-int_land02 49 57 izlude 196 209
-iz_int03 27 30 iz_int03 51 30
-iz_int03 47 30 iz_int03 27 30
-iz_int03 56 15 int_land03 85 107
-int_land03 49 57 izlude 196 209
-iz_int04 27 30 iz_int04 51 30
-iz_int04 47 30 iz_int04 27 30
-iz_int04 56 15 int_land04 85 107
-int_land04 49 57 izlude 196 209
+
 prontera 134 221 prt_in 131 71
 moc_para01 47 161 moc_para01 48 16
 moc_para01 179 90 moc_para01 41 187
@@ -3601,20 +3559,6 @@ ecl_in02 157 68 ecl_in02 80 18
 ecl_in02 80 18 ecl_in02 157 66
 moc_para0b 48 39 moc_para0b 41 187
 ###man_fild01 35 232 man_fild01 113 65
-iz_int 55 30 iz_int 24 30 
-int_land 51 59 izlude 196 209 
-
-# Izlude (variações)
-izlude_a 197 205 izlu2dun 107 50 150 c r0
-izlude_b 197 205 izlu2dun 107 50 150 c r0
-izlude_c 197 205 izlu2dun 107 50 150 c r0
-izlude_d 197 205 izlu2dun 107 50 150 c r0
-
-# Academia Izlude (iz_ac01 / iz_ac02)
-iz_ac01_a 100 24 izlude 127 253
-iz_ac01_b 100 24 izlude 127 253
-iz_ac01_c 100 24 izlude 127 253
-iz_ac01_d 100 24 izlude 127 253
 
 # Arena / Testes
 1@ma_a 100 100 prt_are_in 60 14
@@ -3625,9 +3569,6 @@ iz_ac01_d 100 24 izlude 127 253
 1@os_b 100 100 prt_are_in 60 14
 1@os_c 100 100 prt_are_in 60 14
 
-# Prontera evento
-prt_mk_a 150 150 prontera 116 72
-
 # Outros mapas de evento/quest
 ba_bath 150 150 prontera 116 72
 evt_bomb 150 150 prontera 116 72
@@ -3636,13 +3577,27 @@ un_bunker 150 150 prontera 116 72
 thana_boss 150 150 prontera 116 72
 que_bingo 150 150 prontera 116 72
 que_ba 150 150 prontera 116 72
-iz_ac02_a 217 27 iz_ac01_a 122 25
-iz_ac01_a 122 25 iz_ac02_a 214 27
 
 # Ilhota
+int_land 49 57 izlude 196 209 
+int_land01 49 57 izlude 196 209
+int_land02 49 57 izlude 196 209
+int_land03 49 57 izlude 196 209
+int_land04 49 57 izlude 196 209
+iz_int 27 30 iz_int 51 30
+iz_int 47 30 iz_int 27 30
+iz_int 56 15 int_land 85 107
+iz_int01 27 30 iz_int01 51 30
+iz_int01 47 30 iz_int01 27 30
 iz_int01 56 15 int_land 85 107
+iz_int02 27 30 iz_int02 51 30
+iz_int02 47 30 iz_int02 27 30
 iz_int02 56 15 int_land 85 107
+iz_int03 27 30 iz_int03 51 30
+iz_int03 47 30 iz_int03 27 30
 iz_int03 56 15 int_land 85 107
+iz_int04 27 30 iz_int04 51 30
+iz_int04 47 30 iz_int04 27 30
 iz_int04 56 15 int_land 85 107
 
 # Prontera
@@ -3741,13 +3696,17 @@ prt_cas_q 34 178 prt_cas_q 134 80
 izlude 20 98 prt_fild08 367 212
 izlude 52 172 izlude_in 74 161
 izlude 110 182 izlude_in 65 87
+izlude 125 257 iz_ac01 99 29
 izlude 128 148 aldebaran 168 112 180 1 c r2 c r3
 izlude 128 148 geffen 120 39 120 1 c r2 c r0
 izlude 128 148 morocc 156 47 120 1 c r2 c r2
 izlude 128 148 payon 161 58 120 1 c r2 c r1
+izlude 130 257 iz_ac01 99 29
 izlude 131 148 moc_para01 31 14 c c r0 n
 izlude 182 218 malangdo 206 297 1000 c r1 c c r0 n
+izlude 195 213 lasagna 206 297 200 c c r0 n
 izlude 197 205 alberta 188 169 500 c r1 n
+izlude 197 205 izlu2dun 107 50 150 c r0 n
 izlude 202 75 airplane_01 244 58 1200 c r0 c r0 n
 izlude 213 161 arena_room 100 30
 izlude_a 20 98 prt_fild08 367 212
@@ -3761,7 +3720,9 @@ izlude_a 128 148 payon 161 58 120 1 c r2 c r1
 izlude_a 130 257 iz_ac01 99 29
 izlude_a 131 148 moc_para01 31 14 c c r0 n
 izlude_a 182 218 malangdo 206 297 1000 c r1 c c r0 n
+izlude_a 195 213 lasagna 206 297 200 c c r0 n
 izlude_a 197 205 alberta 188 169 500 c r1 n
+izlude_a 197 205 izlu2dun 107 50 150 c r0 n
 izlude_a 202 75 airplane_01 244 58 1200 c r0 c r0 n
 izlude_a 213 161 arena_room 100 30
 izlude_b 20 98 prt_fild08 367 212
@@ -3775,7 +3736,9 @@ izlude_b 128 148 payon 161 58 120 1 c r2 c r1
 izlude_b 130 257 iz_ac01 99 29
 izlude_b 131 148 moc_para01 31 14 c c r0 n
 izlude_b 182 218 malangdo 206 297 1000 c r1 c c r0 n
+izlude_b 195 213 lasagna 206 297 200 c c r0 n
 izlude_b 197 205 alberta 188 169 500 c r1 n
+izlude_b 197 205 izlu2dun 107 50 150 c r0 n
 izlude_b 202 75 airplane_01 244 58 1200 c r0 c r0 n
 izlude_b 213 161 arena_room 100 30
 izlude_c 20 98 prt_fild08 367 212
@@ -3789,7 +3752,9 @@ izlude_c 128 148 payon 161 58 120 1 c r2 c r1
 izlude_c 130 257 iz_ac01 99 29
 izlude_c 131 148 moc_para01 31 14 c c r0 n
 izlude_c 182 218 malangdo 206 297 1000 c r1 c c r0 n
+izlude_c 195 213 lasagna 206 297 200 c c r0 n
 izlude_c 197 205 alberta 188 169 500 c r1 n
+izlude_c 197 205 izlu2dun 107 50 150 c r0 n
 izlude_c 202 75 airplane_01 244 58 1200 c r0 c r0 n
 izlude_c 213 161 arena_room 100 30
 izlude_d 20 98 prt_fild08 367 212
@@ -3803,7 +3768,9 @@ izlude_d 128 148 payon 161 58 120 1 c r2 c r1
 izlude_d 130 257 iz_ac01 99 29
 izlude_d 131 148 moc_para01 31 14 c c r0 n
 izlude_d 182 218 malangdo 206 297 1000 c r1 c c r0 n
+izlude_d 195 213 lasagna 206 297 200 c c r0 n
 izlude_d 197 205 alberta 188 169 500 c r1 n
+izlude_d 197 205 izlu2dun 107 50 150 c r0 n
 izlude_d 202 75 airplane_01 244 58 1200 c r0 c r0 n
 izlude_d 213 161 arena_room 100 30
 izlude_in 65 84 izlude 112 179
@@ -3813,14 +3780,19 @@ izlude_in 108 169 izlude_in 84 169
 
 # Academia Criatura
 iz_ac01 78 25 iz_ac02 201 27
+iz_ac01 100 24 izlude 127 253
 iz_ac01 122 25 iz_ac02 214 27
 iz_ac01_a 78 25 iz_ac02 201 27
+iz_ac01_a 100 24 izlude 127 253
 iz_ac01_a 122 25 iz_ac02 214 27
 iz_ac01_b 78 25 iz_ac02 201 27
+iz_ac01_b 100 24 izlude 127 253
 iz_ac01_b 122 25 iz_ac02 214 27
 iz_ac01_c 78 25 iz_ac02 201 27
+iz_ac01_c 100 24 izlude 127 253
 iz_ac01_c 122 25 iz_ac02 214 27
 iz_ac01_d 78 25 iz_ac02 201 27
+iz_ac01_d 100 24 izlude 127 253
 iz_ac01_d 122 25 iz_ac02 214 27
 iz_ac02 83 48 iz_ac02 197 44
 iz_ac02 83 78 iz_ac02 197 60
@@ -4233,12 +4205,16 @@ gef_fild10_c 251 371 gef_fild09 225 28
 gef_fild10_c 370 56 gef_fild03 21 52
 
 # Caverna dos Orcs
+orcsdun01 32 172 in_orcs01 30 180
+orcsdun01 183 8 orcsdun02 21 185
 orcsdun01_a 32 172 in_orcs01 30 180
-orcsdun01_a 183 8 in_orcs01 21 185
+orcsdun01_a 183 8 in_orcs02 21 185
 orcsdun01_b 32 172 in_orcs01 30 180
-orcsdun01_b 183 8 in_orcs01 21 185
+orcsdun01_b 183 8 in_orcs02 21 185
 orcsdun01_c 32 172 in_orcs01 30 180
-orcsdun01_c 183 8 in_orcs01 21 185
+orcsdun01_c 183 8 in_orcs02 21 185
+orcsdun02 21 188 orcsdun01 183 11
+orcsdun02 180 15 in_orcs01 108 112
 
 # Glastheim
 gef_fild06 18 304 glast_01 376 304
