@@ -57,6 +57,14 @@ use enum (
 	qw(UNKNOWN_ERROR)
 );
 
+sub _npcRouteDistancesFromSteps {
+	my ($steps, $min_npc_dist, $max_npc_dist) = @_;
+	my $go_direct_to_npc = (defined $steps && $steps =~ /^\s*k(?:\s+|$)/i) ? 1 : 0;
+	my $route_dist_from_goal = $go_direct_to_npc ? 0 : $min_npc_dist;
+	my $talk_trigger_dist = $go_direct_to_npc ? 0 : $max_npc_dist;
+	return ($go_direct_to_npc, $route_dist_from_goal, $talk_trigger_dist);
+}
+
 
 # TODO: this task should lock the 'npc' mutex when talking to NPCs!
 
@@ -241,16 +249,18 @@ sub iterate {
 		if (!$self->{timeout} || timeOut($self->{timeout}, 0.5)) {
 			$self->{timeout} = time;
 			
-			my $min_npc_dist = 8;
-			my $max_npc_dist = 10;
-			my $realPos = calcPosFromPathfinding($field, $self->{actor});
-			my $dist_to_npc = blockDistance($realPos, $self->{mapSolution}[0]{pos});
-			return unless (timeOut($self->{actor}{time_move}, ($self->{actor}{time_move_calc} + $timeout{ai_portal_wait}{timeout})));
+				my $min_npc_dist = 8;
+				my $max_npc_dist = 10;
+				my (undef, $route_dist_from_goal, $talk_trigger_dist) =
+					_npcRouteDistancesFromSteps($self->{mapSolution}[0]{steps}, $min_npc_dist, $max_npc_dist);
+				my $realPos = calcPosFromPathfinding($field, $self->{actor});
+				my $dist_to_npc = blockDistance($realPos, $self->{mapSolution}[0]{pos});
+				return unless (timeOut($self->{actor}{time_move}, ($self->{actor}{time_move_calc} + $timeout{ai_portal_wait}{timeout})));
 
-			if ( $self->{mapSolution}[0]{steps} && $dist_to_npc > $max_npc_dist) {
-				if (!exists $self->{mapSolution}[0]{retry} || !defined $self->{mapSolution}[0]{retry}) {
-					$self->{mapSolution}[0]{retry} = 0;
-				}
+				if ( $self->{mapSolution}[0]{steps} && $dist_to_npc > $max_npc_dist) {
+					if (!exists $self->{mapSolution}[0]{retry} || !defined $self->{mapSolution}[0]{retry}) {
+						$self->{mapSolution}[0]{retry} = 0;
+					}
 
 				if ( $self->{maxTime} && time - $self->{time_start} > $self->{maxTime} ) {
 					# We spent too long a time.
@@ -261,17 +271,17 @@ sub iterate {
 					# NPC is reachable from current position
 					# >> Then "route" to it
 
-					debug "Walking towards the Airship NPC, min_npc_dist $min_npc_dist, max_npc_dist $max_npc_dist, current dist_to_npc $dist_to_npc\n", "map_route";
-					my $task = new Task::Route(
-						actor => $self->{actor},
-						x => $self->{mapSolution}[0]{pos}{x},
-						y => $self->{mapSolution}[0]{pos}{y},
-						field => $field,
-						maxTime => $self->{maxTime},
-						distFromGoal => $min_npc_dist,
-						avoidWalls => $self->{avoidWalls},
-						randomFactor => $self->{randomFactor},
-						useManhattan => $self->{useManhattan},
+						debug "Walking towards the Airship NPC, min_npc_dist $min_npc_dist, max_npc_dist $max_npc_dist, current dist_to_npc $dist_to_npc, route_dist_from_goal $route_dist_from_goal\n", "map_route";
+						my $task = new Task::Route(
+							actor => $self->{actor},
+							x => $self->{mapSolution}[0]{pos}{x},
+							y => $self->{mapSolution}[0]{pos}{y},
+							field => $field,
+							maxTime => $self->{maxTime},
+							distFromGoal => $route_dist_from_goal,
+							avoidWalls => $self->{avoidWalls},
+							randomFactor => $self->{randomFactor},
+							useManhattan => $self->{useManhattan},
 						targetNpcPos => 1,
 						solution => \@solution
 					);
@@ -287,7 +297,11 @@ sub iterate {
 				return;
 			}
 
-			if (!defined $self->{localBroadcast}) {
+				if ($dist_to_npc > $talk_trigger_dist) {
+					return;
+				}
+
+				if (!defined $self->{localBroadcast}) {
 				debug "MapRoute - Wainting for broadcast with message '".($self->{mapSolution}[0]{airship_message})."'\n", "route";
 			} elsif ($self->{localBroadcast} !~ /$self->{mapSolution}[0]{airship_message}/) {
 				debug "MapRoute - last broadcast '".($self->{localBroadcast})."' does not match expected message '".($self->{mapSolution}[0]{airship_message})."'\n", "route";
@@ -389,12 +403,14 @@ sub iterate {
 			}
 		}
 
-	} elsif ( $self->{mapSolution}[0]{steps} ) {
-		my $min_npc_dist = 8;
-		my $max_npc_dist = 10;
-		my $realPos = calcPosFromPathfinding($field, $self->{actor});
-		my $dist_to_npc = blockDistance($realPos, $self->{mapSolution}[0]{pos});
-		return unless (timeOut($self->{actor}{time_move}, ($self->{actor}{time_move_calc} + $timeout{ai_portal_wait}{timeout})));
+		} elsif ( $self->{mapSolution}[0]{steps} ) {
+			my $min_npc_dist = 8;
+			my $max_npc_dist = 10;
+			my (undef, $route_dist_from_goal, $talk_trigger_dist) =
+				_npcRouteDistancesFromSteps($self->{mapSolution}[0]{steps}, $min_npc_dist, $max_npc_dist);
+			my $realPos = calcPosFromPathfinding($field, $self->{actor});
+			my $dist_to_npc = blockDistance($realPos, $self->{mapSolution}[0]{pos});
+			return unless (timeOut($self->{actor}{time_move}, ($self->{actor}{time_move_calc} + $timeout{ai_portal_wait}{timeout})));
 		
 		if (!exists $self->{mapSolution}[0]{retry} || !defined $self->{mapSolution}[0]{retry}) {
 			$self->{mapSolution}[0]{retry} = 0;
@@ -457,7 +473,7 @@ sub iterate {
 				}
 			}
 
-		} elsif ($dist_to_npc <= $max_npc_dist) {
+			} elsif ($dist_to_npc <= $talk_trigger_dist) {
 			my ($from,$to) = split /=/, $self->{mapSolution}[0]{portal};
 			if (($self->{actor}{zeny} >= $portals_lut{$from}{dest}{$to}{cost}) || ($char->inventory->getByNameID(7060) && $portals_lut{$from}{dest}{$to}{allow_ticket})) {
 				debug TF("[mapRoute] Calling setNpcTalk to teleport using NPC at %s (%s,%s) - dest (%s %s,%s).\n", $field->baseName, $self->{mapSolution}[0]{pos}{x}, $self->{mapSolution}[0]{pos}{y}, $self->{dest}{map}, $self->{dest}{pos}{x}, $self->{dest}{pos}{y}), "route";
@@ -483,17 +499,17 @@ sub iterate {
 			# NPC is reachable from current position
 			# >> Then "route" to it
 
-			debug "Walking towards the NPC, min_npc_dist $min_npc_dist, max_npc_dist $max_npc_dist, current dist_to_npc $dist_to_npc\n", "map_route";
-			my $task = new Task::Route(
-				actor => $self->{actor},
-				x => $self->{mapSolution}[0]{pos}{x},
-				y => $self->{mapSolution}[0]{pos}{y},
-				field => $field,
-				maxTime => $self->{maxTime},
-				distFromGoal => $min_npc_dist,
-				avoidWalls => $self->{avoidWalls},
-				randomFactor => $self->{randomFactor},
-				useManhattan => $self->{useManhattan},
+				debug "Walking towards the NPC, min_npc_dist $min_npc_dist, max_npc_dist $max_npc_dist, current dist_to_npc $dist_to_npc, route_dist_from_goal $route_dist_from_goal\n", "map_route";
+				my $task = new Task::Route(
+					actor => $self->{actor},
+					x => $self->{mapSolution}[0]{pos}{x},
+					y => $self->{mapSolution}[0]{pos}{y},
+					field => $field,
+					maxTime => $self->{maxTime},
+					distFromGoal => $route_dist_from_goal,
+					avoidWalls => $self->{avoidWalls},
+					randomFactor => $self->{randomFactor},
+					useManhattan => $self->{useManhattan},
 				solution => \@solution
 			);
 			$self->setSubtask($task);
