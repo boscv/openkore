@@ -1443,7 +1443,7 @@ sub chatLog_clear {
 sub checkAllowedMap {
 	my $map = shift;
 
-	return unless AI::state == AI::AUTO;
+	return unless AI::state() == AI::AUTO();
 	return unless $config{allowedMaps};
 	return if existsInList($config{allowedMaps}, $map);
 	return if $config{allowedMaps_reaction} == 0;
@@ -3475,7 +3475,7 @@ sub updateDamageTables {
 				ai_useTeleport(1);
 			}
 
-			if (AI::action eq "attack" && mon_control($monster->{name},$monster->{nameID})->{attack_auto} == 3 && $damage) {
+			if (AI::action() eq "attack" && mon_control($monster->{name},$monster->{nameID})->{attack_auto} == 3 && $damage) {
 				# Mob-training, you only need to attack the monster once to provoke it
 				message TF("%s (%s) has been provoked, searching another monster\n", $monster->{name}, $monster->{binID});
 				$char->sendAttackStop;
@@ -3511,7 +3511,7 @@ sub updateDamageTables {
 			$monster->{target} = $targetID;
 			OpenKoreMod::updateDamageTables($monster) if (defined &OpenKoreMod::updateDamageTables);
 
-			if (AI::state == AI::AUTO && ($accountID eq $targetID or $char->{slaves} && $char->{slaves}{$targetID})) {
+			if (AI::state() == AI::AUTO() && ($accountID eq $targetID or $char->{slaves} && $char->{slaves}{$targetID})) {
 				# object under our control
 				my $teleport = 0;
 				if (mon_control($monster->{name},$monster->{nameID})->{teleport_auto} == 2 && $damage){
@@ -4536,9 +4536,9 @@ sub checkSelfCondition {
 	return 0 if (!$prefix);
 	return 0 if ($config{$prefix . "_disabled"});
 
-	return 0 if ($config{$prefix."_whenIdle"} && !AI::isIdle);
+	return 0 if ($config{$prefix."_whenIdle"} && !AI::isIdle());
 
-	return 0 if ($config{$prefix."_whenNotIdle"} && AI::isIdle);
+	return 0 if ($config{$prefix."_whenNotIdle"} && AI::isIdle());
 	
 	# TODO: Is there any situation where we should use calcPosFromPathfinding or calcPosFromTime here in these checks?
 
@@ -4546,11 +4546,11 @@ sub checkSelfCondition {
 	# *_manualAI 1 = manual only
 	# *_manualAI 2 = auto or manual
 	if ($config{$prefix . "_manualAI"} == 0 || !(defined $config{$prefix . "_manualAI"})) {
-		return 0 unless AI::state == AI::AUTO;
+		return 0 unless AI::state() == AI::AUTO();
 	} elsif ($config{$prefix . "_manualAI"} == 1){
-		return 0 unless AI::state == AI::MANUAL;
+		return 0 unless AI::state() == AI::MANUAL();
 	} else {
-		return 0 if AI::state == AI::OFF;
+		return 0 if AI::state() == AI::OFF();
 	}
 
 	if ($config{$prefix . "_hp"}) {
@@ -5686,15 +5686,12 @@ sub autoNpcTalk {
 	my ($ID, $nameID) = @_;
 
 	return if (defined AI::findAction("NPC"));
-
-	my $routeIndex = AI::findAction("route");
-	return if (defined $routeIndex && AI::args($routeIndex)->getSubtask && UNIVERSAL::isa(AI::args($routeIndex)->getSubtask, 'Task::TalkNPC'));
-
-	my $routeIndex = AI::findAction("route", 1);
-	return if (defined $routeIndex && AI::args($routeIndex)->getSubtask && UNIVERSAL::isa(AI::args($routeIndex)->getSubtask, 'Task::TalkNPC'));
+	return if _routeActionHasTalkNpcSubtask(0) || _routeActionHasTalkNpcSubtask(1);
 
 	debug "An unexpected npc conversation has started, auto-creating a TalkNPC Task\n";
-	my $task = Task::TalkNPC->new(type => 'autotalk', nameID => $nameID, ID => $ID);
+	my $sequence = resolveAutoNpcTalkSequence($ID);
+	debug "[TalkNPC] AutoTalk resolved sequence '".($sequence // '')."'.\n", "ai_npcTalk";
+	my $task = Task::TalkNPC->new(type => 'autotalk', nameID => $nameID, ID => $ID, sequence => $sequence);
 	AI::queue("NPC", $task);
 	# TODO: The following npc_talk hook is only added on activation.
 	# Make the task module or AI listen to the hook instead
@@ -5703,6 +5700,48 @@ sub autoNpcTalk {
 	Plugins::callHook('npc_autotalk', {
 		task => $task
 	});
+}
+
+sub _routeActionHasTalkNpcSubtask {
+	my ($offset) = @_;
+	$offset = 0 if !defined $offset;
+
+	my $routeIndex = AI::findAction("route", $offset);
+	return 0 if !defined $routeIndex;
+
+	my $routeSubtask = AI::args($routeIndex)->getSubtask;
+	return ($routeSubtask && UNIVERSAL::isa($routeSubtask, 'Task::TalkNPC')) ? 1 : 0;
+}
+
+sub resolveAutoNpcTalkSequence {
+	my ($ID) = @_;
+
+	my $routeIndex = AI::findAction("mapRoute");
+	$routeIndex = AI::findAction("route") if (!defined $routeIndex);
+	return '' if (!defined $routeIndex);
+
+	my $routeTask = AI::args($routeIndex);
+	return '' if (!$routeTask || !UNIVERSAL::isa($routeTask, 'Task::MapRoute'));
+	return '' if (!$routeTask->{mapSolution} || ref($routeTask->{mapSolution}) ne 'ARRAY' || !@{$routeTask->{mapSolution}});
+	return '' if (!$routeTask->{mapSolution}[0]{steps});
+
+	my $solution = $routeTask->{mapSolution}[0];
+	my $actor = $npcsList->getByID($ID) || $portalsList->getByID($ID) || $monstersList->getByID($ID);
+	return '' if (!$actor);
+
+	my $pos = $actor->{pos} || $actor->{pos_to};
+	return '' if (!$pos || !$solution->{pos});
+	return '' if ($pos->{x} != $solution->{pos}{x} || $pos->{y} != $solution->{pos}{y});
+
+	return _stripLeadingPortalApproachStep($solution->{steps});
+}
+
+sub _stripLeadingPortalApproachStep {
+	my ($sequence) = @_;
+	$sequence = '' if !defined $sequence;
+	$sequence =~ s/^\s*k(?:\s+|$)//i;
+	$sequence =~ s/^\s+|\s+$//g;
+	return $sequence;
 }
 
 sub getFlyWing {
