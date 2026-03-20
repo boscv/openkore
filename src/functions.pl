@@ -217,6 +217,10 @@ sub loadDataFiles {
 		internalName => 'recvpackets.txt',
  		loader => [\&parseRecvpackets, \%rpackets]);
 
+	Settings::addTableFile('teleport_items.txt',
+		internalName => 'teleport_items.txt',
+		loader => [\&parseTeleportItems, \%teleport_items]);
+
 	# Add 'Old' table pack, if user set
 	if ( $sys{locale_compat} == 1) {
 		# Holder for new path
@@ -381,6 +385,9 @@ sub loadDataFiles {
 	Settings::addTableFile('achievement_list.txt',
 		internalName => 'achievement_list.txt',
 		loader => [\&parseAchievementFile, \%achievements], mustExist => 0);
+	Settings::addTableFile('monsters_table.txt',
+		internalName => 'monsters_table.txt',
+		loader => [\&parseMonstersTableFile, \%monstersTable], mustExist => 0);
 
 	use utf8;
 
@@ -964,7 +971,7 @@ sub mainLoop_initialized {
 			 || $oldMaster->{version} ne $master->{version}
 			 || $oldUsername ne $config{'username'}
 			 || $oldChar ne $config{'char'}) {
-				AI::clear;
+				AI::clear();
 				AI::SlaveManager::clear();
 				relog();
 			} else {

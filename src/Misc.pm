@@ -167,6 +167,13 @@ our @EXPORT = (
 	updateDamageTables
 	updatePlayerNameCache
 	canUseTeleport
+	isTeleportItemEquipRequirementSatisfied
+	canTeleportItemEquipRequirementBeSatisfied
+	tryEquipTeleportItemRequirement
+	registerTeleportItemPendingUse
+	clearTeleportItemPendingUse
+	markTeleportItemUsed
+	setTeleportItemCooldownFromRemainingSeconds
 	top10Listing
 	whenGroundStatus
 	writeStorageLog
@@ -222,6 +229,7 @@ our @EXPORT = (
 	solveItemLink
 	solveMessage
 	solveMSG
+	get_lockMap_cell
 	absunit
 	autoNpcTalk/,
 
@@ -3658,7 +3666,7 @@ sub canUseTeleport {
 	# not in game
 	return 0 if $net && $net->getState != Network::IN_GAME; # $net check is to not crash test
 
-	# 1 - check for items
+	# 1 - check for usable items
 	my $item;
 	if($use_lvl == 1) {
 		if ($config{teleportAuto_item1}) {
@@ -3667,14 +3675,30 @@ sub canUseTeleport {
 		}
 		$item = getFlyWing() unless $item;
 	} else {
-		 if ($config{teleportAuto_item2}) {
+		if ($config{teleportAuto_item2}) {
 			$item = $char->inventory->getByName($config{teleportAuto_item2});
 			$item = $char->inventory->getByNameID($config{teleportAuto_item2}) if (!($item) && $config{teleportAuto_item2} =~ /^\d{3,}$/);
 		}
 		$item = getButterflyWing() unless $item;
 	}
 
-	return 1 if $item;
+	if ($item) {
+		my $cooldown = $char->{last_teleport_item_use}{$item->{nameID}};
+		my $cooldownActive = (
+			ref($cooldown) eq 'HASH'
+			&& $cooldown->{timeout}
+			&& !timeOut($cooldown->{time}, $cooldown->{timeout})
+		);
+
+		my $equipRequirementSatisfied = (
+			!$item->equippable
+			|| !$item->{type_equip}
+			|| $item->{equipped}
+			|| $item->{identified}
+		);
+
+		return 1 if (!$cooldownActive && $equipRequirementSatisfied);
+	}
 	
 	# Mute prevents talking, usage of skills, and commands.
 	return 0 if $char->{'muted'};
@@ -3771,6 +3795,31 @@ sub writeStorageLog {
 	}
 }
 
+sub _targetWillLeaveClientSightSoon {
+	my ($actor, $target) = @_;
+
+	return unless ($timeout{ai_future_reachability_lookup}{timeout});
+
+	return 0 unless ($field && $actor && $target);
+	return 0 unless ($actor->{pos} && $actor->{pos_to} && $target->{pos} && $target->{pos_to});
+
+	my $clientSight = $config{clientSight} || 17;
+
+	my $delta = $timeout{ai_future_reachability_lookup}{timeout};
+
+	my $futureActorPos = calcPosFromPathfinding($field, $actor, $delta);
+	my $futureTargetPos = calcPosFromPathfinding($field, $target, $delta);
+	my $futureDist = blockDistance($futureActorPos, $futureTargetPos);
+
+	if ($futureDist >= $clientSight) {
+		debug TF("[getBestTarget] Rejecting unstable edge target %s. Predicted dist in %.1fs %d.\n",
+			$target, $delta, $futureDist), 'ai_attack';
+		return 1;
+	}
+
+	return 0;
+}
+
 ##
 # getBestTarget(possibleTargets, attackCheckLOS, $attackCanSnipe)
 # possibleTargets: reference to an array of monsters' IDs
@@ -3821,6 +3870,7 @@ sub getBestTarget {
 		$plugin_args{return} = 0;
 		Plugins::callHook('getBestTarget' => \%plugin_args);
 		next if ($plugin_args{return});
+		next if (_targetWillLeaveClientSightSoon($char, $monster));
 
 		if (!$field->checkLOS($myPos, $pos, $attackCanSnipe)) {
 			push(@noLOSMonsters, $_);
@@ -4328,6 +4378,16 @@ sub compilePortals {
 		}
 	}
 
+	# teleport_items
+	for my $entry (@{$teleport_items{list} || []}) {
+		next unless $entry && ref($entry) eq 'HASH';
+		next unless ($entry->{destMap} && defined $entry->{destX} && defined $entry->{destY});
+
+		my $portal = join(' ', $entry->{destMap}, int($entry->{destX}), int($entry->{destY}));
+		$mapSpawns{$entry->{destMap}}{$portal}{x} = $entry->{destX};
+		$mapSpawns{$entry->{destMap}}{$portal}{y} = $entry->{destY};
+	}
+
 	$pathfinding = new PathFinding if (!$checkOnly);
 
 	# Calculate LOS values from each spawn point per map to other portals on same map
@@ -4712,6 +4772,9 @@ sub checkSelfCondition {
 							|| $config{$prefix."_equip_leftHand"}
 							|| $config{$prefix."_equip_rightHand"}
 							|| $config{$prefix."_equip_robe"}
+							|| $config{$prefix."_equip_topHead"}
+							|| $config{$prefix."_equip_midHead"}
+							|| $config{$prefix."_equip_lowHead"}
 							);
 			return 0 unless ($char->{sp} >= $skill->getSP($config{$prefix . "_lvl"} || $char->getSkillLevel($skill)));
 			
@@ -5800,4 +5863,34 @@ sub print_callers {
 	message "[print_callers] Printing end\n";
 }
 
+sub get_lockMap_cell {
+	my $lockField = shift;
+	$lockField = $field if (!defined $lockField);
+
+	my $cell;
+
+	my $i = 500;
+	my $width = $field->width;
+	my $height = $field->height;
+
+	do {
+		if ($config{'lockMap_x'} ne '') {
+			$cell->{x} = $config{'lockMap_x'};
+			$cell->{x} += (int(rand(2*$config{'lockMap_randX'})) - $config{'lockMap_randX'}) if ($config{'lockMap_randX'} > 0);
+		} else {
+			$cell->{x} = int(rand($width));
+		}
+		if ($config{'lockMap_y'} ne '') {
+			$cell->{y} = $config{'lockMap_y'};
+			$cell->{y} += (int(rand(2*$config{'lockMap_randY'})) - $config{'lockMap_randY'}) if ($config{'lockMap_randY'} > 0);
+		} else {
+			$cell->{y} = int(rand($height));
+		}
+	} while (--$i && (!$field->isWalkable($cell->{x}, $cell->{y}) || $cell->{x} <= 0 || $cell->{y} <= 0 || $cell->{x} >= $width || $cell->{y} >= $height));
+
+	return undef if (!$i);
+	return $cell;
+}
+
 return 1;
+
