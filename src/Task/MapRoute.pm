@@ -257,7 +257,7 @@ sub iterate {
 				my $dist_to_npc = blockDistance($realPos, $self->{mapSolution}[0]{pos});
 				return unless (timeOut($self->{actor}{time_move}, ($self->{actor}{time_move_calc} + $timeout{ai_portal_wait}{timeout})));
 
-				if ( $self->{mapSolution}[0]{steps} && $dist_to_npc > $max_npc_dist) {
+				if ($dist_to_npc > $talk_trigger_dist) {
 					if (!exists $self->{mapSolution}[0]{retry} || !defined $self->{mapSolution}[0]{retry}) {
 						$self->{mapSolution}[0]{retry} = 0;
 					}
@@ -296,10 +296,6 @@ sub iterate {
 
 				return;
 			}
-
-				if ($dist_to_npc > $talk_trigger_dist) {
-					return;
-				}
 
 				if (!defined $self->{localBroadcast}) {
 				debug "MapRoute - Wainting for broadcast with message '".($self->{mapSolution}[0]{airship_message})."'\n", "route";
