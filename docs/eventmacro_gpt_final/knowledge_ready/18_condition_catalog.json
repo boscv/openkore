@@ -48,6 +48,12 @@
       "validate_condition_line": 13,
       "new_vars_line": 24,
       "file": "plugins/eventMacro/eventMacro/Condition/AttackEnd.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -99,6 +105,12 @@
       "validate_condition_line": 13,
       "new_vars_line": 24,
       "file": "plugins/eventMacro/eventMacro/Condition/AttackStart.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -152,6 +164,12 @@
       "validate_condition_line": 15,
       "new_vars_line": 26,
       "file": "plugins/eventMacro/eventMacro/Condition/AttackStartRegex.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -209,6 +227,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 26,
       "file": "plugins/eventMacro/eventMacro/Condition/BaseLevel.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -255,6 +279,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/BusMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -313,6 +343,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 32,
       "file": "plugins/eventMacro/eventMacro/Condition/CartCurrentSize.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -371,6 +407,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 32,
       "file": "plugins/eventMacro/eventMacro/Condition/CartCurrentWeight.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -428,6 +470,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 28,
       "file": "plugins/eventMacro/eventMacro/Condition/CartMaxSize.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -485,6 +533,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 28,
       "file": "plugins/eventMacro/eventMacro/Condition/CartMaxWeight.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -542,6 +596,12 @@
       "validate_condition_line": 29,
       "new_vars_line": 53,
       "file": "plugins/eventMacro/eventMacro/Condition/CharCurrentWeight.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -598,6 +658,12 @@
       "validate_condition_line": 25,
       "new_vars_line": 49,
       "file": "plugins/eventMacro/eventMacro/Condition/CharMaxWeight.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -654,6 +720,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 83,
       "file": "plugins/eventMacro/eventMacro/Condition/ChatRoomNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -716,6 +788,12 @@
       "validate_condition_line": 130,
       "new_vars_line": 183,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKey.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -777,6 +855,12 @@
       "validate_condition_line": 55,
       "new_vars_line": 103,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDefined.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -840,6 +924,12 @@
       "validate_condition_line": 56,
       "new_vars_line": 80,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDualDifferentDefinedValue.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -902,6 +992,12 @@
       "validate_condition_line": 55,
       "new_vars_line": 77,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDualSameDefinedValue.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -965,6 +1061,12 @@
       "validate_condition_line": 132,
       "new_vars_line": 186,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyNot.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1026,6 +1128,12 @@
       "validate_condition_line": 55,
       "new_vars_line": 103,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyNotExist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1087,6 +1195,12 @@
       "validate_condition_line": 55,
       "new_vars_line": 104,
       "file": "plugins/eventMacro/eventMacro/Condition/ConfigKeyUndefined.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1135,6 +1249,12 @@
       "validate_condition_line": 11,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/Console.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1193,6 +1313,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 30,
       "file": "plugins/eventMacro/eventMacro/Condition/CurrentHP.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1251,6 +1377,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 30,
       "file": "plugins/eventMacro/eventMacro/Condition/CurrentSP.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1305,6 +1437,12 @@
       "validate_condition_line": 20,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/Eval.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1357,6 +1495,12 @@
       "validate_condition_line": 45,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/EvalHook.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1413,6 +1557,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 27,
       "file": "plugins/eventMacro/eventMacro/Condition/FreeSkillPoints.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1468,6 +1618,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 28,
       "file": "plugins/eventMacro/eventMacro/Condition/FreeStatPoints.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1514,6 +1670,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/GuildMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1567,6 +1729,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/GuildMsgDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1620,6 +1788,12 @@
       "validate_condition_line": 16,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/GuildMsgName.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -1673,6 +1847,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/GuildMsgNameDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1725,6 +1905,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InCart.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1777,6 +1963,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InCartID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1834,6 +2026,12 @@
       "validate_condition_line": 26,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InChatRoom.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1895,6 +2093,12 @@
       "validate_condition_line": 32,
       "new_vars_line": 44,
       "file": "plugins/eventMacro/eventMacro/Condition/InCity.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1947,6 +2151,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InInventory.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -1999,6 +2209,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InInventoryID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2056,6 +2272,12 @@
       "validate_condition_line": 32,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InLockMap.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2104,6 +2326,12 @@
       "validate_condition_line": 13,
       "new_vars_line": 29,
       "file": "plugins/eventMacro/eventMacro/Condition/InMap.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2154,6 +2382,12 @@
       "validate_condition_line": 13,
       "new_vars_line": 29,
       "file": "plugins/eventMacro/eventMacro/Condition/InMapRegex.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2214,6 +2448,12 @@
       "validate_condition_line": 31,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InProgressBar.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2261,6 +2501,12 @@
       "validate_condition_line": 36,
       "new_vars_line": 53,
       "file": "plugins/eventMacro/eventMacro/Condition/InPvP.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2319,6 +2565,12 @@
       "validate_condition_line": 32,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InSaveMap.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2371,6 +2623,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InStorage.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2423,6 +2681,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InStorageID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2480,6 +2744,12 @@
       "validate_condition_line": 21,
       "new_vars_line": 32,
       "file": "plugins/eventMacro/eventMacro/Condition/InventoryCurrentSize.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2538,6 +2808,12 @@
       "validate_condition_line": 28,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/InventoryReady.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2600,6 +2876,12 @@
       "validate_condition_line": 176,
       "new_vars_line": 211,
       "file": "plugins/eventMacro/eventMacro/Condition/IsEquippedID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2656,6 +2938,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/IsInCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2717,6 +3005,12 @@
       "validate_condition_line": 161,
       "new_vars_line": 223,
       "file": "plugins/eventMacro/eventMacro/Condition/IsInMapAndCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2777,6 +3071,12 @@
       "validate_condition_line": 178,
       "new_vars_line": 223,
       "file": "plugins/eventMacro/eventMacro/Condition/IsNotEquippedID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2834,6 +3134,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/IsNotInCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2890,6 +3196,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/IsNotInMapAndCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -2951,6 +3263,12 @@
       "validate_condition_line": 63,
       "new_vars_line": 88,
       "file": "plugins/eventMacro/eventMacro/Condition/JobID.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3012,6 +3330,12 @@
       "validate_condition_line": 45,
       "new_vars_line": 59,
       "file": "plugins/eventMacro/eventMacro/Condition/JobIDNot.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3069,6 +3393,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 27,
       "file": "plugins/eventMacro/eventMacro/Condition/JobLevel.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3115,6 +3445,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/LocalMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3162,6 +3498,12 @@
       "validate_condition_line": 13,
       "new_vars_line": 24,
       "file": "plugins/eventMacro/eventMacro/Condition/MapLoaded.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3219,6 +3561,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 26,
       "file": "plugins/eventMacro/eventMacro/Condition/MaxHP.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3276,6 +3624,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 26,
       "file": "plugins/eventMacro/eventMacro/Condition/MaxSP.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3327,6 +3681,12 @@
       "validate_condition_line": 25,
       "new_vars_line": 49,
       "file": "plugins/eventMacro/eventMacro/Condition/MobNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3378,6 +3738,12 @@
       "validate_condition_line": 20,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/MobNearCount.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3437,6 +3803,12 @@
       "validate_condition_line": 34,
       "new_vars_line": 67,
       "file": "plugins/eventMacro/eventMacro/Condition/MobNearDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3482,6 +3854,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/MobNotNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3535,6 +3913,12 @@
       "validate_condition_line": 21,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NoMobNear.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -3588,6 +3972,12 @@
       "validate_condition_line": 22,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NoNpcNear.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -3641,6 +4031,12 @@
       "validate_condition_line": 22,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NoPlayerNear.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -3694,6 +4090,12 @@
       "validate_condition_line": 22,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NoPortalNear.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -3740,6 +4142,12 @@
       "validate_condition_line": 18,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NotInMap.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3786,6 +4194,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3839,6 +4253,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcMsgDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3892,6 +4312,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcMsgName.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -3945,6 +4371,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcMsgNameDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -3995,6 +4427,12 @@
       "validate_condition_line": 25,
       "new_vars_line": 49,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4046,6 +4484,12 @@
       "validate_condition_line": 21,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcNearCount.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4104,6 +4548,12 @@
       "validate_condition_line": 34,
       "new_vars_line": 67,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcNearDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4149,6 +4599,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/NpcNotNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4191,6 +4647,12 @@
       "validate_condition_line": -1,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/OnCharLogIn.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4237,6 +4699,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PartyMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4290,6 +4758,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PartyMsgDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4343,6 +4817,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PartyMsgName.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -4396,6 +4876,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PartyMsgNameDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4449,6 +4935,12 @@
       "validate_condition_line": 25,
       "new_vars_line": 49,
       "file": "plugins/eventMacro/eventMacro/Condition/PlayerNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4500,6 +4992,12 @@
       "validate_condition_line": 23,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PlayerNearCount.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4561,6 +5059,12 @@
       "validate_condition_line": 34,
       "new_vars_line": 67,
       "file": "plugins/eventMacro/eventMacro/Condition/PlayerNearDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4606,6 +5110,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PlayerNotNear.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4657,6 +5167,12 @@
       "validate_condition_line": 21,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PortalNearCount.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4703,6 +5219,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PrivMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4756,6 +5278,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PrivMsgDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4809,6 +5337,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PrivMsgName.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -4862,6 +5396,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PrivMsgNameDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4908,6 +5448,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PubMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -4961,6 +5507,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PubMsgDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5014,6 +5566,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PubMsgName.pm"
+    },
+    "generation_safety": "EXPLAIN_ONLY",
+    "generation_safety_reason": "Parser composto herdado sem regex local explícita para contrato completo de geração.",
+    "generation_policy": {
+      "can_generate_ready_syntax": false,
+      "requires_user_confirmation_for_generation": true
     }
   },
   {
@@ -5067,6 +5625,12 @@
       "validate_condition_line": 24,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/PubMsgNameDist.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5131,6 +5695,12 @@
       "validate_condition_line": 81,
       "new_vars_line": 103,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestActive.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5195,6 +5765,12 @@
       "validate_condition_line": 79,
       "new_vars_line": 101,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestComplete.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5260,6 +5836,12 @@
       "validate_condition_line": 149,
       "new_vars_line": 171,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestHuntCompleted.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5325,6 +5907,12 @@
       "validate_condition_line": 150,
       "new_vars_line": 172,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestHuntOngoing.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5390,6 +5978,12 @@
       "validate_condition_line": 80,
       "new_vars_line": 102,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestInactive.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5454,6 +6048,12 @@
       "validate_condition_line": 79,
       "new_vars_line": 101,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestIncomplete.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5518,6 +6118,12 @@
       "validate_condition_line": 79,
       "new_vars_line": 101,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestNotComplete.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5582,6 +6188,12 @@
       "validate_condition_line": 79,
       "new_vars_line": 101,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestNotIncomplete.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5646,6 +6258,12 @@
       "validate_condition_line": 85,
       "new_vars_line": 107,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestOnTime.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5710,6 +6328,12 @@
       "validate_condition_line": 85,
       "new_vars_line": 107,
       "file": "plugins/eventMacro/eventMacro/Condition/QuestTimeOverdue.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5772,6 +6396,12 @@
       "validate_condition_line": 28,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/ShopOpened.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5826,6 +6456,12 @@
       "validate_condition_line": 28,
       "new_vars_line": 38,
       "file": "plugins/eventMacro/eventMacro/Condition/SimpleHookEvent.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5889,6 +6525,12 @@
       "validate_condition_line": 37,
       "new_vars_line": 47,
       "file": "plugins/eventMacro/eventMacro/Condition/SkillLevel.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5941,6 +6583,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 25,
       "file": "plugins/eventMacro/eventMacro/Condition/Spirits.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -5989,6 +6637,12 @@
       "validate_condition_line": 43,
       "new_vars_line": 54,
       "file": "plugins/eventMacro/eventMacro/Condition/StatAdded.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6049,6 +6703,12 @@
       "validate_condition_line": 69,
       "new_vars_line": 98,
       "file": "plugins/eventMacro/eventMacro/Condition/StatusActiveHandle.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6110,6 +6770,12 @@
       "validate_condition_line": 69,
       "new_vars_line": 101,
       "file": "plugins/eventMacro/eventMacro/Condition/StatusInactiveHandle.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6169,6 +6835,12 @@
       "validate_condition_line": 28,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/StorageOpened.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6215,6 +6887,12 @@
       "validate_condition_line": 15,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/SystemMsg.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6271,6 +6949,12 @@
       "validate_condition_line": 48,
       "new_vars_line": 72,
       "file": "plugins/eventMacro/eventMacro/Condition/VarValue.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6328,6 +7012,12 @@
       "validate_condition_line": 17,
       "new_vars_line": 28,
       "file": "plugins/eventMacro/eventMacro/Condition/Zeny.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6384,6 +7074,12 @@
       "validate_condition_line": 11,
       "new_vars_line": 23,
       "file": "plugins/eventMacro/eventMacro/Condition/ZenyChanged.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6445,6 +7141,12 @@
       "validate_condition_line": 30,
       "new_vars_line": -1,
       "file": "plugins/eventMacro/eventMacro/Condition/isInMapAndCloseToCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   },
   {
@@ -6511,6 +7213,12 @@
       "validate_condition_line": 30,
       "new_vars_line": 46,
       "file": "plugins/eventMacro/eventMacro/Condition/isNotInMapOrNotCloseToCoordinate.pm"
+    },
+    "generation_safety": "GENERATION_SAFE",
+    "generation_safety_reason": "Contrato e parser_mode comprovados no código atual para geração controlada.",
+    "generation_policy": {
+      "can_generate_ready_syntax": true,
+      "requires_user_confirmation_for_generation": false
     }
   }
 ]

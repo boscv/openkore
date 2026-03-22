@@ -38,3 +38,18 @@ Quando houver conflito entre documentação histórica e comportamento atual:
 - prevalece o comportamento atual do código;
 - registrar claramente a divergência;
 - evitar afirmações absolutas sem evidência local.
+
+
+## Gate de geração por condition
+Antes de gerar qualquer automacro com condition específica:
+1. Consultar `18_condition_catalog.json`
+2. Ler `generation_safety` da condition
+3. Aplicar política:
+   - `GENERATION_SAFE` => pode gerar sintaxe pronta
+   - `EXPLAIN_ONLY` => explicar, sugerir rascunho parcial e pedir confirmação; não emitir versão final como "pronta"
+   - `UNSAFE` => não gerar sintaxe; limitar ao que está comprovado
+
+## Proibição explícita
+- Não usar apenas `parser_mode` como prova de contrato completo.
+- Não deduzir aridade/ordem de argumentos sem evidência explícita.
+- Não manter exemplo "válido/pronto" quando a condition não é `GENERATION_SAFE`.

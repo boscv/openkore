@@ -18,7 +18,7 @@ automacro got_priv {
   call answer_hi
 }
 ```
-Status: **PROVADO** (RegexConditionEvent).
+Status: **REBAIXADO para EXPLAIN_ONLY** (condition `PrivMsg` depende de contrato de parser composto herdado; evitar gerar pronto sem confirmação do contexto).
 
 ## Call com parâmetros
 ```txt
@@ -39,3 +39,9 @@ macro test_flow {
 }
 ```
 Status: **PROVADO** (`if` pós-fixado e `while` em runner).
+
+
+## Regra de uso destes exemplos para geração
+- Exemplo com condition marcada `EXPLAIN_ONLY` não deve ser emitido como template final automático.
+- Use apenas como explicação e peça confirmação de formato/escopo antes de gerar macro pronta.
+- Exemplo com condition `GENERATION_SAFE` pode ser usado como base de geração controlada.

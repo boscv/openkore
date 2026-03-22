@@ -13,3 +13,23 @@
 
 ## Nota de precisão
 - `parser_mode` e `argument_contract` são PROVADO nas famílias resolvidas por herança e por uso explícito de validators; em `custom`, parte da tipagem continua INFERIDO e deve ser checada no módulo da condition.
+
+
+## Camada de segurança de geração (obrigatória)
+- O catálogo JSON (`18_condition_catalog.json`) agora inclui, para cada condition:
+  - `generation_safety`: `GENERATION_SAFE` | `EXPLAIN_ONLY` | `UNSAFE`
+  - `generation_safety_reason`
+  - `generation_policy.can_generate_ready_syntax`
+- Regra operacional:
+  - `GENERATION_SAFE`: pode gerar sintaxe pronta
+  - `EXPLAIN_ONLY`: explicar e pedir confirmação/contexto; não gerar sintaxe final automaticamente
+  - `UNSAFE`: não gerar sintaxe; limitar resposta ao comprovado
+
+## Resumo atual de status (catálogo final)
+- `GENERATION_SAFE`: 109
+- `EXPLAIN_ONLY`: 9
+- `UNSAFE`: 0
+
+Condições `EXPLAIN_ONLY` atuais:
+- `GuildMsgName`, `NpcMsgName`, `PartyMsgName`, `PrivMsgName`, `PubMsgName`
+- `NoMobNear`, `NoNpcNear`, `NoPlayerNear`, `NoPortalNear`
