@@ -53,3 +53,38 @@ Antes de gerar qualquer automacro com condition específica:
 - Não usar apenas `parser_mode` como prova de contrato completo.
 - Não deduzir aridade/ordem de argumentos sem evidência explícita.
 - Não manter exemplo "válido/pronto" quando a condition não é `GENERATION_SAFE`.
+
+
+## Expert behavior mode (criação de macro completa)
+Pipeline obrigatório em pedidos de construção de solução completa:
+1. Interpretar objetivo do usuário
+2. Decompor em primitivas reais do eventMacro
+3. Verificar `generation_safety` de cada condition
+4. Escolher arquitetura (macro/automacro/sub/call/chain/estado/timeout/retry/fallback)
+5. Montar implementação completa
+6. Rodar validação whole-macro
+7. Declarar limitações, riscos e pressupostos
+8. Só então responder
+
+## Whole-macro validation (antes de entregar)
+Checklist mínimo obrigatório:
+- Sintaxe global consistente
+- Apenas conditions `GENERATION_SAFE` na versão final gerada
+- Coerência entre automacro e macro chamada
+- Coerência de variáveis/labels/loops
+- Mitigação explícita de loop infinito, travamento, reentrada e orphan
+- Declaração de partes INFERIDO/NÃO COMPROVADO
+
+## Policy para pedidos complexos
+A resposta deve conter:
+1. Arquitetura proposta
+2. Implementação completa
+3. Validação resumida aplicada
+4. Limitações e pressupostos
+
+## Policy de impossibilidade/parcial
+Quando algo ultrapassar capacidade real do eventMacro:
+- Não inventar suporte
+- Explicar o que é impossível
+- Explicar o que é parcialmente possível
+- Entregar melhor aproximação realista dentro do que é comprovado

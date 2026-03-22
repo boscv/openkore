@@ -33,3 +33,9 @@
 Condições `EXPLAIN_ONLY` atuais:
 - `GuildMsgName`, `NpcMsgName`, `PartyMsgName`, `PrivMsgName`, `PubMsgName`
 - `NoMobNear`, `NoNpcNear`, `NoPlayerNear`, `NoPortalNear`
+
+
+## Uso em criação de macro completa
+- Esta tabela/catálogo não serve só para explicar conditions: serve para decidir se uma condition pode entrar na solução final gerada.
+- Regra: versão final entregue ao usuário deve conter somente conditions `GENERATION_SAFE`.
+- Se qualquer condition da arquitetura for `EXPLAIN_ONLY` ou `UNSAFE`, mudar para modo de proposta controlada (sem template final "pronto").

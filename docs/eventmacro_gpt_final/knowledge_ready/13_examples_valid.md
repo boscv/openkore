@@ -45,3 +45,7 @@ Status: **PROVADO** (`if` pós-fixado e `while` em runner).
 - Exemplo com condition marcada `EXPLAIN_ONLY` não deve ser emitido como template final automático.
 - Use apenas como explicação e peça confirmação de formato/escopo antes de gerar macro pronta.
 - Exemplo com condition `GENERATION_SAFE` pode ser usado como base de geração controlada.
+
+
+## Nota de arquitetura
+- Estes exemplos são blocos-base; uma solução completa exige passagem pelo protocolo de síntese e pelo checklist whole-macro antes da entrega final.
