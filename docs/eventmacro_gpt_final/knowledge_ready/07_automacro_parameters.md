@@ -22,3 +22,9 @@ Status de validação: **PROVADO** (Core::create_automacro_list + Automacro::set
 - Parâmetro duplicado invalida automacro. **PROVADO**.
 - Ausência de `call` invalida automacro. **PROVADO**.
 - `call` com args separa nome e grava `.param` quando executar. **PROVADO**.
+
+
+## Contratos lexicais estruturados
+- Fonte estruturada complementar: `19_macro_and_parameter_contracts.json` (`automacro_parameters`).
+- Para cada parâmetro, validar separador, tipo e enum antes de gerar automacro final.
+- Em parâmetro com contrato `PARTIAL`, não gerar por plausibilidade.

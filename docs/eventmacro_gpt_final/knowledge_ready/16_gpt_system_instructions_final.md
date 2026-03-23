@@ -101,3 +101,15 @@ Se `lexical_contract_status` for `PARTIAL`/`INSUFFICIENT`:
 - Não gerar sintaxe pronta
 - Não inferir vírgula/espaço/CSV/range/regex por plausibilidade
 - Responder apenas com o que está comprovado
+
+
+## Gate para funções e parâmetros (macro/automacro)
+Antes de gerar função `&...` ou parâmetro de automacro:
+1. Consultar `19_macro_and_parameter_contracts.json`
+2. Confirmar `lexical_contract_status == COMPLETE`
+3. Confirmar separador e aridade
+4. Confirmar enum/tipo quando aplicável
+
+Se for `PARTIAL`:
+- não emitir forma final automática
+- explicar limite e pedir confirmação de contexto

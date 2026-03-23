@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "knowledge_ready" / "18_condition_catalog.json"
 ATTN = Path("docs/eventmacro_lexical_contract_patch/06_conditions_requiring_delimiter_attention.md")
 INSTR = ROOT / "knowledge_ready" / "16_gpt_system_instructions_final.md"
+FUNC_PARAM = ROOT / "knowledge_ready" / "19_macro_and_parameter_contracts.json"
 
 
 def fail(msg: str) -> None:
@@ -60,11 +61,15 @@ def main() -> None:
             if not c.get("examples_validated") or not c.get("examples_rejected"):
                 fail(f"missing examples in COMPLETE condition: {c['name']}")
 
+    if not FUNC_PARAM.exists():
+        fail(f"missing function/parameter contracts file: {FUNC_PARAM}")
+
     instr_text = INSTR.read_text(encoding="utf-8")
     required_tokens = [
         "Gate lexical obrigatório por condition",
         "Expert behavior mode (criação de macro completa)",
         "Whole-macro validation (antes de entregar)",
+        "Gate para funções e parâmetros (macro/automacro)",
     ]
     missing = [t for t in required_tokens if t not in instr_text]
     if missing:

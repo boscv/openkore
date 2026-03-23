@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KNOWLEDGE = ROOT / "knowledge_ready"
 MANIFEST = KNOWLEDGE / "17_upload_manifest.md"
 CATALOG = KNOWLEDGE / "18_condition_catalog.json"
+MACRO_PARAM_CONTRACTS = KNOWLEDGE / "19_macro_and_parameter_contracts.json"
 
 REQUIRED_FILES = {
     "02_grammar_and_parsing.md",
@@ -30,6 +31,7 @@ REQUIRED_FILES = {
     "12_invalid_syntax_and_negative_catalog.md",
     "16_gpt_system_instructions_final.md",
     "18_condition_catalog.json",
+    "19_macro_and_parameter_contracts.json",
 }
 
 
@@ -63,6 +65,8 @@ def main() -> None:
 
     if not CATALOG.exists():
         fail("missing 18_condition_catalog.json")
+    if not MACRO_PARAM_CONTRACTS.exists():
+        fail("missing 19_macro_and_parameter_contracts.json")
 
     data = json.loads(CATALOG.read_text(encoding="utf-8"))
     if not isinstance(data, list) or not data:
@@ -70,7 +74,10 @@ def main() -> None:
 
     print("OK: final package validated")
     print(f"knowledge_ready_files={count}")
+    contracts = json.loads(MACRO_PARAM_CONTRACTS.read_text(encoding="utf-8"))
     print(f"catalog_entries={len(data)}")
+    print(f"macro_function_contracts={len(contracts.get('macro_functions', []))}")
+    print(f"automacro_parameter_contracts={len(contracts.get('automacro_parameters', []))}")
 
 
 if __name__ == "__main__":

@@ -20,9 +20,10 @@
 17. `16_gpt_system_instructions_final.md` — instruções operacionais do GPT.
 18. `17_upload_manifest.md` — este manifesto.
 19. `18_condition_catalog.json` — catálogo completo de conditions para lookup estruturado.
+20. `19_macro_and_parameter_contracts.json` — contratos lexicais de funções macro e parâmetros de automacro.
 
 ## Contagem
-- Total: **19 arquivos**.
+- Total: **20 arquivos**.
 - Confirmação: **não ultrapassa 20 arquivos**.
 
 ## Mais importantes (núcleo mínimo)
@@ -36,6 +37,7 @@
 - `12_invalid_syntax_and_negative_catalog.md`
 - `16_gpt_system_instructions_final.md`
 - `18_condition_catalog.json`
+- `19_macro_and_parameter_contracts.json`
 
 ## Opcionais para versão ainda mais compacta
 - `13_examples_valid.md`
@@ -53,3 +55,5 @@
 - Só subir o pacote se ambos os gates (pacote + lexical) retornarem OK.
 - Executar também: `python3 docs/eventmacro_gpt_final/support/validate_curation_consistency.py`.
 - Só subir o pacote se os três gates (pacote + lexical + consistência) retornarem OK.
+- Executar também: `python3 docs/eventmacro_gpt_final/support/validate_function_parameter_contracts.py`.
+- Só subir o pacote se os quatro gates (pacote + lexical + consistência + funções/parâmetros) retornarem OK.

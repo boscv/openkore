@@ -17,6 +17,10 @@
    - Validação automática de completude lexical para evitar erro de separador/forma.
 8. `docs/eventmacro_gpt_final/support/validate_curation_consistency.py`
    - Validação cruzada para evitar drift entre JSON, lista de atenção e instruções operacionais.
+9. `docs/eventmacro_gpt_final/knowledge_ready/19_macro_and_parameter_contracts.json`
+   - Contratos lexicais estruturados para funções macro e parâmetros de automacro.
+10. `docs/eventmacro_gpt_final/support/validate_function_parameter_contracts.py`
+   - Gate de qualidade de contratos para funções/parâmetros.
 
 ## Novos arquivos de patch
 - `docs/eventmacro_lexical_contract_patch/00_patch_scope_and_method.md`

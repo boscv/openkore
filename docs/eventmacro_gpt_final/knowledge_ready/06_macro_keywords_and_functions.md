@@ -21,3 +21,9 @@ Principais suportados (PROVADO):
 - `cmpr` suporta operadores: `= == != > < >= <= ~ =~`. **PROVADO**.
 - Regex literal somente formato `/.../` com opcional `i`. **PROVADO**.
 - Range com `..` suportado para igualdade/inequidade. **PROVADO**.
+
+
+## Contratos lexicais estruturados
+- Fonte estruturada complementar: `19_macro_and_parameter_contracts.json` (`macro_functions`).
+- Regra de geração: só usar forma pronta quando `lexical_contract_status == COMPLETE`.
+- Se `PARTIAL`, explicar e pedir confirmação antes de gerar chamada final.
