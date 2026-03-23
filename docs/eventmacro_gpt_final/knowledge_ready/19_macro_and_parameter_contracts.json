@@ -1,0 +1,1064 @@
+{
+  "meta": {
+    "scope": "eventMacro macro functions/keywords + automacro parameters lexical contracts",
+    "confidence_policy": [
+      "PROVADO",
+      "INFERIDO",
+      "NÃO COMPROVADO"
+    ],
+    "generation_rule": "Only generate final syntax when lexical_contract_status is COMPLETE"
+  },
+  "macro_functions": [
+    {
+      "name": "arg",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&arg(0)"
+      ],
+      "rejected_forms": [
+        "&arg 0"
+      ]
+    },
+    {
+      "name": "cart",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&cart(...)",
+        "&cart(\"value\")"
+      ],
+      "rejected_forms": [
+        "&cart ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "Cart",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&Cart(...)",
+        "&Cart(\"value\")"
+      ],
+      "rejected_forms": [
+        "&Cart ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "cartamount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&cartamount(...)",
+        "&cartamount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&cartamount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "config",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&config(lockMap)"
+      ],
+      "rejected_forms": [
+        "&config lockMap"
+      ]
+    },
+    {
+      "name": "defined",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "invalid type payload"
+      ],
+      "accepted_forms": [
+        "&defined($x)",
+        "&defined($arr[0])",
+        "&defined($hash{key})"
+      ],
+      "rejected_forms": [
+        "&defined(@arr)"
+      ]
+    },
+    {
+      "name": "delete",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&delete($hash{key})"
+      ],
+      "rejected_forms": [
+        "&delete $hash{key}"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "eval",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses (freeform expression)"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&eval('1+1')",
+        "&eval($expr)"
+      ],
+      "rejected_forms": [
+        "&eval 1+1 (without parentheses)"
+      ],
+      "notes": "Lexical call shape is fixed; runtime execution may still be blocked by lockdown."
+    },
+    {
+      "name": "exists",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&exists($hash{key})"
+      ],
+      "rejected_forms": [
+        "&exists $hash{key}"
+      ]
+    },
+    {
+      "name": "invamount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&invamount(...)",
+        "&invamount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&invamount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "inventory",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&inventory(...)",
+        "&inventory(\"value\")"
+      ],
+      "rejected_forms": [
+        "&inventory ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "Inventory",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&Inventory(...)",
+        "&Inventory(\"value\")"
+      ],
+      "rejected_forms": [
+        "&Inventory ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "InventoryType",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&InventoryType(...)",
+        "&InventoryType(\"value\")"
+      ],
+      "rejected_forms": [
+        "&InventoryType ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "itemCard",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&itemCard(...)",
+        "&itemCard(\"value\")"
+      ],
+      "rejected_forms": [
+        "&itemCard ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "itemCardAmount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&itemCardAmount(...)",
+        "&itemCardAmount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&itemCardAmount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "itemOptAmount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&itemOptAmount(...)",
+        "&itemOptAmount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&itemOptAmount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "itemOption",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&itemOption(...)",
+        "&itemOption(\"value\")"
+      ],
+      "rejected_forms": [
+        "&itemOption ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "keys",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&keys($hash)"
+      ],
+      "rejected_forms": [
+        "&keys $hash"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "monster",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&monster(...)",
+        "&monster(\"value\")"
+      ],
+      "rejected_forms": [
+        "&monster ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "npc",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&npc(...)",
+        "&npc(\"value\")"
+      ],
+      "rejected_forms": [
+        "&npc ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "player",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&player(...)",
+        "&player(\"value\")"
+      ],
+      "rejected_forms": [
+        "&player ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "pop",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&pop(@arr)"
+      ],
+      "rejected_forms": [
+        "&pop @arr"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "push",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 2,
+      "optional_arity": "N",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&push(@arr, $x)",
+        "&push(@arr, $x, $y)"
+      ],
+      "rejected_forms": [
+        "&push @arr $x"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "questCompleteCount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; CSV IDs allowed inside argument payload"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&questCompleteCount(12345)",
+        "&questCompleteCount(12345,12346)"
+      ],
+      "rejected_forms": [
+        "&questCompleteCount 12345 (without parentheses)"
+      ],
+      "notes": "Runner uses one bracket payload and splits CSV IDs internally for quest status counting."
+    },
+    {
+      "name": "questInactiveCount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; CSV IDs allowed inside argument payload"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&questInactiveCount(12345)",
+        "&questInactiveCount(12345,12346)"
+      ],
+      "rejected_forms": [
+        "&questInactiveCount 12345 (without parentheses)"
+      ],
+      "notes": "Runner uses one bracket payload and splits CSV IDs internally for quest status counting."
+    },
+    {
+      "name": "questIncompleteCount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; CSV IDs allowed inside argument payload"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&questIncompleteCount(12345)",
+        "&questIncompleteCount(12345,12346)"
+      ],
+      "rejected_forms": [
+        "&questIncompleteCount 12345 (without parentheses)"
+      ],
+      "notes": "Runner uses one bracket payload and splits CSV IDs internally for quest status counting."
+    },
+    {
+      "name": "questStatus",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&questStatus(12345)",
+        "&questStatus($questID)"
+      ],
+      "rejected_forms": [
+        "&questStatus 12345 (without parentheses)"
+      ],
+      "notes": "Runner resolves one parsed argument and maps status via getQuestStatus."
+    },
+    {
+      "name": "rand",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 0,
+      "optional_arity": 1,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&rand()",
+        "&rand(10)"
+      ],
+      "rejected_forms": [
+        "&rand 10"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "random",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 0,
+      "optional_arity": 2,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&random()",
+        "&random(1,10)"
+      ],
+      "rejected_forms": [
+        "&random 1 10"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "shift",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&shift(@arr)"
+      ],
+      "rejected_forms": [
+        "&shift @arr"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "shopamount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&shopamount(...)",
+        "&shopamount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&shopamount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "split",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 2,
+      "optional_arity": 1,
+      "accepted_separators": [
+        "comma + optional spaces inside function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&split($str, /regex/)",
+        "&split($str, /regex/, 2)"
+      ],
+      "rejected_forms": [
+        "&split($str /regex/)"
+      ],
+      "notes": "Function-call comma semantics inside parentheses"
+    },
+    {
+      "name": "storage",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&storage(...)",
+        "&storage(\"value\")"
+      ],
+      "rejected_forms": [
+        "&storage ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "Storage",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&Storage(...)",
+        "&Storage(\"value\")"
+      ],
+      "rejected_forms": [
+        "&Storage ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "storamount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&storamount(...)",
+        "&storamount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&storamount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "strip",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&strip($text)"
+      ],
+      "rejected_forms": [
+        "&strip $text"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "unshift",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 2,
+      "optional_arity": "N",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&unshift(@arr, $x)",
+        "&unshift(@arr, $x, $y)"
+      ],
+      "rejected_forms": [
+        "&unshift @arr $x"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "values",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&values($hash)"
+      ],
+      "rejected_forms": [
+        "&values $hash"
+      ],
+      "notes": "Lexical call form standardized in function-call syntax."
+    },
+    {
+      "name": "vender",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&vender(...)",
+        "&vender(\"value\")"
+      ],
+      "rejected_forms": [
+        "&vender ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "venderamount",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&venderamount(...)",
+        "&venderamount(\"value\")"
+      ],
+      "rejected_forms": [
+        "&venderamount ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "venderprice",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&venderprice(...)",
+        "&venderprice(\"value\")"
+      ],
+      "rejected_forms": [
+        "&venderprice ... (without parentheses)"
+      ],
+      "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    }
+  ],
+  "automacro_parameters": [
+    {
+      "name": "call",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key macro_name [args...]",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma as delimiter for macro name"
+      ],
+      "accepted_forms": [
+        "call use_pot",
+        "call buff_me 123 \"abc\""
+      ],
+      "rejected_forms": [
+        "call,use_pot"
+      ],
+      "value_type": "macro identifier + optional args"
+    },
+    {
+      "name": "CheckOnAI",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key csv-enum",
+      "accepted_separators": [
+        "whitespace after key; CSV commas between enum values"
+      ],
+      "forbidden_separators": [
+        "space-only list without commas",
+        "enum outside {auto,manual,off}"
+      ],
+      "accepted_forms": [
+        "CheckOnAI auto",
+        "CheckOnAI auto,manual",
+        "CheckOnAI off,auto,manual"
+      ],
+      "rejected_forms": [
+        "CheckOnAI auto manual",
+        "CheckOnAI foo",
+        "CheckOnAI auto,foo"
+      ],
+      "value_type": "CSV enum list (auto|manual|off)"
+    },
+    {
+      "name": "delay",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "delay 0.5"
+      ],
+      "rejected_forms": [
+        "delay,0.5"
+      ],
+      "value_type": "decimal"
+    },
+    {
+      "name": "disabled",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "disabled 0"
+      ],
+      "rejected_forms": [
+        "disabled maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "exclusive",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "exclusive 1"
+      ],
+      "rejected_forms": [
+        "exclusive maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "macro_delay",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "macro_delay 0.2"
+      ],
+      "rejected_forms": [
+        "macro_delay fast"
+      ],
+      "value_type": "decimal"
+    },
+    {
+      "name": "orphan",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key enum",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "orphan terminate",
+        "orphan reregister_safe"
+      ],
+      "rejected_forms": [
+        "orphan unknown_mode"
+      ],
+      "value_type": "enum"
+    },
+    {
+      "name": "overrideAI",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "overrideAI 1"
+      ],
+      "rejected_forms": [
+        "overrideAI maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "priority",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "priority 0"
+      ],
+      "rejected_forms": [
+        "priority -1"
+      ],
+      "value_type": "integer >= 0"
+    },
+    {
+      "name": "repeat",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "repeat 2"
+      ],
+      "rejected_forms": [
+        "repeat -1"
+      ],
+      "value_type": "integer >= 0"
+    },
+    {
+      "name": "run-once",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "run-once 1"
+      ],
+      "rejected_forms": [
+        "run-once maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "self_interruptible",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "self_interruptible 1"
+      ],
+      "rejected_forms": [
+        "self_interruptible maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "timeout",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "timeout 2"
+      ],
+      "rejected_forms": [
+        "timeout,2"
+      ],
+      "value_type": "number"
+    }
+  ]
+}
