@@ -2209,7 +2209,7 @@ sub parse_command {
 		} elsif ($keyword eq 'eval') {
 			$result = eval($parsed) unless $Settings::lockdown;
 
-		} elsif ($keyword eq 'listitem') {
+		} elsif ($keyword eq 'listitem' || $keyword eq 'listlength') {
 			$result = getArgFromList($parsed);
 
 		} elsif ($keyword eq 'strip') {

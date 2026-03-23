@@ -816,6 +816,126 @@
         "&venderprice ... (without parentheses)"
       ],
       "notes": "Runner parse_command routes keyword with one bracket payload string to utility resolver."
+    },
+    {
+      "name": "listitem",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; expected payload is list index plus comma-separated list"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&listitem(0, a,b,c)",
+        "&listitem($idx, a,b,c)"
+      ],
+      "rejected_forms": [
+        "&listitem 0, a,b,c (without parentheses)"
+      ],
+      "notes": "Runner routes to getArgFromList and extracts one list member by index."
+    },
+    {
+      "name": "listlength",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; accepted as compatibility alias of listitem"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&listlength(0, a,b,c)",
+        "&listlength($idx, a,b,c)"
+      ],
+      "rejected_forms": [
+        "&listlength 0, a,b,c (without parentheses)"
+      ],
+      "notes": "Compatibility alias handled by Runner with same behavior as listitem."
+    },
+    {
+      "name": "nick",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&nick(Player Name)",
+        "&nick($charName)"
+      ],
+      "rejected_forms": [
+        "&nick PlayerName (without parentheses)"
+      ],
+      "notes": "Runner normalizes player name/handle through q4rx2 utility."
+    },
+    {
+      "name": "store",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&store(...)",
+        "&store(value)"
+      ],
+      "rejected_forms": [
+        "&store ... (without parentheses)"
+      ],
+      "notes": "Runner routes keyword with one bracket payload string to shop/store utility resolver."
+    },
+    {
+      "name": "venderitem",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&venderitem(...)",
+        "&venderitem(value)"
+      ],
+      "rejected_forms": [
+        "&venderitem ... (without parentheses)"
+      ],
+      "notes": "Runner resolves first matching vender item ID in current vender list."
+    },
+    {
+      "name": "venderItem",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "single argument inside parentheses; comma may appear inside the argument payload when function semantics require lists"
+      ],
+      "forbidden_separators": [
+        "missing function-call parentheses form"
+      ],
+      "accepted_forms": [
+        "&venderItem(...)",
+        "&venderItem(value)"
+      ],
+      "rejected_forms": [
+        "&venderItem ... (without parentheses)"
+      ],
+      "notes": "Compatibility alias of venderitem; Runner returns CSV of matching IDs."
     }
   ],
   "automacro_parameters": [
