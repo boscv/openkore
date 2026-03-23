@@ -10,3 +10,7 @@
 - `RegexCheck` validava variável de sistema com `if ($var =~ /^\\./)` (hashref), não `display_name`; isso podia deixar `.vars` passar no caminho de regex. **PROVADO**.  
   **Status de solução**: **SOLUCIONADO NO CÓDIGO** (validação ajustada para `$var_name`).
 - Diferenças históricas para plugin macro antigo só podem ser afirmadas onde há evidência direta de nomes/comandos no código atual; demais afirmações: **NÃO COMPROVADO**.
+- Divergência de nomenclatura de keyword entre catálogo canônico e runtime: `Data.pm` declara `listlength`, enquanto `Runner::parse_command` possui ramo `listitem`. **PROVADO**.  
+  **Status de solução**: **NÃO SOLUCIONADO NO CÓDIGO**; na curadoria final deve ser tratado explicitamente como inconsistência conhecida.
+- Divergência de casing: `Runner::parse_command` possui ramo `venderItem`, enquanto o catálogo canônico de reconhecimento (`Data.pm`) declara `venderitem`. **PROVADO**.  
+  **Status de solução**: **NÃO SOLUCIONADO NO CÓDIGO**; na curadoria final deve prevalecer forma canônica reconhecida por regex (`venderitem`).
