@@ -27,3 +27,5 @@ Principais suportados (PROVADO):
 - Fonte estruturada complementar: `19_macro_and_parameter_contracts.json` (`macro_functions`).
 - Regra de geração: só usar forma pronta quando `lexical_contract_status == COMPLETE`.
 - Se `PARTIAL`, explicar e pedir confirmação antes de gerar chamada final.
+
+- Cobertura atual do catálogo estruturado: funções críticas + funções frequentes com status COMPLETE/PARTIAL para controle de geração.

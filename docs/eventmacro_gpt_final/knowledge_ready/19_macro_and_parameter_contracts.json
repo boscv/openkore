@@ -1,144 +1,1030 @@
 {
   "meta": {
     "scope": "eventMacro macro functions/keywords + automacro parameters lexical contracts",
-    "confidence_policy": ["PROVADO", "INFERIDO", "NÃO COMPROVADO"],
+    "confidence_policy": [
+      "PROVADO",
+      "INFERIDO",
+      "NÃO COMPROVADO"
+    ],
     "generation_rule": "Only generate final syntax when lexical_contract_status is COMPLETE"
   },
   "macro_functions": [
     {
-      "name": "split",
+      "name": "arg",
       "lexical_contract_status": "COMPLETE",
-      "required_arity": 2,
-      "optional_arity": 1,
-      "accepted_separators": ["comma + optional spaces inside function call"],
-      "forbidden_separators": ["whitespace-only positional without comma"],
-      "accepted_forms": ["&split($str, /regex/)", "&split($str, /regex/, 2)"],
-      "rejected_forms": ["&split($str /regex/)"],
-      "notes": "Function-call comma semantics inside parentheses"
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&arg(0)"
+      ],
+      "rejected_forms": [
+        "&arg 0"
+      ]
+    },
+    {
+      "name": "cart",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&cart(...)"
+      ],
+      "rejected_forms": [
+        "&cart ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "Cart",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&Cart(...)"
+      ],
+      "rejected_forms": [
+        "&Cart ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "cartamount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&cartamount(...)"
+      ],
+      "rejected_forms": [
+        "&cartamount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
     },
     {
       "name": "config",
       "lexical_contract_status": "COMPLETE",
       "required_arity": 1,
       "optional_arity": 0,
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["space positional without comma"],
-      "accepted_forms": ["&config(lockMap)"],
-      "rejected_forms": ["&config lockMap"]
-    },
-    {
-      "name": "arg",
-      "lexical_contract_status": "COMPLETE",
-      "required_arity": 1,
-      "optional_arity": 0,
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["space positional without comma"],
-      "accepted_forms": ["&arg(0)"],
-      "rejected_forms": ["&arg 0"]
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&config(lockMap)"
+      ],
+      "rejected_forms": [
+        "&config lockMap"
+      ]
     },
     {
       "name": "defined",
       "lexical_contract_status": "COMPLETE",
       "required_arity": 1,
       "optional_arity": 0,
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["invalid type payload"],
-      "accepted_forms": ["&defined($x)", "&defined($arr[0])", "&defined($hash{key})"],
-      "rejected_forms": ["&defined(@arr)"]
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "invalid type payload"
+      ],
+      "accepted_forms": [
+        "&defined($x)",
+        "&defined($arr[0])",
+        "&defined($hash{key})"
+      ],
+      "rejected_forms": [
+        "&defined(@arr)"
+      ]
     },
     {
-      "name": "exists",
-      "lexical_contract_status": "COMPLETE",
-      "required_arity": 1,
-      "optional_arity": 0,
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["space positional without comma"],
-      "accepted_forms": ["&exists($hash{key})"],
-      "rejected_forms": ["&exists $hash{key}"]
-    },
-    {
-      "name": "questStatus",
+      "name": "delete",
       "lexical_contract_status": "PARTIAL",
-      "required_arity": "1+",
+      "required_arity": "varia",
       "optional_arity": "varia",
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["not proven beyond documented call style"],
-      "accepted_forms": ["&questStatus(12345)"],
-      "rejected_forms": ["not proven"],
-      "notes": "Semântica completa depende de implementação específica"
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&delete(...)"
+      ],
+      "rejected_forms": [
+        "&delete ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
     },
     {
       "name": "eval",
       "lexical_contract_status": "PARTIAL",
       "required_arity": 1,
       "optional_arity": 0,
-      "accepted_separators": ["comma-separated args in function call"],
-      "forbidden_separators": ["not proven beyond call syntax"],
-      "accepted_forms": ["&eval('1+1')"],
-      "rejected_forms": ["Runtime may block by lockdown"],
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "not proven beyond call syntax"
+      ],
+      "accepted_forms": [
+        "&eval('1+1')"
+      ],
+      "rejected_forms": [
+        "Runtime may block by lockdown"
+      ],
       "notes": "Even lexical acceptance can be blocked semantically"
+    },
+    {
+      "name": "exists",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 1,
+      "optional_arity": 0,
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "space positional without comma"
+      ],
+      "accepted_forms": [
+        "&exists($hash{key})"
+      ],
+      "rejected_forms": [
+        "&exists $hash{key}"
+      ]
+    },
+    {
+      "name": "invamount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&invamount(...)"
+      ],
+      "rejected_forms": [
+        "&invamount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "inventory",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&inventory(...)"
+      ],
+      "rejected_forms": [
+        "&inventory ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "Inventory",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&Inventory(...)"
+      ],
+      "rejected_forms": [
+        "&Inventory ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "InventoryType",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&InventoryType(...)"
+      ],
+      "rejected_forms": [
+        "&InventoryType ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "itemCard",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&itemCard(...)"
+      ],
+      "rejected_forms": [
+        "&itemCard ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "itemCardAmount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&itemCardAmount(...)"
+      ],
+      "rejected_forms": [
+        "&itemCardAmount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "itemOptAmount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&itemOptAmount(...)"
+      ],
+      "rejected_forms": [
+        "&itemOptAmount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "itemOption",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&itemOption(...)"
+      ],
+      "rejected_forms": [
+        "&itemOption ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "keys",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&keys(...)"
+      ],
+      "rejected_forms": [
+        "&keys ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "monster",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&monster(...)"
+      ],
+      "rejected_forms": [
+        "&monster ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "npc",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&npc(...)"
+      ],
+      "rejected_forms": [
+        "&npc ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "player",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&player(...)"
+      ],
+      "rejected_forms": [
+        "&player ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "pop",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&pop(...)"
+      ],
+      "rejected_forms": [
+        "&pop ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "push",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&push(...)"
+      ],
+      "rejected_forms": [
+        "&push ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "questCompleteCount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&questCompleteCount(...)"
+      ],
+      "rejected_forms": [
+        "&questCompleteCount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "questInactiveCount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&questInactiveCount(...)"
+      ],
+      "rejected_forms": [
+        "&questInactiveCount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "questIncompleteCount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&questIncompleteCount(...)"
+      ],
+      "rejected_forms": [
+        "&questIncompleteCount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "questStatus",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "1+",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "not proven beyond documented call style"
+      ],
+      "accepted_forms": [
+        "&questStatus(12345)"
+      ],
+      "rejected_forms": [
+        "not proven"
+      ],
+      "notes": "Semântica completa depende de implementação específica"
+    },
+    {
+      "name": "rand",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&rand(...)"
+      ],
+      "rejected_forms": [
+        "&rand ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "random",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&random(...)"
+      ],
+      "rejected_forms": [
+        "&random ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "shift",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&shift(...)"
+      ],
+      "rejected_forms": [
+        "&shift ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "shopamount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&shopamount(...)"
+      ],
+      "rejected_forms": [
+        "&shopamount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "split",
+      "lexical_contract_status": "COMPLETE",
+      "required_arity": 2,
+      "optional_arity": 1,
+      "accepted_separators": [
+        "comma + optional spaces inside function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&split($str, /regex/)",
+        "&split($str, /regex/, 2)"
+      ],
+      "rejected_forms": [
+        "&split($str /regex/)"
+      ],
+      "notes": "Function-call comma semantics inside parentheses"
+    },
+    {
+      "name": "storage",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&storage(...)"
+      ],
+      "rejected_forms": [
+        "&storage ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "Storage",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&Storage(...)"
+      ],
+      "rejected_forms": [
+        "&Storage ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "storamount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&storamount(...)"
+      ],
+      "rejected_forms": [
+        "&storamount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "strip",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&strip(...)"
+      ],
+      "rejected_forms": [
+        "&strip ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "unshift",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&unshift(...)"
+      ],
+      "rejected_forms": [
+        "&unshift ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "values",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&values(...)"
+      ],
+      "rejected_forms": [
+        "&values ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "vender",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&vender(...)"
+      ],
+      "rejected_forms": [
+        "&vender ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "venderamount",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&venderamount(...)"
+      ],
+      "rejected_forms": [
+        "&venderamount ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
+    },
+    {
+      "name": "venderprice",
+      "lexical_contract_status": "PARTIAL",
+      "required_arity": "varia",
+      "optional_arity": "varia",
+      "accepted_separators": [
+        "comma-separated args in function call"
+      ],
+      "forbidden_separators": [
+        "whitespace-only positional without comma"
+      ],
+      "accepted_forms": [
+        "&venderprice(...)"
+      ],
+      "rejected_forms": [
+        "&venderprice ..."
+      ],
+      "notes": "Aridade e semântica específicas exigem confirmação por função."
     }
   ],
   "automacro_parameters": [
     {
-      "name": "timeout",
-      "lexical_contract_status": "COMPLETE",
-      "tokenization_mode": "inline positional key value",
-      "accepted_separators": ["whitespace only"],
-      "forbidden_separators": ["comma between key and value"],
-      "accepted_forms": ["timeout 2"],
-      "rejected_forms": ["timeout,2"],
-      "value_type": "number"
-    },
-    {
-      "name": "delay",
-      "lexical_contract_status": "COMPLETE",
-      "tokenization_mode": "inline positional key value",
-      "accepted_separators": ["whitespace only"],
-      "forbidden_separators": ["comma between key and value"],
-      "accepted_forms": ["delay 0.5"],
-      "rejected_forms": ["delay,0.5"],
-      "value_type": "decimal"
-    },
-    {
-      "name": "run-once",
-      "lexical_contract_status": "COMPLETE",
-      "tokenization_mode": "inline positional key value",
-      "accepted_separators": ["whitespace only"],
-      "forbidden_separators": ["comma between key and value"],
-      "accepted_forms": ["run-once 1"],
-      "rejected_forms": ["run-once maybe"],
-      "value_type": "enum 0|1"
-    },
-    {
       "name": "call",
       "lexical_contract_status": "COMPLETE",
       "tokenization_mode": "inline positional key macro_name [args...]",
-      "accepted_separators": ["whitespace only"],
-      "forbidden_separators": ["comma as delimiter for macro name"],
-      "accepted_forms": ["call use_pot", "call buff_me 123 \"abc\""],
-      "rejected_forms": ["call,use_pot"],
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma as delimiter for macro name"
+      ],
+      "accepted_forms": [
+        "call use_pot",
+        "call buff_me 123 \"abc\""
+      ],
+      "rejected_forms": [
+        "call,use_pot"
+      ],
       "value_type": "macro identifier + optional args"
-    },
-    {
-      "name": "orphan",
-      "lexical_contract_status": "COMPLETE",
-      "tokenization_mode": "inline positional key enum",
-      "accepted_separators": ["whitespace only"],
-      "forbidden_separators": ["comma between key and value"],
-      "accepted_forms": ["orphan terminate", "orphan reregister_safe"],
-      "rejected_forms": ["orphan unknown_mode"],
-      "value_type": "enum"
     },
     {
       "name": "CheckOnAI",
       "lexical_contract_status": "PARTIAL",
       "tokenization_mode": "inline positional key csv-list",
-      "accepted_separators": ["whitespace before value; CSV inside value"],
-      "forbidden_separators": ["space-only list without CSV proof"],
-      "accepted_forms": ["CheckOnAI auto", "CheckOnAI auto,manual"],
-      "rejected_forms": ["CheckOnAI auto manual"],
+      "accepted_separators": [
+        "whitespace before value; CSV inside value"
+      ],
+      "forbidden_separators": [
+        "space-only list without CSV proof"
+      ],
+      "accepted_forms": [
+        "CheckOnAI auto",
+        "CheckOnAI auto,manual"
+      ],
+      "rejected_forms": [
+        "CheckOnAI auto manual"
+      ],
       "value_type": "CSV enum list"
+    },
+    {
+      "name": "delay",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "delay 0.5"
+      ],
+      "rejected_forms": [
+        "delay,0.5"
+      ],
+      "value_type": "decimal"
+    },
+    {
+      "name": "disabled",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "disabled 0"
+      ],
+      "rejected_forms": [
+        "disabled maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "exclusive",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "exclusive 1"
+      ],
+      "rejected_forms": [
+        "exclusive maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "macro_delay",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "macro_delay 0.2"
+      ],
+      "rejected_forms": [
+        "macro_delay fast"
+      ],
+      "value_type": "decimal"
+    },
+    {
+      "name": "orphan",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key enum",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "orphan terminate",
+        "orphan reregister_safe"
+      ],
+      "rejected_forms": [
+        "orphan unknown_mode"
+      ],
+      "value_type": "enum"
+    },
+    {
+      "name": "overrideAI",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "overrideAI 1"
+      ],
+      "rejected_forms": [
+        "overrideAI maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "priority",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "priority 0"
+      ],
+      "rejected_forms": [
+        "priority -1"
+      ],
+      "value_type": "integer >= 0"
+    },
+    {
+      "name": "repeat",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "repeat 2"
+      ],
+      "rejected_forms": [
+        "repeat -1"
+      ],
+      "value_type": "integer >= 0"
+    },
+    {
+      "name": "run-once",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "run-once 1"
+      ],
+      "rejected_forms": [
+        "run-once maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "self_interruptible",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "self_interruptible 1"
+      ],
+      "rejected_forms": [
+        "self_interruptible maybe"
+      ],
+      "value_type": "enum 0|1"
+    },
+    {
+      "name": "timeout",
+      "lexical_contract_status": "COMPLETE",
+      "tokenization_mode": "inline positional key value",
+      "accepted_separators": [
+        "whitespace only"
+      ],
+      "forbidden_separators": [
+        "comma between key and value"
+      ],
+      "accepted_forms": [
+        "timeout 2"
+      ],
+      "rejected_forms": [
+        "timeout,2"
+      ],
+      "value_type": "number"
     }
   ]
 }

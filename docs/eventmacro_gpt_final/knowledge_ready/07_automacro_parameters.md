@@ -28,3 +28,4 @@ Status de validação: **PROVADO** (Core::create_automacro_list + Automacro::set
 - Fonte estruturada complementar: `19_macro_and_parameter_contracts.json` (`automacro_parameters`).
 - Para cada parâmetro, validar separador, tipo e enum antes de gerar automacro final.
 - Em parâmetro com contrato `PARTIAL`, não gerar por plausibilidade.
+- Cobertura atual do catálogo estruturado: parâmetros principais de automacro com regras de separador/tipo/enum.
