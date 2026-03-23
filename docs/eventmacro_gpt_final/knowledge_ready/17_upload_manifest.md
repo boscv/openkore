@@ -51,3 +51,5 @@
 
 - Executar também: `python3 docs/eventmacro_gpt_final/support/validate_lexical_contracts.py`.
 - Só subir o pacote se ambos os gates (pacote + lexical) retornarem OK.
+- Executar também: `python3 docs/eventmacro_gpt_final/support/validate_curation_consistency.py`.
+- Só subir o pacote se os três gates (pacote + lexical + consistência) retornarem OK.

@@ -15,6 +15,8 @@
    - Gate lexical adicional no checklist pré-upload.
 7. `docs/eventmacro_gpt_final/support/validate_lexical_contracts.py`
    - Validação automática de completude lexical para evitar erro de separador/forma.
+8. `docs/eventmacro_gpt_final/support/validate_curation_consistency.py`
+   - Validação cruzada para evitar drift entre JSON, lista de atenção e instruções operacionais.
 
 ## Novos arquivos de patch
 - `docs/eventmacro_lexical_contract_patch/00_patch_scope_and_method.md`

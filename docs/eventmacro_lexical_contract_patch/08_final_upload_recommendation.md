@@ -8,5 +8,6 @@
 ## Recomendação operacional
 1. Rodar `python3 docs/eventmacro_gpt_final/support/validate_final_package.py`
 2. Rodar `python3 docs/eventmacro_gpt_final/support/validate_lexical_contracts.py`
-3. Conferir no catálogo os campos lexicais antes de gerar conditions.
-4. Tratar PARTIAL/INSUFFICIENT como bloqueio de geração pronta.
+3. Rodar `python3 docs/eventmacro_gpt_final/support/validate_curation_consistency.py`
+4. Conferir no catálogo os campos lexicais antes de gerar conditions.
+5. Tratar PARTIAL/INSUFFICIENT como bloqueio de geração pronta.

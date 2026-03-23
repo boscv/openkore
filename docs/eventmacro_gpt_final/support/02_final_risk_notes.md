@@ -24,3 +24,5 @@
 1. Rodar `python3 docs/eventmacro_gpt_final/support/validate_final_package.py`.
 2. Confirmar leitura de `16_gpt_system_instructions_final.md` como instrução principal do GPT.
 3. Validar que o pacote enviado contém exatamente os arquivos listados no manifesto.
+
+- Gate de consistência cruzada `validate_curation_consistency.py` para impedir drift entre catálogo JSON, lista de atenção e instruções do GPT.
