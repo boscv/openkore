@@ -27,3 +27,4 @@
 
 - Gate de consistência cruzada `validate_curation_consistency.py` para impedir drift entre catálogo JSON, lista de atenção e instruções do GPT.
 - Gate de contratos de funções/parâmetros `validate_function_parameter_contracts.py` para reduzir erro de geração fora de enum/aridade.
+- Suite `golden_macro_cases.json` + `validate_golden_macro_cases.py` para testar coerência de criação/validação em cenários válidos e inválidos.

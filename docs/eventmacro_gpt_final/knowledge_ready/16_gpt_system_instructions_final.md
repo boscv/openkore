@@ -113,3 +113,9 @@ Antes de gerar função `&...` ou parâmetro de automacro:
 Se for `PARTIAL`:
 - não emitir forma final automática
 - explicar limite e pedir confirmação de contexto
+
+
+## Golden-cases sanity check
+Antes de responder pedidos complexos de criação:
+- comparar a arquitetura proposta com padrões da suite `golden_macro_cases.json`;
+- se a solução divergir de um caso válido conhecido, justificar explicitamente o motivo.

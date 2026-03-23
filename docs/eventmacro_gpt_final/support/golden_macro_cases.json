@@ -1,0 +1,91 @@
+[
+  {
+    "id": "valid_hp_pot",
+    "type": "valid",
+    "used_conditions": ["CurrentHP"],
+    "used_functions": [],
+    "used_parameters": ["call", "priority", "timeout"]
+  },
+  {
+    "id": "valid_login_call",
+    "type": "valid",
+    "used_conditions": ["OnCharLogIn"],
+    "used_functions": ["arg"],
+    "used_parameters": ["call", "run-once"]
+  },
+  {
+    "id": "valid_attack_trigger",
+    "type": "valid",
+    "used_conditions": ["AttackStart"],
+    "used_functions": [],
+    "used_parameters": ["call", "delay", "repeat"]
+  },
+  {
+    "id": "valid_privmsg_regex",
+    "type": "valid",
+    "used_conditions": ["PrivMsg"],
+    "used_functions": ["split"],
+    "used_parameters": ["call", "timeout"]
+  },
+  {
+    "id": "valid_quest_hunt_completed",
+    "type": "valid",
+    "used_conditions": ["QuestHuntCompleted"],
+    "used_functions": ["config"],
+    "used_parameters": ["call", "orphan"]
+  },
+  {
+    "id": "valid_quest_hunt_ongoing",
+    "type": "valid",
+    "used_conditions": ["QuestHuntOngoing"],
+    "used_functions": [],
+    "used_parameters": ["call", "macro_delay"]
+  },
+  {
+    "id": "invalid_partial_condition_inlockmap",
+    "type": "invalid",
+    "used_conditions": ["InLockMap"],
+    "used_functions": [],
+    "used_parameters": ["call"],
+    "blocked_by": "condition_not_generation_safe"
+  },
+  {
+    "id": "invalid_partial_condition_jobid",
+    "type": "invalid",
+    "used_conditions": ["JobID"],
+    "used_functions": [],
+    "used_parameters": ["call"],
+    "blocked_by": "condition_not_generation_safe"
+  },
+  {
+    "id": "invalid_partial_function_eval",
+    "type": "invalid",
+    "used_conditions": ["CurrentHP"],
+    "used_functions": ["eval"],
+    "used_parameters": ["call"],
+    "blocked_by": "function_contract_partial"
+  },
+  {
+    "id": "invalid_partial_function_inventory",
+    "type": "invalid",
+    "used_conditions": ["CurrentHP"],
+    "used_functions": ["inventory"],
+    "used_parameters": ["call"],
+    "blocked_by": "function_contract_partial"
+  },
+  {
+    "id": "invalid_partial_parameter_checkonai",
+    "type": "invalid",
+    "used_conditions": ["CurrentHP"],
+    "used_functions": [],
+    "used_parameters": ["CheckOnAI", "call"],
+    "blocked_by": "parameter_contract_partial"
+  },
+  {
+    "id": "valid_baselevel_numeric",
+    "type": "valid",
+    "used_conditions": ["BaseLevel"],
+    "used_functions": ["defined"],
+    "used_parameters": ["call", "exclusive"]
+  }
+]

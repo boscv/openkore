@@ -57,3 +57,5 @@
 - Só subir o pacote se os três gates (pacote + lexical + consistência) retornarem OK.
 - Executar também: `python3 docs/eventmacro_gpt_final/support/validate_function_parameter_contracts.py`.
 - Só subir o pacote se os quatro gates (pacote + lexical + consistência + funções/parâmetros) retornarem OK.
+- Executar também: `python3 docs/eventmacro_gpt_final/support/validate_golden_macro_cases.py`.
+- Só subir o pacote se os cinco gates (pacote + lexical + consistência + funções/parâmetros + casos-golden) retornarem OK.
