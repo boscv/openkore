@@ -279,7 +279,7 @@ sub isNewCommandBlock {
 sub isNewWrongCommandBlock {
 	my ( $line ) = @_;
 
-	if ( $_ =~ /^}\s*else\s*{$/ || $_ =~ /}\s*elsif.*{$/ || $_ =~ /^case.*{$/ || $_ =~ /^else*{$/ ) {
+	if ( $line =~ /^}\s*else\s*{$/ || $line =~ /}\s*elsif.*{$/ || $line =~ /^case.*{$/ || $line =~ /^else\s*{$/ ) {
 		return 1;
 	} else {
 		return 0;
