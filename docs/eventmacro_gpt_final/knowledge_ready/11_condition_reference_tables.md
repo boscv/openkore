@@ -31,8 +31,8 @@
 - `UNSAFE`: 0
 
 Condições `EXPLAIN_ONLY` atuais:
-- `GuildMsgName`, `NpcMsgName`, `PartyMsgName`, `PrivMsgName`, `PubMsgName`
-- `NoMobNear`, `NoNpcNear`, `NoPlayerNear`, `NoPortalNear`
+- Lista completa em `docs/eventmacro_lexical_contract_patch/06_conditions_requiring_delimiter_attention.md`.
+- Use essa lista para evitar geração pronta com separador/aridade não totalmente fechados.
 
 
 ## Uso em criação de macro completa

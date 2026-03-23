@@ -48,3 +48,6 @@
 - Executar: `python3 docs/eventmacro_gpt_final/support/validate_final_package.py`.
 - Só subir o pacote se o script retornar `OK: final package validated`.
 - Em caso de falha, corrigir antes de qualquer upload para evitar perda de cobertura crítica.
+
+- Executar também: `python3 docs/eventmacro_gpt_final/support/validate_lexical_contracts.py`.
+- Só subir o pacote se ambos os gates (pacote + lexical) retornarem OK.

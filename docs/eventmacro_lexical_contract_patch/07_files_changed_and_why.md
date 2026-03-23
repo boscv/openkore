@@ -11,6 +11,10 @@
    - Adição de exemplo inválido por separador incorreto.
 5. `docs/eventmacro_gpt_final/knowledge_ready/16_gpt_system_instructions_final.md`
    - Gate lexical obrigatório antes de gerar conditions.
+6. `docs/eventmacro_gpt_final/knowledge_ready/17_upload_manifest.md`
+   - Gate lexical adicional no checklist pré-upload.
+7. `docs/eventmacro_gpt_final/support/validate_lexical_contracts.py`
+   - Validação automática de completude lexical para evitar erro de separador/forma.
 
 ## Novos arquivos de patch
 - `docs/eventmacro_lexical_contract_patch/00_patch_scope_and_method.md`

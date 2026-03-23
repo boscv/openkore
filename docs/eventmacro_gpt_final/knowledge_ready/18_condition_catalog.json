@@ -77,8 +77,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -171,8 +175,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -265,8 +273,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -366,8 +378,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -453,8 +469,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -555,8 +575,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -657,8 +681,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -758,8 +786,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -859,8 +891,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -960,8 +996,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -1060,8 +1100,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -1157,8 +1201,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -1265,8 +1313,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1372,8 +1424,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1481,8 +1537,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1589,8 +1649,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1698,8 +1762,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1805,8 +1873,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -1912,8 +1984,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -2001,8 +2077,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -2103,8 +2183,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -2205,8 +2289,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -2305,8 +2393,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -2403,8 +2495,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -2503,8 +2599,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -2602,8 +2702,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -2689,8 +2793,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -2788,8 +2896,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -2887,8 +2999,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -2986,8 +3102,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -3082,8 +3202,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -3178,8 +3302,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -3281,8 +3409,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -3388,8 +3520,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -3484,8 +3620,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -3580,8 +3720,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -3683,8 +3827,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -3774,8 +3922,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -3865,8 +4017,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -3971,8 +4127,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4061,8 +4221,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -4165,8 +4329,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4261,8 +4429,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -4357,8 +4529,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -4458,8 +4634,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -4562,8 +4742,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4670,8 +4854,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4772,8 +4960,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4879,8 +5071,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -4985,8 +5181,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -5088,8 +5288,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -5190,8 +5394,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -5297,8 +5505,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -5404,8 +5616,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -5505,8 +5721,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -5592,8 +5812,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -5682,8 +5906,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -5783,8 +6011,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -5884,8 +6116,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -5976,8 +6212,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -6071,8 +6311,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -6176,8 +6420,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -6262,8 +6510,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -6361,8 +6613,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -6460,8 +6716,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -6559,8 +6819,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -6658,8 +6922,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -6747,8 +7015,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -6834,8 +7106,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -6933,8 +7209,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7032,8 +7312,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7131,8 +7415,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7222,8 +7510,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -7317,8 +7609,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -7421,8 +7717,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7507,8 +7807,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -7589,8 +7893,12 @@
     "rejected_forms": [
       "<cond> anything"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> (no arguments)"
+    ],
+    "examples_rejected": [
+      "<cond> anything"
+    ],
     "parser_accepts": [
       "bare event condition"
     ],
@@ -7676,8 +7984,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -7775,8 +8087,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7874,8 +8190,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -7973,8 +8293,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -8067,8 +8391,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -8162,8 +8490,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -8269,8 +8601,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -8355,8 +8691,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -8450,8 +8790,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -8537,8 +8881,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -8636,8 +8984,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -8735,8 +9087,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -8834,8 +9190,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -8921,8 +9281,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -9020,8 +9384,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9119,8 +9487,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9218,8 +9590,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9328,8 +9704,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9438,8 +9818,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9549,8 +9933,14 @@
       "QuestHuntCompleted 1001,1002",
       "QuestHuntCompleted 1001"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "QuestHuntCompleted 1001 1002, 1003 1004",
+      "QuestHuntCompleted $q1 $m1, $q2 $m2"
+    ],
+    "examples_rejected": [
+      "QuestHuntCompleted 1001,1002",
+      "QuestHuntCompleted 1001"
+    ],
     "parser_accepts": [
       "split(/\\s*,\\s*/)",
       "split(/\\s+/) per member"
@@ -9661,8 +10051,14 @@
       "QuestHuntCompleted 1001,1002",
       "QuestHuntCompleted 1001"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "QuestHuntOngoing 1001 1002, 1003 1004",
+      "QuestHuntOngoing $q1 $m1, $q2 $m2"
+    ],
+    "examples_rejected": [
+      "QuestHuntOngoing 1001,1002",
+      "QuestHuntOngoing 1001"
+    ],
     "parser_accepts": [
       "split(/\\s*,\\s*/)",
       "split(/\\s+/) per member"
@@ -9773,8 +10169,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9883,8 +10283,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -9993,8 +10397,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10103,8 +10511,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10213,8 +10625,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10323,8 +10739,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10431,8 +10851,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10531,8 +10955,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -10638,8 +11066,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -10734,8 +11166,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -10825,8 +11261,12 @@
     "rejected_forms": [
       "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> member1, member2, ..."
+    ],
+    "examples_rejected": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
     "parser_accepts": [
       "csv list split"
     ],
@@ -10931,8 +11371,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -11038,8 +11482,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -11143,8 +11591,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -11230,8 +11682,12 @@
     "rejected_forms": [
       "<cond> pattern sem delimitadores"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> /pattern/flags"
+    ],
+    "examples_rejected": [
+      "<cond> pattern sem delimitadores"
+    ],
     "parser_accepts": [
       "regex literal"
     ],
@@ -11332,8 +11788,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -11433,8 +11893,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -11533,8 +11997,12 @@
       "<cond>,<op>,<value>",
       "<cond> <value> (sem operator)"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "examples_rejected": [
+      "<cond>,<op>,<value>"
+    ],
     "parser_accepts": [
       "numeric comparison operators"
     ],
@@ -11640,8 +12108,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
@@ -11752,8 +12224,12 @@
     "rejected_forms": [
       "deduzir forma única universal para toda a família composite_regex_numeric"
     ],
-    "examples_validated": [],
-    "examples_rejected": [],
+    "examples_validated": [
+      "numeric comparison form (provada por parser family)"
+    ],
+    "examples_rejected": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
     "parser_accepts": [
       "family composite parser"
     ],
