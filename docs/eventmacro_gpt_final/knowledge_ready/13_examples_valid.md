@@ -9,7 +9,7 @@ automacro hp_pot {
   CheckOnAI auto
 }
 ```
-Status: **PROVADO** (numeric validator aceita `%`, operador `<`, call obrigatório).
+Status: **PROVADO** (lexical COMPLETE: forma positional com whitespace e operador numérico).
 
 ## Automacro event + regex
 ```txt
@@ -49,3 +49,9 @@ Status: **PROVADO** (`if` pós-fixado e `while` em runner).
 
 ## Nota de arquitetura
 - Estes exemplos são blocos-base; uma solução completa exige passagem pelo protocolo de síntese e pelo checklist whole-macro antes da entrega final.
+
+
+## Checagem lexical aplicada aos exemplos
+- `CurrentHP < 40%`: separador por whitespace posicional + operador explícito (`<`).
+- `PrivMsg /^hi$/i`: regex delimitada; exemplo permanece apenas para EXPLAIN_ONLY, sem geração final automática.
+- Nenhum exemplo aqui autoriza trocar whitespace por vírgula sem prova da condition específica.

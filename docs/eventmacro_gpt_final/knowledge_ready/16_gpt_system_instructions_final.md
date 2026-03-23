@@ -88,3 +88,16 @@ Quando algo ultrapassar capacidade real do eventMacro:
 - Explicar o que é impossível
 - Explicar o que é parcialmente possível
 - Entregar melhor aproximação realista dentro do que é comprovado
+
+
+## Gate lexical obrigatório por condition
+Antes de gerar qualquer condition:
+1. Verificar `lexical_contract_status` no catálogo
+2. Confirmar `COMPLETE`
+3. Confirmar `generation_safety == GENERATION_SAFE`
+4. Confirmar `accepted_separators`, `forbidden_separators`, aridade e ordem
+
+Se `lexical_contract_status` for `PARTIAL`/`INSUFFICIENT`:
+- Não gerar sintaxe pronta
+- Não inferir vírgula/espaço/CSV/range/regex por plausibilidade
+- Responder apenas com o que está comprovado

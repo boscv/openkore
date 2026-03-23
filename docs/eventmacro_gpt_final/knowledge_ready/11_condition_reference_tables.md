@@ -26,8 +26,8 @@
   - `UNSAFE`: não gerar sintaxe; limitar resposta ao comprovado
 
 ## Resumo atual de status (catálogo final)
-- `GENERATION_SAFE`: 109
-- `EXPLAIN_ONLY`: 9
+- `GENERATION_SAFE`: 57
+- `EXPLAIN_ONLY`: 61
 - `UNSAFE`: 0
 
 Condições `EXPLAIN_ONLY` atuais:
@@ -39,3 +39,9 @@ Condições `EXPLAIN_ONLY` atuais:
 - Esta tabela/catálogo não serve só para explicar conditions: serve para decidir se uma condition pode entrar na solução final gerada.
 - Regra: versão final entregue ao usuário deve conter somente conditions `GENERATION_SAFE`.
 - Se qualquer condition da arquitetura for `EXPLAIN_ONLY` ou `UNSAFE`, mudar para modo de proposta controlada (sem template final "pronto").
+
+
+## Contrato lexical mínimo para gerar
+- Só gerar sintaxe final quando `lexical_contract_status == COMPLETE` e `generation_safety == GENERATION_SAFE`.
+- `PARTIAL`/`INSUFFICIENT`: explicar apenas o comprovado; não escolher separador por plausibilidade.
+- Sempre validar: separador aceito/proibido, aridade e ordem posicional antes de emitir macro final.
