@@ -219,7 +219,7 @@ sub iterate {
 
 		delete $self->{tempPortalsSaveMap} if (exists $self->{tempPortalsSaveMap});
 		delete $self->{tempPortalsWarpItems} if (exists $self->{tempPortalsWarpItems});
-		if (!$self->{noTeleSpawn} && canUseTeleportInRouteContext() && $self->isSaveMapSetAndValid()) {
+		if (!$self->{noTeleSpawn} && $config{saveMap_warp} && canUseTeleportInRouteContext() && $self->isSaveMapSetAndValid()) {
 			$self->populateOpenListWithWarpToSaveMap(
 				"$self->{source}{map} $self->{source}{x} $self->{source}{y}",
 				{ walk => 0, zeny => 0, zeny_covered_by_tickets => 0, amount_of_tickets_used => 0 },
@@ -567,6 +567,7 @@ sub populateOpenListWithWarpToSaveMap {
 	my ($self, $from_node, $baseCost, $parent) = @_;
 	return unless $from_node;
 	return unless ($config{saveMap_warp});
+	return if ($baseCost->{saveMapWarpUsed});
 
 	my ($current_map) = split / /, $from_node, 2;
 	return unless $self->isWarpToSaveMapAllowedOnMap($current_map);
@@ -574,7 +575,6 @@ sub populateOpenListWithWarpToSaveMap {
 	my @warpItemCandidates = $self->getWarpItemCandidates();
 	return unless @warpItemCandidates;
 
-	return unless ($self->isWarpToSaveMapMinDistanceReached());
 	my $saveMapDestination = $self->resolveSaveMapDestination();
 	return unless ($saveMapDestination);
 
@@ -588,7 +588,8 @@ sub populateOpenListWithWarpToSaveMap {
 
 	return if ($dest eq $from_node);
 	my $key = "$from_node=$dest";
-	my $walk = ($baseCost->{walk} || 0) + ($routeWeights{WARPTOSAVEMAP} || 200);
+	my $warpPenalty = $self->getSaveMapWarpMinDistancePenalty($dest_map, $dest_x, $dest_y);
+	my $walk = ($baseCost->{walk} || 0) + ($routeWeights{WARPTOSAVEMAP} || 200) + $warpPenalty;
 	my $zeny = $baseCost->{zeny} || 0;
 	my $zeny_covered_by_tickets = $baseCost->{zeny_covered_by_tickets} || 0;
 	my $amount_of_tickets_used = $baseCost->{amount_of_tickets_used} || 0;
@@ -604,6 +605,7 @@ sub populateOpenListWithWarpToSaveMap {
 		allow_ticket             => 0,
 		zeny_covered_by_tickets  => $zeny_covered_by_tickets,
 		amount_of_tickets_used   => $amount_of_tickets_used,
+		saveMapWarpUsed          => 1,
 		is_teleportToSaveMap     => 1,
 	});
 
@@ -730,6 +732,18 @@ sub getSourceRouteCostToTargetNoWarp {
 
 sub add_key_to_openList {
 	my ($self, $key, $value) = @_;
+
+	if (!exists $value->{saveMapWarpUsed}) {
+		my $used = 0;
+		if (defined $value->{parent}) {
+			if (exists $self->{openlist}{$value->{parent}} && exists $self->{openlist}{$value->{parent}}{saveMapWarpUsed}) {
+				$used = $self->{openlist}{$value->{parent}}{saveMapWarpUsed} ? 1 : 0;
+			} elsif (exists $self->{closelist}{$value->{parent}} && exists $self->{closelist}{$value->{parent}}{saveMapWarpUsed}) {
+				$used = $self->{closelist}{$value->{parent}}{saveMapWarpUsed} ? 1 : 0;
+			}
+		}
+		$value->{saveMapWarpUsed} = $used;
+	}
 
 	if ($self->shouldLogDebug() && $config{'debug'} >= 2) {
 		debug "[CalcMapRoute - add] Added key [$value->{type}] [$key] [cost $value->{walk}] (current size ".((scalar keys %{$self->{openlist}}) + 1).")\n", "calc_map_route", 2;
@@ -1061,24 +1075,34 @@ sub isWarpToSaveMapAllowedOnMap {
 	return 1;
 }
 
-sub isWarpToSaveMapMinDistanceReached {
-	my ($self) = @_;
+sub getSaveMapWarpMinDistancePenalty {
+	my ($self, $dest_map, $dest_x, $dest_y) = @_;
 
 	my $minDistance = int(hashSafeGetValue(\%config, 'saveMap_warp_minDistance') || 0);
-	return 1 if ($minDistance <= 0);
+	return 0 if ($minDistance <= 0);
+	return 0 if (!defined $dest_map || $dest_map eq '');
+	return 0 if ($self->{source}{map} ne $dest_map);
 
-	my $saveMapDestination = $self->resolveSaveMapDestination();
-	return 1 unless ($saveMapDestination);
+	my @solution;
+	return 0 if !Task::Route->getRoute(
+		\@solution,
+		$self->{source}{field},
+		{x => $self->{source}{x}, y => $self->{source}{y}},
+		{x => $dest_x, y => $dest_y}
+	);
 
-	my $dest_map = $saveMapDestination->{map};
-	my $dest_x = $saveMapDestination->{x};
-	my $dest_y = $saveMapDestination->{y};
+	my $distance = scalar(@solution);
+	return 0 if ($distance >= $minDistance);
 
-	my $distance = $self->getDistanceToSaveMap($dest_map, $dest_x, $dest_y);
-	return ($distance >= $minDistance) if (defined $distance);
+	my $deficit = $minDistance - $distance;
+	my $baseWarpCost = ($routeWeights{WARPTOSAVEMAP} || 200);
+	my $perCellPenalty = int($baseWarpCost / $minDistance);
+	$perCellPenalty = 1 if ($perCellPenalty < 1);
+	my $maxPenalty = $baseWarpCost * 2;
 
-	# If route distance cannot be calculated, don't block warp usage.
-	return 1;
+	my $penalty = $deficit * $perCellPenalty;
+	$penalty = $maxPenalty if ($maxPenalty > 0 && $penalty > $maxPenalty);
+	return $penalty;
 }
 
 sub getDistanceToSaveMap {
@@ -1123,6 +1147,7 @@ sub getDistanceToSaveMap {
 
 sub isSaveMapSetAndValid {
 	my ($self) = @_;
+	return 0 unless $config{saveMap_warp};
 	return defined $self->resolveSaveMapDestination();
 }
 
@@ -1171,32 +1196,17 @@ sub resolveSaveMapDestination {
 	return unless @candidates;
 	return $candidates[0] if (@candidates == 1);
 
-	if ($target && $target->{map}) {
-		my $neighborMap = $self->getSaveMapNeighborFromWalkingRoute($dest_map, $target);
-		if (defined $neighborMap && $neighborMap ne '') {
-			my %neighborCandidates;
-			foreach my $portal (keys %portals_spawns) {
-				my ($portal_map) = split(/\s+/, $portal, 2);
-				next if (!defined $portal_map || $portal_map ne $neighborMap);
-				foreach my $dest (keys %{$portals_spawns{$portal}{dest}}) {
-					next if (hashSafeGetValue(\%portals_spawns, $portal, 'dest', $dest, 'map') ne $dest_map);
-					my $x = hashSafeGetValue(\%portals_spawns, $portal, 'dest', $dest, 'x');
-					my $y = hashSafeGetValue(\%portals_spawns, $portal, 'dest', $dest, 'y');
-					next if (!defined $x || !defined $y || $x eq '' || $y eq '');
-					$neighborCandidates{"$x $y"} = { map => $dest_map, x => $x, y => $y };
-				}
-			}
-
-			if (%neighborCandidates) {
-				my @bestCandidates = sort {
-					$a->{x} <=> $b->{x}
-					|| $a->{y} <=> $b->{y}
-				} values %neighborCandidates;
-
-				$self->{saveMapDestinationCache} = { key => $cacheKey, value => $bestCandidates[0] };
-				return $bestCandidates[0];
-			}
-		}
+	if ($target && $target->{map} && $target->{map} eq $dest_map
+		&& defined $target->{x} && defined $target->{y} && $target->{x} ne '' && $target->{y} ne '') {
+		@candidates = sort {
+			(abs($a->{x} - $target->{x}) + abs($a->{y} - $target->{y}))
+			<=>
+			(abs($b->{x} - $target->{x}) + abs($b->{y} - $target->{y}))
+			|| $a->{x} <=> $b->{x}
+			|| $a->{y} <=> $b->{y}
+		} @candidates;
+		$self->{saveMapDestinationCache} = { key => $cacheKey, value => $candidates[0] };
+		return $candidates[0];
 	}
 
 	@candidates = sort {
@@ -1206,46 +1216,6 @@ sub resolveSaveMapDestination {
 
 	$self->{saveMapDestinationCache} = { key => $cacheKey, value => $candidates[0] };
 	return $candidates[0];
-}
-
-sub getSaveMapNeighborFromWalkingRoute {
-	my ($self, $saveMap, $target) = @_;
-	return unless ($target && $target->{map});
-
-	my $task = Task::CalcMapRoute->new(
-		targets => [{ map => $target->{map}, x => $target->{x}, y => $target->{y} }],
-		sourceMap => $self->{source}{map},
-		sourceX => $self->{source}{x},
-		sourceY => $self->{source}{y},
-		noGoCommand => 1,
-		noTeleSpawn => 1,
-		maxTime => 3,
-	);
-	$task->activate();
-
-	while ($task->getStatus() != Task::DONE) {
-		$task->iterate();
-	}
-
-	return if ($task->getError());
-	my $route = $task->getRoute();
-	return if (!$route || !@{$route});
-
-	foreach my $step (@{$route}) {
-		my ($from, $to) = split(/=/, $step->{portal} || '', 2);
-		next unless (defined $from && defined $to);
-		my ($from_map) = split(/\s+/, $from, 2);
-		my ($to_map) = split(/\s+/, $to, 2);
-		next unless (defined $from_map && defined $to_map);
-
-		if ($to_map eq $saveMap) {
-			return $from_map;
-		} elsif ($from_map eq $saveMap) {
-			return $to_map;
-		}
-	}
-
-	return;
 }
 
 1;
