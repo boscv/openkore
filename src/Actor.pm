@@ -824,7 +824,8 @@ sub move {
 # TODO: wouldn't it be better to place map in the end of arguments and make it optional?
 sub route {
 	my ($self, $map, $x, $y, %args) = @_;
-	debug "$self on route to: $maps_lut{$map.'.rsw'}($map): $x, $y\n", "route";
+	my $coords = (defined $x && $x ne '' && defined $y && $y ne '') ? ": $x, $y" : "";
+	debug "$self on route to: $maps_lut{$map.'.rsw'}($map)$coords\n", "route";
 
 	# I can't use 'use' because of circular dependencies.
 	require Task::Route;

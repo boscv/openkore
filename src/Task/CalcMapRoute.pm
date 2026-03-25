@@ -138,6 +138,7 @@ sub new {
 	$self->{stage} = INITIALIZE;
 	$self->{openlist} = {};
 	$self->{closelist} = {};
+	$self->{saveMapAdded} = 0;
 	$self->{mapSolution} = [];
 	$self->{solution} = [];
 	$self->{mapChangeWeight} = $args{mapChangeWeight} || 1;
@@ -584,8 +585,6 @@ sub populateOpenListWithWarpToSaveMap {
 
 	my $dest = $dest_map . " " . $dest_x . " " . $dest_y;
 
-	debug "CalcMapRoute - Adding savemap '".( $dest )."' to openlist.\n", "calc_map_route" if $self->shouldLogDebug();
-
 	return if ($dest eq $from_node);
 	my $key = "$from_node=$dest";
 	my $warpPenalty = $self->getSaveMapWarpMinDistancePenalty($dest_map, $dest_x, $dest_y);
@@ -608,13 +607,16 @@ sub populateOpenListWithWarpToSaveMap {
 		saveMapWarpUsed          => 1,
 		is_teleportToSaveMap     => 1,
 	});
+	if (!$self->{saveMapAdded} && $self->shouldLogDebug() && $config{'debug'} >= 1) {
+		debug "CalcMapRoute - saveMap '$dest' added to openlist.\n", "calc_map_route";
+		$self->{saveMapAdded} = 1;
+	}
 
 	$self->{tempPortalsSaveMap}{$dest}{'dest'}{$dest}{'map'} = $dest_map;
 	$self->{tempPortalsSaveMap}{$dest}{'dest'}{$dest}{'x'} = $dest_x;
 	$self->{tempPortalsSaveMap}{$dest}{'dest'}{$dest}{'y'} = $dest_y;
 	$self->{tempPortalsSaveMap}{$dest}{dest}{$dest}{enabled} = 1;
 }
-
 
 sub populateOpenListWithWarpByItems {
 	my ($self, $from_node, $baseCost, $parent) = @_;
