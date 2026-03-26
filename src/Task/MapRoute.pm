@@ -184,9 +184,15 @@ sub iterate {
 		debug "Map Router has finished traversing the map solution\n", "map_route";
 
 	} elsif ( $field->baseName ne $self->{mapSolution}[0]{map}
-	     || ( $self->{mapChanged} && !$self->{teleport} ) ) {
+		|| ( $self->{mapChanged} && !$self->{teleport} ) ) {
 		# Solution Map does not match current map
-		debug "Current map " . $field->baseName . " does not match solution [ $self->{mapSolution}[0]{portal} ].\n", "map_route";
+		my ($from, $to) = split /=/, $self->{mapSolution}[0]{portal};
+		my ($solutionToMap) = split / /, ($to // ''), 2;
+		if ($solutionToMap && $field->baseName eq $solutionToMap) {
+			debug "Current map " . $field->baseName . " already matches route step destination [ $self->{mapSolution}[0]{portal} ], advancing solution.\n", "map_route";
+		} else {
+			debug "Current map " . $field->baseName . " does not match solution [ $self->{mapSolution}[0]{portal} ].\n", "map_route";
+		}
 		delete $self->{substage};
 		delete $self->{timeout};
 		delete $timeout{'ai_portal_give_up'}{'time'};

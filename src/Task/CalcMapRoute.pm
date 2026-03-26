@@ -138,7 +138,8 @@ sub new {
 	$self->{stage} = INITIALIZE;
 	$self->{openlist} = {};
 	$self->{closelist} = {};
-	$self->{saveMapAdded} = 0;
+	# 0: not seen, 1: pending log after initialization, 2: already logged
+	$self->{saveMapAddedLogShown} = 0;
 	$self->{mapSolution} = [];
 	$self->{solution} = [];
 	$self->{mapChangeWeight} = $args{mapChangeWeight} || 1;
@@ -263,9 +264,9 @@ sub iterate {
 		$self->{stage} = CALCULATE_ROUTE;
 		debug "CalcMapRoute - initialized with '".(scalar keys %{$openlist})."' options.\n", "calc_map_route"
 		if $self->shouldLogDebug();
-		if ($self->{saveMapAdded} == 1 && $self->shouldLogDebug() && $config{'debug'} >= 1) {
+		if ($self->{saveMapAddedLogShown} == 1 && $self->shouldLogDebug() && $config{'debug'} >= 1) {
 			debug "CalcMapRoute - saveMap added to openlist.\n", "calc_map_route";
-			$self->{saveMapAdded} = 2;
+			$self->{saveMapAddedLogShown} = 2;
 		}
 
 	} elsif ( $self->{stage} == CALCULATE_ROUTE ) {
@@ -566,6 +567,7 @@ sub populateOpenListWithGoCommands {
 	}
 }
 
+
 # Add teleport lv 2 (or butterfly wing) to openlist
 sub populateOpenListWithWarpToSaveMap {
 	my ($self, $from_node, $baseCost, $parent) = @_;
@@ -576,8 +578,11 @@ sub populateOpenListWithWarpToSaveMap {
 	my ($current_map) = split / /, $from_node, 2;
 	return unless $self->isWarpToSaveMapAllowedOnMap($current_map);
 
-	my @warpItemCandidates = $self->getWarpItemCandidates();
-	return unless @warpItemCandidates;
+	if (!exists $self->{_saveMapHasWarpItemCandidates}) {
+		my @warpItemCandidates = $self->getWarpItemCandidates();
+		$self->{_saveMapHasWarpItemCandidates} = scalar(@warpItemCandidates) ? 1 : 0;
+	}
+	return unless $self->{_saveMapHasWarpItemCandidates};
 
 	my $saveMapDestination = $self->resolveSaveMapDestination();
 	return unless ($saveMapDestination);
@@ -590,7 +595,8 @@ sub populateOpenListWithWarpToSaveMap {
 
 	return if ($dest eq $from_node);
 	my $key = "$from_node=$dest";
-	my $warpPenalty = $self->getSaveMapWarpMinDistancePenalty($dest_map, $dest_x, $dest_y);
+	my $warpPenalty = $self->getSaveMapWarpMinDistancePenalty($from_node, $dest_map, $dest_x, $dest_y);
+	return unless defined $warpPenalty;
 	my $walk = ($baseCost->{walk} || 0) + ($routeWeights{WARPTOSAVEMAP} || 200) + $warpPenalty;
 	my $zeny = $baseCost->{zeny} || 0;
 	my $zeny_covered_by_tickets = $baseCost->{zeny_covered_by_tickets} || 0;
@@ -610,12 +616,12 @@ sub populateOpenListWithWarpToSaveMap {
 		saveMapWarpUsed          => 1,
 		is_teleportToSaveMap     => 1,
 	});
-	if ($self->{saveMapAdded} == 0) {
+	if ($self->{saveMapAddedLogShown} == 0) {
 		if ($self->{stage} == INITIALIZE) {
-			$self->{saveMapAdded} = 1;
+			$self->{saveMapAddedLogShown} = 1;
 		} elsif ($self->shouldLogDebug() && $config{'debug'} >= 1) {
 			debug "CalcMapRoute - saveMap added to openlist.\n", "calc_map_route";
-			$self->{saveMapAdded} = 2;
+			$self->{saveMapAddedLogShown} = 2;
 		}
 	}
 
@@ -624,6 +630,7 @@ sub populateOpenListWithWarpToSaveMap {
 	$self->{tempPortalsSaveMap}{$dest}{'dest'}{$dest}{'y'} = $dest_y;
 	$self->{tempPortalsSaveMap}{$dest}{dest}{$dest}{enabled} = 1;
 }
+
 
 sub populateOpenListWithWarpByItems {
 	my ($self, $from_node, $baseCost, $parent) = @_;
@@ -1085,73 +1092,103 @@ sub isWarpToSaveMapAllowedOnMap {
 }
 
 sub getSaveMapWarpMinDistancePenalty {
-	my ($self, $dest_map, $dest_x, $dest_y) = @_;
+	my ($self, $from_node, $dest_map, $dest_x, $dest_y) = @_;
 
 	my $minDistance = int(hashSafeGetValue(\%config, 'saveMap_warp_minDistance') || 0);
 	return 0 if ($minDistance <= 0);
+	return 0 if (!defined $from_node || $from_node eq '');
 	return 0 if (!defined $dest_map || $dest_map eq '');
-	return 0 if ($self->{source}{map} ne $dest_map);
+	my ($from_map, $from_x, $from_y) = split / /, $from_node, 3;
+	return 0 if (!defined $from_map || $from_map eq '');
+	return 0 if (!defined $from_x || !defined $from_y || $from_x eq '' || $from_y eq '');
 
-	my @solution;
-	return 0 if !Task::Route->getRoute(
-		\@solution,
-		$self->{source}{field},
-		{x => $self->{source}{x}, y => $self->{source}{y}},
-		{x => $dest_x, y => $dest_y}
-	);
-
-	my $distance = scalar(@solution);
-	return 0 if ($distance >= $minDistance);
-
-	my $deficit = $minDistance - $distance;
-	my $baseWarpCost = ($routeWeights{WARPTOSAVEMAP} || 200);
-	my $perCellPenalty = int($baseWarpCost / $minDistance);
-	$perCellPenalty = 1 if ($perCellPenalty < 1);
-	my $maxPenalty = $baseWarpCost * 2;
-
-	my $penalty = $deficit * $perCellPenalty;
-	$penalty = $maxPenalty if ($maxPenalty > 0 && $penalty > $maxPenalty);
-	return $penalty;
+	my $distance = $self->getDistanceToSaveMap($from_map, $from_x, $from_y, $dest_map, $dest_x, $dest_y);
+	return 0 if !defined $distance;
+	# When the destination is on the same map, treat minDistance as a hard floor:
+	# do not consider saveMap warp if walking distance is below the configured threshold.
+	return undef if ($distance < $minDistance);
+	return 0;
 }
 
 sub getDistanceToSaveMap {
-	my ($self, $dest_map, $dest_x, $dest_y) = @_;
+	my ($self, $from_map, $from_x, $from_y, $dest_map, $dest_x, $dest_y) = @_;
 
-	my $cacheKey = join('|', $self->{source}{map}, $self->{source}{x}, $self->{source}{y}, $dest_map, $dest_x, $dest_y);
-	if ($self->{saveMapDistanceCache} && $self->{saveMapDistanceCache}{key} eq $cacheKey) {
-		return $self->{saveMapDistanceCache}{value};
+	$self->{saveMapDistanceCache} ||= {};
+	# Same-map checks are cheap and coordinate-sensitive; keep exact key.
+	# Inter-map checks are expensive (nested CalcMapRoute), so cache per source map.
+	my $cacheKey = ($from_map eq $dest_map)
+		? join('|', 'same', $from_map, $from_x, $from_y, $dest_map, $dest_x, $dest_y)
+		: join('|', 'inter', $from_map, $dest_map, $dest_x, $dest_y);
+	if (exists $self->{saveMapDistanceCache}{$cacheKey}) {
+		return $self->{saveMapDistanceCache}{$cacheKey};
 	}
 
-	if ($self->{source}{map} eq $dest_map) {
+	if ($from_map eq $dest_map) {
 		my @solution;
-		if (Task::Route->getRoute(\@solution, $self->{source}{field}, {x => $self->{source}{x}, y => $self->{source}{y}}, {x => $dest_x, y => $dest_y})) {
+		my $from_field = ($self->{source}{map} eq $from_map)
+			? $self->{source}{field}
+			: eval { Field->new(name => $from_map) };
+		return if !$from_field;
+		if (Task::Route->getRoute(\@solution, $from_field, {x => $from_x, y => $from_y}, {x => $dest_x, y => $dest_y})) {
 			my $distance = scalar(@solution);
-			$self->{saveMapDistanceCache} = { key => $cacheKey, value => $distance };
+			$self->{saveMapDistanceCache}{$cacheKey} = $distance;
 			return $distance;
 		}
 		return;
 	}
 
-	my $task = Task::CalcMapRoute->new(
-		targets => [{ map => $dest_map, x => $dest_x, y => $dest_y }],
-		sourceMap => $self->{source}{map},
-		sourceX => $self->{source}{x},
-		sourceY => $self->{source}{y},
-		noGoCommand => 1,
-		noTeleSpawn => 1,
-		maxTime => 3,
-	);
-	$task->activate();
+	my $distance = $self->getInterMapDistanceEstimate($from_map, $dest_map);
+	return if !defined $distance;
+	$self->{saveMapDistanceCache}{$cacheKey} = $distance;
+	return $distance;
+}
 
-	while ($task->getStatus() != Task::DONE) {
-		$task->iterate();
+sub getInterMapDistanceEstimate {
+	my ($self, $from_map, $dest_map) = @_;
+	return if !defined $from_map || $from_map eq '';
+	return if !defined $dest_map || $dest_map eq '';
+	return 0 if $from_map eq $dest_map;
+
+	$self->{saveMapInterMapHopCache} ||= {};
+	my $hopCache = $self->{saveMapInterMapHopCache}{$dest_map};
+	if (!$hopCache) {
+		my %reverseAdj;
+		foreach my $portal (keys %portals_lut) {
+			my $entry = $portals_lut{$portal};
+			next unless $entry && $entry->{source} && $entry->{source}{map};
+			my $srcMap = $entry->{source}{map};
+			next unless $entry->{dest};
+			foreach my $destKey (keys %{$entry->{dest}}) {
+				next unless $entry->{dest}{$destKey}{enabled};
+				my ($toMap) = split / /, $destKey, 2;
+				next if !defined $toMap || $toMap eq '';
+				$reverseAdj{$toMap}{$srcMap} = 1;
+			}
+		}
+
+		my %hops;
+		my @queue = ($dest_map);
+		my $queueIndex = 0;
+		$hops{$dest_map} = 0;
+		while ($queueIndex <= $#queue) {
+			my $map = $queue[$queueIndex++];
+			my $currHop = $hops{$map};
+			next if !exists $reverseAdj{$map};
+			foreach my $prevMap (keys %{$reverseAdj{$map}}) {
+				next if exists $hops{$prevMap};
+				$hops{$prevMap} = $currHop + 1;
+				push @queue, $prevMap;
+			}
+		}
+
+		$self->{saveMapInterMapHopCache}{$dest_map} = \%hops;
+		$hopCache = $self->{saveMapInterMapHopCache}{$dest_map};
 	}
 
-	return if ($task->getError());
-	my $route = $task->getRoute();
-	my $distance = (!$route || !@{$route}) ? 0 : $route->[-1]{walk};
-	$self->{saveMapDistanceCache} = { key => $cacheKey, value => $distance };
-	return $distance;
+	return if !exists $hopCache->{$from_map};
+	# Cheap inter-map estimate for minDistance gating (cell-ish scale).
+	# One map transition is treated as ~300 cells.
+	return $hopCache->{$from_map} * 300;
 }
 
 sub isSaveMapSetAndValid {
