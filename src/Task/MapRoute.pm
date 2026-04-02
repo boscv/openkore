@@ -58,6 +58,21 @@ use enum (
 	qw(UNKNOWN_ERROR)
 );
 
+sub _isPortalDestinationWithinLevelRange {
+	my ($portalKey) = @_;
+	return 1 unless defined $portalKey;
+	my ($from, $to) = split /=/, $portalKey, 2;
+	return 1 unless defined $from && defined $to;
+	return 1 unless exists $portals_lut{$from} && exists $portals_lut{$from}{dest} && exists $portals_lut{$from}{dest}{$to};
+
+	my $dest = $portals_lut{$from}{dest}{$to};
+	my $lv = $char->{lv};
+	return 1 unless defined $lv;
+	return 0 if (defined $dest->{min_level} && $lv < $dest->{min_level});
+	return 0 if (defined $dest->{max_level} && $lv > $dest->{max_level});
+	return 1;
+}
+
 
 # TODO: this task should lock the 'npc' mutex when talking to NPCs!
 
@@ -518,7 +533,11 @@ sub iterate {
 
 		} elsif ($dist_to_npc <= $max_npc_dist) {
 			my ($from,$to) = split /=/, $self->{mapSolution}[0]{portal};
-			if (($self->{actor}{zeny} >= $portals_lut{$from}{dest}{$to}{cost}) || ($char->inventory->getByNameID(7060) && $portals_lut{$from}{dest}{$to}{allow_ticket})) {
+			if (!_isPortalDestinationWithinLevelRange($self->{mapSolution}[0]{portal})) {
+				error TF("Your base level does not match this warp requirement at %s (%s,%s).\n",
+					$field->baseName, $self->{mapSolution}[0]{pos}{x}, $self->{mapSolution}[0]{pos}{y}), "map_route";
+				$self->initMapCalculator();	# redo MAP router
+			} elsif (($self->{actor}{zeny} >= $portals_lut{$from}{dest}{$to}{cost}) || ($char->inventory->getByNameID(7060) && $portals_lut{$from}{dest}{$to}{allow_ticket})) {
 				debug TF("[mapRoute] Calling setNpcTalk to teleport using NPC at %s (%s,%s) - dest (%s %s,%s).\n", $field->baseName, $self->{mapSolution}[0]{pos}{x}, $self->{mapSolution}[0]{pos}{y}, $self->{dest}{map}, $self->{dest}{pos}{x}, $self->{dest}{pos}{y}), "route";
 				# We have enough money for this service.
 				$self->setNpcTalk();

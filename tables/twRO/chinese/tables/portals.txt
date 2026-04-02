@@ -6,7 +6,7 @@
 # 最後修改日期為 2012/3/1                             #
 # 新增綿綿島路徑.飛空艇路徑                           #
 #######################################################
-#format: <source coordinate><destination coordinate>[zenny cost][allow ticket][conversation sequence]
+#format: <source coordinate><destination coordinate>{min level-max level}[zenny cost][allow ticket][conversation sequence]
 
 #飛空艇(國內線)
 airplane 208 53 airplane 245 160

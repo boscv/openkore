@@ -46,6 +46,16 @@ use enum qw(
 	CANNOT_CALCULATE_ROUTE
 );
 
+sub _isPortalDestinationWithinLevelRange {
+	my ($dest) = @_;
+	return 1 unless ($dest && ref($dest) eq 'HASH');
+	my $lv = $char->{lv};
+	return 1 unless defined $lv;
+	return 0 if (defined $dest->{min_level} && $lv < $dest->{min_level});
+	return 0 if (defined $dest->{max_level} && $lv > $dest->{max_level});
+	return 1;
+}
+
 
 ##
 # Task::CalcMapRoute->new(options...)
@@ -189,7 +199,7 @@ sub iterate {
 			next if ($entry->{source}{map} ne $self->{source}{field}->baseName);
 			my $ret = Task::Route->getRoute($self->{solution}, $self->{source}{field}, $self->{source}, $entry->{source});
 			if ($ret) {
-				for my $dest (grep { $entry->{dest}{$_}{enabled} } keys %{$entry->{dest}}) {
+				for my $dest (grep { $entry->{dest}{$_}{enabled} && _isPortalDestinationWithinLevelRange($entry->{dest}{$_}) } keys %{$entry->{dest}}) {
 					my $penalty = int(($entry->{dest}{$dest}{steps} ne '') ? $routeWeights{NPC} : $routeWeights{PORTAL});
 					my $key = "$portal=$dest";
 					my $value = {
@@ -463,7 +473,7 @@ sub searchStep {
 		foreach my $child (keys %{$portals_los{$dest}}) {
 			next unless $portals_los{$dest}{$child}; # next if no child
 			# iterates through the child's/portals that have connection to destination
-			foreach my $subchild (grep { $portals_lut{$child}{dest}{$_}{enabled} } keys %{$portals_lut{$child}{dest}}) {
+			foreach my $subchild (grep { $portals_lut{$child}{dest}{$_}{enabled} && _isPortalDestinationWithinLevelRange($portals_lut{$child}{dest}{$_}) } keys %{$portals_lut{$child}{dest}}) {
 				my $destID = $subchild;
 				my $mapName = $portals_lut{$child}{source}{map};
 				#############################################################

@@ -1,4 +1,4 @@
-#format: <source coordinate><destination coordinate>[zenny cost][allow ticket][conversation sequence]
+#format: <source coordinate><destination coordinate>{min level-max level}[zenny cost][allow ticket][conversation sequence]
 #######################################################################################
 #Update here...
 

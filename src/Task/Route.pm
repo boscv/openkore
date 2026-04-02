@@ -35,7 +35,7 @@ use Network;
 use Field;
 use Translation qw(T TF);
 use Misc;
-use Utils qw(timeOut adjustedBlockDistance distance blockDistance calcPosFromPathfinding existsInList getLimits get_client_solution);
+use Utils qw(timeOut adjustedBlockDistance distance blockDistance calcPosFromPathfinding existsInList get_client_solution);
 use Utils::Exceptions;
 use Utils::Set;
 use Utils::PathFinding;
@@ -912,7 +912,7 @@ sub getRoute {
 	$path_args{useManhattan} = $useManhattan;
 
 	if ($addLimits) {
-		my ($min_x, $max_x, $min_y, $max_y) = getLimits($path_args{field}, $path_args{start}, $path_args{dest});
+		my ($min_x, $max_x, $min_y, $max_y) = Utils::getLimits($path_args{field}, $path_args{start}, $path_args{dest});
 		$path_args{min_x} = $min_x if defined $min_x;
 		$path_args{max_x} = $max_x if defined $max_x;
 		$path_args{min_y} = $min_y if defined $min_y;

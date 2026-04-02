@@ -1,4 +1,4 @@
-#format: <source coordinate><destination coordinate>[zenny cost][allow ticket][conversation sequence]
+#format: <source coordinate><destination coordinate>{min level-max level}[zenny cost][allow ticket][conversation sequence]
 alberta 195 151 alb2trea 62 69 200 c c r0 n
 alb2trea 39 50 alberta 192 169 0 r0 n
 lou_fild01 190 100 alberta 235 45 0 c r0 n

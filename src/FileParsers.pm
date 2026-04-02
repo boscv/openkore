@@ -759,6 +759,10 @@ sub parsePortals {
 			$$r_hash{$portal}{'dest'}{$dest}{'y'} = $dest_y;
 			$$r_hash{$portal}{'dest'}{$dest}{dynamicPortalGroup} = $dynamicPortalGroup if defined $dynamicPortalGroup;
 			$$r_hash{$portal}{dest}{$dest}{enabled} = 1; # is available permanently (can be used when calculating a route)
+			if ($misc =~ s/(?:^|\s)\{(\d*)-(\d*)\}(?=\s|$)/ /) {
+				$$r_hash{$portal}{'dest'}{$dest}{'min_level'} = $1 if $1 ne '';
+				$$r_hash{$portal}{'dest'}{$dest}{'max_level'} = $2 if $2 ne '';
+			}
 			#$$r_hash{$portal}{dest}{$dest}{active} = 1; # TODO: is available right now (otherwise, wait until it becomes available)
 			if ($misc =~ /^(\d+)\s(\d)\s(.*)$/) { # [cost] [allow_ticket] [talk sequence]
 				$$r_hash{$portal}{'dest'}{$dest}{'cost'} = $1;
