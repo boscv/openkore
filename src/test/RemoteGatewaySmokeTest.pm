@@ -49,25 +49,6 @@ sub _http_request {
 	return ($status || '', $resp);
 }
 
-sub _pick_random_free_port {
-	for (1..20) {
-		my $probe = IO::Socket::INET->new(
-			LocalAddr => '127.0.0.1',
-			LocalPort => 0,
-			Proto     => 'tcp',
-			Listen    => 1,
-			ReuseAddr => 1,
-		);
-		if ($probe) {
-			my $port = $probe->sockport();
-			close $probe;
-			return $port;
-		}
-		select(undef, undef, undef, 0.05);
-	}
-	die "Unable to pick a free TCP port on 127.0.0.1: $!";
-}
-
 sub _wait_for_port {
 	my ($port, $tries) = @_;
 	$tries = 300 if !defined $tries;
@@ -90,6 +71,19 @@ sub _slurp_if_exists {
 	my $data = <$fh>;
 	close $fh;
 	return $data // '';
+}
+
+sub _wait_for_ready_file_port {
+	my ($path, $tries) = @_;
+	$tries = 300 if !defined $tries;
+	for (1..$tries) {
+		my $json = _slurp_if_exists($path);
+		if ($json ne '' && $json =~ /"listen_port"\s*:\s*(\d+)/) {
+			return $1;
+		}
+		select(undef, undef, undef, 0.1);
+	}
+	return;
 }
 
 sub _ws_handshake_status {
@@ -132,13 +126,15 @@ sub start {
 	my $audit = "$tmp/gateway_audit.jsonl";
 	my $users_file = "$tmp/users.json";
 	my $session_file = "$tmp/sessions.json";
+	my $ready_file = "$tmp/gateway_ready.json";
 	open(my $uf, '>:encoding(UTF-8)', $users_file) or die "Cannot write users file";
 	print $uf "{\"users\":[{\"username\":\"viewer\",\"password\":\"viewpw\",\"role\":\"viewer\"},{\"username\":\"operator\",\"password\":\"secret\",\"role\":\"operator\"},{\"username\":\"admin\",\"password\":\"adminpw\",\"role\":\"admin\"}]}\n";
 	close $uf;
 	my ($port, $pid, $startup_log, $gateway_ready) = (undef, undef, '', 0);
 	for my $attempt (1..3) {
-		$port = _pick_random_free_port();
+		$port = 0;
 		$startup_log = "$tmp/gateway_startup.$attempt.log";
+		unlink $ready_file if -f $ready_file;
 		$pid = fork();
 		if (!defined $pid) {
 			fail('fork gateway process');
@@ -155,19 +151,22 @@ sub start {
 			if (!-f $gateway_script) {
 				die "Gateway script not found at $gateway_script\n";
 			}
-			exec($^X, $gateway_script,
-				'--socket', File::Spec->catfile($tmp, 'nonexistent.console.socket'),
-				'--listen-host', '127.0.0.1',
-				'--listen-port', $port,
-				'--auth-enabled',
-				'--users-file', $users_file,
-				'--command-rate-limit', '2',
-				'--command-rate-window', '60',
-				'--audit-file', $audit,
-				'--session-file', $session_file);
-			die "Failed to exec gateway script with perl $^X: $!\n";
-		}
+				exec($^X, $gateway_script,
+					'--socket', File::Spec->catfile($tmp, 'nonexistent.console.socket'),
+					'--listen-host', '127.0.0.1',
+					'--listen-port', 0,
+					'--auth-enabled',
+					'--users-file', $users_file,
+					'--command-rate-limit', '2',
+					'--command-rate-window', '60',
+					'--audit-file', $audit,
+					'--session-file', $session_file,
+					'--ready-file', $ready_file);
+				die "Failed to exec gateway script with perl $^X: $!\n";
+			}
 
+		my $ready_port = _wait_for_ready_file_port($ready_file, 300);
+		$port = defined $ready_port ? $ready_port : 0;
 		$gateway_ready = _wait_for_port($port, 300);
 		last if $gateway_ready;
 
