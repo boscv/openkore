@@ -49,3 +49,6 @@ tables/**/npcs.txt
 tables/**/monsters.txt
 *.xpm
 *.weight
+
+# remote gateway local artifacts
+gateway_audit.jsonl
