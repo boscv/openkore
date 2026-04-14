@@ -76,6 +76,16 @@ sub _wait_for_port {
 	return 0;
 }
 
+sub _slurp_if_exists {
+	my ($path) = @_;
+	return '' if !$path || !-f $path;
+	open(my $fh, '<:raw', $path) or return '';
+	local $/;
+	my $data = <$fh>;
+	close $fh;
+	return $data // '';
+}
+
 sub _ws_handshake_status {
 	my (%args) = @_;
 	my $sock = IO::Socket::INET->new(
@@ -116,6 +126,7 @@ sub start {
 	my $audit = "$tmp/gateway_audit.jsonl";
 	my $users_file = "$tmp/users.json";
 	my $session_file = "$tmp/sessions.json";
+	my $startup_log = "$tmp/gateway_startup.log";
 	open(my $uf, '>:encoding(UTF-8)', $users_file) or die "Cannot write users file";
 	print $uf "{\"users\":[{\"username\":\"viewer\",\"password\":\"viewpw\",\"role\":\"viewer\"},{\"username\":\"operator\",\"password\":\"secret\",\"role\":\"operator\"},{\"username\":\"admin\",\"password\":\"adminpw\",\"role\":\"admin\"}]}\n";
 	close $uf;
@@ -127,26 +138,47 @@ sub start {
 	}
 
 	if ($pid == 0) {
-			my $here = __FILE__;
-			$here =~ s{[\\/][^\\/]+$}{};
-			my $gateway_script = File::Spec->rel2abs(
-				File::Spec->catfile($here, '..', '..', 'tools', 'remote_gateway.pl')
-			);
-			exec('perl', $gateway_script,
-					'--socket', '/tmp/nonexistent.socket',
-					'--listen-host', '127.0.0.1',
-					'--listen-port', $port,
-				'--auth-enabled',
-				'--users-file', $users_file,
-				'--command-rate-limit', '2',
-				'--command-rate-window', '60',
-				'--audit-file', $audit,
-				'--session-file', $session_file);
-		exit 127;
+		my $here = __FILE__;
+		$here =~ s{[\\/][^\\/]+$}{};
+		my $gateway_script = File::Spec->rel2abs(
+			File::Spec->catfile($here, '..', '..', 'tools', 'remote_gateway.pl')
+		);
+		open(STDERR, '>>', $startup_log) or die "Cannot open startup log $startup_log: $!";
+		open(STDOUT, '>>', $startup_log) or die "Cannot open startup log $startup_log: $!";
+		if (!-f $gateway_script) {
+			die "Gateway script not found at $gateway_script\n";
+		}
+		exec('perl', $gateway_script,
+			'--socket', '/tmp/nonexistent.socket',
+			'--listen-host', '127.0.0.1',
+			'--listen-port', $port,
+			'--auth-enabled',
+			'--users-file', $users_file,
+			'--command-rate-limit', '2',
+			'--command-rate-window', '60',
+			'--audit-file', $audit,
+			'--session-file', $session_file);
+		die "Failed to exec gateway script: $!\n";
 	}
 	pass('fork gateway process');
 
-	ok(_wait_for_port($port), 'gateway port is ready');
+	my $gateway_ready = _wait_for_port($port);
+	ok($gateway_ready, 'gateway port is ready');
+	if (!$gateway_ready) {
+		my $kid = waitpid($pid, 1);
+		my $exit_details = '';
+		if ($kid == $pid) {
+			$exit_details = sprintf(' child exited early (status=%d)', $? >> 8);
+		}
+		my $startup_output = _slurp_if_exists($startup_log);
+		diag("Gateway failed to listen on port $port.$exit_details");
+		diag("Gateway startup log:\n$startup_output") if $startup_output ne '';
+		if ($kid != $pid) {
+			kill 'TERM', $pid;
+			waitpid($pid, 0);
+		}
+		return;
+	}
 
 	my ($st_root, $resp_root) = _http_request(
 		port => $port,
