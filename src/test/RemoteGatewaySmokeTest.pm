@@ -5,6 +5,7 @@ use warnings;
 use Test::More;
 use IO::Socket::INET;
 use File::Temp qw(tempdir);
+use File::Spec;
 use MIME::Base64 qw(encode_base64);
 
 sub _http_request {
@@ -126,10 +127,15 @@ sub start {
 	}
 
 	if ($pid == 0) {
-			exec('perl', 'tools/remote_gateway.pl',
-				'--socket', '/tmp/nonexistent.socket',
-				'--listen-host', '127.0.0.1',
-				'--listen-port', $port,
+			my $here = __FILE__;
+			$here =~ s{[\\/][^\\/]+$}{};
+			my $gateway_script = File::Spec->rel2abs(
+				File::Spec->catfile($here, '..', '..', 'tools', 'remote_gateway.pl')
+			);
+			exec('perl', $gateway_script,
+					'--socket', '/tmp/nonexistent.socket',
+					'--listen-host', '127.0.0.1',
+					'--listen-port', $port,
 				'--auth-enabled',
 				'--users-file', $users_file,
 				'--command-rate-limit', '2',
@@ -174,6 +180,20 @@ sub start {
 	);
 	like($st_me_op, qr/^200/, 'operator auth/me returns 200');
 	like($resp_me_op, qr/"role":"operator"/, 'auth/me returns operator role');
+
+	my ($st_events_anon, $resp_events_anon) = _http_request(
+		port => $port,
+		raw => "GET /events HTTP/1.1\r\nHost: 127.0.0.1\r\nConnection: close\r\n\r\n",
+	);
+	like($st_events_anon, qr/^401/, 'GET /events without token returns 401 in auth mode');
+	like($resp_events_anon, qr/missing_token|invalid_token/, 'events endpoint enforces auth');
+
+	my ($st_events_auth, $resp_events_auth) = _http_request(
+		port => $port,
+		raw => "GET /events HTTP/1.1\r\nHost: 127.0.0.1\r\nAuthorization: Bearer $access_token\r\nConnection: close\r\n\r\n",
+	);
+	like($st_events_auth, qr/^200/, 'GET /events with token returns 200');
+	like($resp_events_auth, qr/"data":\[/, 'events response contains data array');
 
 	my $req = "POST /commands HTTP/1.1\r\n"
 		. "Host: 127.0.0.1\r\n"

@@ -31,6 +31,8 @@ my $auth_enabled = 0;
 my $users_file = '';
 my $token_ttl = 900;
 my $session_file = 'gateway_sessions.json';
+my $max_http_body_bytes = 262144;
+my $http_body_read_timeout = 2.0;
 
 GetOptions(
 	'socket=s' => \$socket_path,
@@ -609,15 +611,35 @@ sub ws_upgrade_if_requested {
 	return 1;
 }
 
+sub read_exact_bytes {
+	my (%args) = @_;
+	my $fh = $args{fh};
+	my $len = $args{len} // 0;
+	my $timeout = $args{timeout} // 1.0;
+	return '' if $len == 0;
+	my $buf = '';
+	my $deadline = time() + $timeout;
+	my $sel = IO::Select->new($fh);
+	while (length($buf) < $len) {
+		my $left = $deadline - time();
+		return undef if $left <= 0;
+		my @ready = $sel->can_read($left);
+		return undef if !@ready;
+		my $chunk = '';
+		my $got = sysread($fh, $chunk, $len - length($buf));
+		return undef if !defined $got || $got <= 0;
+		$buf .= $chunk;
+	}
+	return $buf;
+}
+
 sub ws_handle_client_frame {
 	my ($client) = @_;
-	my $header = '';
-	my $read = sysread($client, $header, 2);
-	if (!defined $read || $read == 0) {
+	my $header = read_exact_bytes(fh => $client, len => 2, timeout => 1.0);
+	if (!defined $header) {
 		ws_remove_client($client);
 		return;
 	}
-	return if length($header) < 2;
 
 	my ($b1, $b2) = unpack('CC', $header);
 	my $opcode = $b1 & 0x0F;
@@ -625,15 +647,15 @@ sub ws_handle_client_frame {
 	my $len = $b2 & 0x7F;
 
 	if ($len == 126) {
-		my $ext = '';
-		if (sysread($client, $ext, 2) != 2) {
+		my $ext = read_exact_bytes(fh => $client, len => 2, timeout => 1.0);
+		if (!defined $ext) {
 			ws_remove_client($client);
 			return;
 		}
 		$len = unpack('n', $ext);
 	} elsif ($len == 127) {
-		my $ext = '';
-		if (sysread($client, $ext, 8) != 8) {
+		my $ext = read_exact_bytes(fh => $client, len => 8, timeout => 1.0);
+		if (!defined $ext) {
 			ws_remove_client($client);
 			return;
 		}
@@ -642,7 +664,8 @@ sub ws_handle_client_frame {
 
 	my $mask = '';
 	if ($masked) {
-		if (sysread($client, $mask, 4) != 4) {
+		$mask = read_exact_bytes(fh => $client, len => 4, timeout => 1.0);
+		if (!defined $mask) {
 			ws_remove_client($client);
 			return;
 		}
@@ -650,8 +673,8 @@ sub ws_handle_client_frame {
 
 	my $payload = '';
 	if ($len > 0) {
-		my $got = sysread($client, $payload, $len);
-		if (!defined $got || $got != $len) {
+		$payload = read_exact_bytes(fh => $client, len => $len, timeout => 1.0);
+		if (!defined $payload) {
 			ws_remove_client($client);
 			return;
 		}
@@ -934,15 +957,25 @@ sub handle_http_client {
 	}
 
 	my $content_length = $headers{'content-length'} // 0;
+	if ($content_length !~ /^\d+$/) {
+		write_http_response($client, '400 Bad Request', encode_json({ ok => JSON::PP::false, error => 'invalid_content_length' }));
+		close $client;
+		return;
+	}
+	if ($content_length > $max_http_body_bytes) {
+		write_http_response($client, '413 Payload Too Large', encode_json({ ok => JSON::PP::false, error => 'payload_too_large' }));
+		close $client;
+		return;
+	}
 	if ($content_length > length($body)) {
 		my $remaining = $content_length - length($body);
-		while ($remaining > 0) {
-			my $chunk = '';
-			my $got = sysread($client, $chunk, $remaining);
-			last if !defined $got || $got <= 0;
-			$body .= $chunk;
-			$remaining -= $got;
+		my $extra = read_exact_bytes(fh => $client, len => $remaining, timeout => $http_body_read_timeout);
+		if (!defined $extra) {
+			write_http_response($client, '408 Request Timeout', encode_json({ ok => JSON::PP::false, error => 'request_body_timeout' }));
+			close $client;
+			return;
 		}
+		$body .= $extra;
 	}
 
 	my $remote_addr = eval { $client->peerhost() } || 'unknown';
@@ -953,6 +986,14 @@ sub handle_http_client {
 	} elsif ($request_line =~ m{^GET\s+/\s+HTTP/1\.[01]$}) {
 		write_http_response($client, '200 OK', build_ui_html(), 'text/html; charset=utf-8');
 	} elsif ($request_line =~ m{^GET\s+/events\s+HTTP/1\.[01]$}) {
+		if ($auth_enabled) {
+			my ($ok, $auth_res) = authorize_request(headers => \%headers, required_role => 'viewer');
+			if (!$ok) {
+				write_http_response($client, auth_error_status($auth_res), encode_json({ ok => JSON::PP::false, error => $auth_res }));
+				close $client;
+				return;
+			}
+		}
 		my $payload = { ok => JSON::PP::true, data => \@events };
 		write_http_response($client, '200 OK', encode_json($payload));
 	} elsif ($request_line =~ m{^GET\s+/audit(?:\?.*)?\s+HTTP/1\.[01]$}) {
