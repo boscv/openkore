@@ -69,8 +69,9 @@ sub _pick_random_free_port {
 }
 
 sub _wait_for_port {
-	my ($port) = @_;
-	for (1..40) {
+	my ($port, $tries) = @_;
+	$tries = 300 if !defined $tries;
+	for (1..$tries) {
 		my $s = IO::Socket::INET->new(PeerAddr => '127.0.0.1', PeerPort => $port, Proto => 'tcp', Timeout => 0.2);
 		if ($s) {
 			close $s;
@@ -167,7 +168,7 @@ sub start {
 			die "Failed to exec gateway script with perl $^X: $!\n";
 		}
 
-		$gateway_ready = _wait_for_port($port);
+		$gateway_ready = _wait_for_port($port, 300);
 		last if $gateway_ready;
 
 		my $kid = waitpid($pid, 1);
