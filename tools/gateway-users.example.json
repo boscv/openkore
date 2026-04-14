@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "username": "viewer_user",
+      "password": "change_me_viewer",
+      "role": "viewer"
+    },
+    {
+      "username": "operator_user",
+      "password": "change_me_operator",
+      "role": "operator"
+    },
+    {
+      "username": "admin_user",
+      "password": "change_me_admin",
+      "role": "admin"
+    }
+  ]
+}
