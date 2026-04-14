@@ -33,6 +33,7 @@ my $token_ttl = 900;
 my $session_file = 'gateway_sessions.json';
 my $max_http_body_bytes = 262144;
 my $http_body_read_timeout = 2.0;
+my $ready_file = '';
 
 GetOptions(
 	'socket=s' => \$socket_path,
@@ -48,6 +49,7 @@ GetOptions(
 	'users-file=s' => \$users_file,
 	'token-ttl=i' => \$token_ttl,
 	'session-file=s' => \$session_file,
+	'ready-file=s' => \$ready_file,
 ) or die "Invalid arguments\n";
 
 my $health_server = IO::Socket::INET->new(
@@ -59,6 +61,7 @@ my $health_server = IO::Socket::INET->new(
 );
 
 die "Cannot bind gateway endpoint on $listen_host:$listen_port: $!\n" if !$health_server;
+$listen_port = $health_server->sockport();
 
 my $selector = IO::Select->new($health_server);
 my $parser = Bus::MessageParser->new();
@@ -1039,6 +1042,17 @@ if ($auth_enabled) {
 	print "[gateway] session file: $session_file\n";
 }
 print "[gateway] connecting to OpenKore socket: $socket_path\n";
+if ($ready_file ne '') {
+	open(my $rfh, '>:encoding(UTF-8)', $ready_file) or die "Cannot write ready file $ready_file: $!\n";
+	print $rfh encode_json({
+		pid => $$,
+		listen_host => $listen_host,
+		listen_port => $listen_port,
+		socket => $socket_path,
+		ready => JSON::PP::true,
+	}) . "\n";
+	close $rfh;
+}
 load_users();
 load_sessions();
 add_event({ kind => 'gateway_event', ts => scalar(time), message => 'gateway_started' });

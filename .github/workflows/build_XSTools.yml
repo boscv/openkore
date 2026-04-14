@@ -256,6 +256,12 @@ jobs:
       run: |
         echo "== perl version check:"
         perl --version
+        echo "======================"
+        echo "== Time::HiRes module:"
+        perl -MTime::HiRes -e 1
+        echo "========================="
+        echo "== Compress::Zlib module:"
+        perl -MCompress::Zlib -e 1
 
     - name: Restoring XTools from artifacts
       uses: actions/download-artifact@v4
@@ -275,7 +281,20 @@ jobs:
     - name: Running tests
       run: |
         cd src\test
-        perl unittests.pl
+        perl -MCarp=verbose unittests.pl
+        if ( $LASTEXITCODE -ne 0 ) {
+          echo "Test failed with exit code $LASTEXITCODE"
+          echo "== Dumping available log files from src\\test and repository root =="
+          Get-ChildItem -Path . -File -Filter *.log -ErrorAction SilentlyContinue | ForEach-Object {
+            echo "----- $($_.FullName) -----"
+            Get-Content $_.FullName -Tail 200
+          }
+          Get-ChildItem -Path ..\.. -File -Filter *.log -ErrorAction SilentlyContinue | ForEach-Object {
+            echo "----- $($_.FullName) -----"
+            Get-Content $_.FullName -Tail 200
+          }
+          exit $LASTEXITCODE
+        }
 
     ###################
     # OpenKore launch #

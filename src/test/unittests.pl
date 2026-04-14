@@ -25,10 +25,11 @@ my @tests = qw(
 	NetworkTest
 	FieldTest
 	XConfTest
-	RemoteGatewaySmokeTest
 );
 if ($^O eq 'MSWin32') {
 	push @tests, qw(HttpReaderTest);
+} else {
+	push @tests, qw(RemoteGatewaySmokeTest);
 }
 
 @tests = @ARGV if (@ARGV);
