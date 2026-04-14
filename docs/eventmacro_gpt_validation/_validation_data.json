@@ -1,0 +1,57 @@
+{
+  "audit_full_files": [
+    "00_audit_scope_and_method.md",
+    "01_file_inventory.md",
+    "02_eventmacro_canonical_spec.md",
+    "03_grammar_and_parsing.md",
+    "04_commands_and_runtime.md",
+    "05_variables_and_special_variables.md",
+    "06_macro_keywords_and_functions.md",
+    "07_automacro_parameters.md",
+    "08_condition_catalog.md",
+    "09_condition_catalog.json",
+    "10_invalid_syntax_and_negative_catalog.md",
+    "11_examples_valid.md",
+    "12_examples_invalid.md",
+    "13_gaps_ambiguities_and_nonprovable_claims.md",
+    "14_gpt_system_instructions_draft.md"
+  ],
+  "knowledge_ready_files": [
+    "00_scope_and_rules.md",
+    "01_architecture_and_runtime.md",
+    "02_grammar_and_parsing.md",
+    "03_variables_and_special_variables.md",
+    "04_macro_keywords_and_functions.md",
+    "05_console_commands.md",
+    "06_automacro_parameters.md",
+    "07_conditions_state_part_1.md",
+    "08_conditions_state_part_2.md",
+    "09_conditions_event.md",
+    "10_condition_reference_tables.md",
+    "11_invalid_syntax_and_negative_catalog.md",
+    "12_examples_valid.md",
+    "13_examples_invalid.md",
+    "14_gaps_ambiguities_and_nonprovable_claims.md",
+    "15_gpt_system_instructions_draft.md",
+    "16_upload_manifest.md",
+    "17_condition_catalog.json"
+  ],
+  "tools_files": [
+    "extract_condition_catalog.py"
+  ],
+  "source_condition_count": 118,
+  "catalog_count": 118,
+  "knowledge_file_count": 18,
+  "knowledge_upload_budget_ok": true,
+  "parser_mode_counts": {
+    "csv_list": 7,
+    "regex_literal": 18,
+    "numeric_comparison": 29,
+    "composite_regex_numeric": 63,
+    "simple_event": 1
+  },
+  "state_table_count": 86,
+  "event_table_count": 32,
+  "manifest_file_count": 18,
+  "mismatches": []
+}

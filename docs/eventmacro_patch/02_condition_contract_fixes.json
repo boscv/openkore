@@ -1,0 +1,156 @@
+{
+  "summary": {
+    "counts": {
+      "GENERATION_SAFE": 109,
+      "EXPLAIN_ONLY": 9,
+      "UNSAFE": 0
+    },
+    "notes": "Classificação conservadora para geração segura; nenhuma condition sem evidência suficiente foi mantida implicitamente como pronta para geração."
+  },
+  "conditions": [
+    {
+      "condition": "GuildMsgName",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 8,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 16,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/GuildMsgName.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "NoMobNear",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 8,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 21,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/NoMobNear.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "NoNpcNear",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 9,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 22,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/NoNpcNear.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "NoPlayerNear",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 9,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 22,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/NoPlayerNear.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "NoPortalNear",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 9,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 22,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/NoPortalNear.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "NpcMsgName",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 7,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 15,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/NpcMsgName.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "PartyMsgName",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 7,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 15,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/PartyMsgName.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "PrivMsgName",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 7,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 15,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/PrivMsgName.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    },
+    {
+      "condition": "PubMsgName",
+      "problem_before": "Sem camada explícita de geração segura; podia ser tratada como pronta por inferência.",
+      "evidence": {
+        "package_line": 1,
+        "hooks_line": 7,
+        "parse_syntax_line": -1,
+        "validate_condition_line": 15,
+        "new_vars_line": -1,
+        "file": "plugins/eventMacro/eventMacro/Condition/PubMsgName.pm"
+      },
+      "parser_mode": "composite_regex_numeric",
+      "correction_applied": "Classificada como EXPLAIN_ONLY com razão explícita no catálogo.",
+      "generation_impact": "Bloqueia geração automática final; permite explicação controlada.",
+      "final_status": "EXPLAIN_ONLY"
+    }
+  ]
+}

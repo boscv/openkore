@@ -57,6 +57,7 @@ our %parameters = (
 
 our $macroKeywords = join '|', qw(
         arg listlength
+        listitem
         cartamount cart Cart
         itemCard itemCardAmount itemOption itemOptAmount
         config
@@ -79,7 +80,7 @@ our $macroKeywords = join '|', qw(
 	strip
 	questStatus questInactiveCount questIncompleteCount questCompleteCount
 	values
-	vender venderitem venderprice venderamount
+        vender venderitem venderItem venderprice venderamount
 );
 
 1;
