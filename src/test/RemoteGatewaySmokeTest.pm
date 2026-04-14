@@ -10,7 +10,7 @@ use MIME::Base64 qw(encode_base64);
 sub _http_request {
 	my (%args) = @_;
 	my $sock;
-	for (1..3) {
+	for (1..8) {
 		$sock = IO::Socket::INET->new(
 			PeerAddr => '127.0.0.1',
 			PeerPort => $args{port},
@@ -18,19 +18,33 @@ sub _http_request {
 			Timeout  => 2,
 		);
 		last if $sock;
-		select(undef, undef, undef, 0.15);
+		select(undef, undef, undef, 0.2);
 	}
 	ok($sock, 'connect to gateway HTTP port');
 	return ('', '') if !$sock;
 
-	print $sock $args{raw};
+	$sock->autoflush(1);
+	my $raw = $args{raw} // '';
+	my $off = 0;
+	while ($off < length($raw)) {
+		my $written = syswrite($sock, $raw, length($raw) - $off, $off);
+		if (!defined $written || $written <= 0) {
+			close $sock;
+			return ('', '');
+		}
+		$off += $written;
+	}
+	shutdown($sock, 1);
 	my $resp = '';
-	while (my $line = <$sock>) {
-		$resp .= $line;
+	while (1) {
+		my $chunk = '';
+		my $got = sysread($sock, $chunk, 4096);
+		last if !defined $got || $got <= 0;
+		$resp .= $chunk;
 	}
 	close $sock;
 
-	my ($status) = $resp =~ m{^HTTP/1\.1\s+([^\r\n]+)};
+	my ($status) = $resp =~ m{^HTTP/1\.[01]\s+([^\r\n]+)};
 	return ($status || '', $resp);
 }
 
