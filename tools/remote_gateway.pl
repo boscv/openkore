@@ -1042,6 +1042,9 @@ if ($auth_enabled) {
 	print "[gateway] session file: $session_file\n";
 }
 print "[gateway] connecting to OpenKore socket: $socket_path\n";
+load_users();
+load_sessions();
+add_event({ kind => 'gateway_event', ts => scalar(time), message => 'gateway_started' });
 if ($ready_file ne '') {
 	open(my $rfh, '>:encoding(UTF-8)', $ready_file) or die "Cannot write ready file $ready_file: $!\n";
 	print $rfh encode_json({
