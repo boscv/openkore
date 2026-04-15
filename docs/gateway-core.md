@@ -20,6 +20,15 @@
 perl tools/remote_gateway.pl --socket /path/to/console.socket --listen-host 127.0.0.1 --listen-port 18085
 ```
 
+### Alternative OpenKore endpoint mode (TCP)
+If OpenKore bus is exposed via TCP, the gateway can connect with:
+
+```bash
+perl tools/remote_gateway.pl --kore-host 127.0.0.1 --kore-port 2350 --listen-host 127.0.0.1 --listen-port 18085
+```
+
+Use either `--socket` (Unix socket mode) or `--kore-host` + `--kore-port` (TCP mode).
+
 ## Health check
 ```bash
 curl -s http://127.0.0.1:18085/health
