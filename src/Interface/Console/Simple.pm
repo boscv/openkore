@@ -31,7 +31,7 @@ use Globals qw(%consoleColors);
 use Interface;
 use base qw(Interface);
 use I18N qw(UTF8ToString);
-use Utils::Unix;
+use if $^O ne 'MSWin32', 'Utils::Unix';
 
 sub new {
 	my $class = shift;
@@ -41,7 +41,7 @@ sub new {
 }
 
 sub DESTROY {
-	print STDOUT Utils::Unix::getColor('default');
+	print STDOUT Utils::Unix::getColor('default') if $^O ne 'MSWin32';
 	STDOUT->flush;
 }
 
@@ -79,10 +79,13 @@ sub getInput {
 
 sub writeOutput {
 	my ($self, $type, $message, $domain) = @_;
-	my ($code, $reset) = (
-		Utils::Unix::getColorForMessage(\%consoleColors, $type, $domain),
-		Utils::Unix::getColor('reset'),
-	);
+	my ($code, $reset) = ('', '');
+	if ($^O ne 'MSWin32') {
+		($code, $reset) = (
+			Utils::Unix::getColorForMessage(\%consoleColors, $type, $domain),
+			Utils::Unix::getColor('reset'),
+		);
+	}
 	$message =~ s/\n/$reset\n$code/sg;
 	$message = $code.$message.$reset;
 	

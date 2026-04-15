@@ -56,7 +56,7 @@ use Interface;
 use Translation;
 use base qw(Interface);
 use Utils qw(timeOut);
-use Interface::Console;
+use Interface::Console::Simple;
 
 use constant MAX_LOG_ENTRIES => 5000;
 
@@ -66,7 +66,7 @@ sub new {
 	my (%self, $f);
 
 	$self{server} = new Interface::Socket::Server();
-	$self{console} = new Interface::Console();
+	$self{console} = new Interface::Console::Simple();
 	open($f, ">:utf8", "$Settings::logs_folder/console.log");
 	$self{consoleLogFile} = $f;
 	$self{logEntryCount} = 0;
