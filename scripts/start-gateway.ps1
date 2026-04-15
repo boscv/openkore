@@ -1,5 +1,5 @@
 param(
-    [string]$OpenKoreRoot = "C:\openkore",
+    [string]$OpenKoreRoot = "",
     [string]$KoreHost = "127.0.0.1",
     [int]$KorePort = 2350,
     [string]$ListenHost = "127.0.0.1",
@@ -12,6 +12,33 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+function Resolve-OpenKoreRoot {
+    param([string]$UserPath)
+
+    if ($UserPath -and $UserPath.Trim() -ne "") {
+        if (Test-Path -LiteralPath $UserPath) {
+            return (Resolve-Path -LiteralPath $UserPath).Path
+        }
+        throw "OpenKoreRoot inválido (não encontrado): $UserPath"
+    }
+
+    $scriptPath = $MyInvocation.MyCommand.Path
+    $scriptDir = Split-Path -Parent $scriptPath
+    $candidates = @()
+    $candidates += $scriptDir
+    try { $candidates += (Resolve-Path (Join-Path $scriptDir "..")).Path } catch {}
+    try { $candidates += (Resolve-Path (Join-Path $scriptDir "..\..")).Path } catch {}
+    $candidates += (Get-Location).Path
+
+    foreach ($cand in ($candidates | Select-Object -Unique)) {
+        if (Test-Path -LiteralPath (Join-Path $cand "tools\remote_gateway.pl")) {
+            return $cand
+        }
+    }
+
+    throw "Não foi possível detectar a raiz do OpenKore automaticamente. Use -OpenKoreRoot `"C:\caminho\openkore`"."
+}
 
 function Assert-FileExists {
     param([string]$Path)
@@ -27,6 +54,7 @@ function Ensure-Dir {
     }
 }
 
+$OpenKoreRoot = Resolve-OpenKoreRoot -UserPath $OpenKoreRoot
 $gatewayScript = Join-Path $OpenKoreRoot "tools\remote_gateway.pl"
 $configDir = Join-Path $OpenKoreRoot "config"
 $logsDir = Join-Path $OpenKoreRoot "logs"

@@ -160,10 +160,13 @@ Se seu Windows não aceita SSH inbound, use VPN/Tailscale/ZeroTier e exponha ape
 
 Use o script pronto: `scripts/start-gateway.ps1`.
 
+Ele detecta automaticamente a raiz do OpenKore quando executado de dentro do repositório.
+Também existe atalho em `tools/start-gateway.ps1`.
+
 Exemplo manual (PowerShell):
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-gateway.ps1 -OpenKoreRoot "C:\openkore" -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-gateway.ps1 -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
 ```
 
 Depois crie uma tarefa no **Task Scheduler** chamando:
