@@ -109,7 +109,7 @@ function Resolve-Launcher {
 function Write-EnvLauncherCmd {
     param(
         [string]$Root,
-        [string]$Host,
+        [string]$TargetHost,
         [int]$Port
     )
 
@@ -117,7 +117,7 @@ function Write-EnvLauncherCmd {
     @(
         "@echo off",
         "setlocal",
-        "set `"OPENKORE_SOCKET_TCP_HOST=$Host`"",
+        "set `"OPENKORE_SOCKET_TCP_HOST=$TargetHost`"",
         "set `"OPENKORE_SOCKET_TCP_PORT=$Port`"",
         "if `"%~1`"==`"`" goto :done",
         "%*",
@@ -144,7 +144,7 @@ $alreadyRunning = $false
 Ensure-Dir -Path $logsDir
 Ensure-Dir -Path $dataDir
 
-$envCmdPath = Write-EnvLauncherCmd -Root $OpenKoreRoot -Host $SocketHost -Port $SocketPort
+$envCmdPath = Write-EnvLauncherCmd -Root $OpenKoreRoot -TargetHost $SocketHost -Port $SocketPort
 Write-Host "Arquivo atualizado: $envCmdPath"
 Write-Host "Use assim: tools\\openkore-socket-env.cmd start.exe --interface=Socket"
 
