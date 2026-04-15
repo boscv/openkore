@@ -19,6 +19,8 @@ use Bus::Messages qw(serialize);
 use Bus::MessageParser;
 
 my $socket_path = 'console.socket';
+my $kore_host = '';
+my $kore_port = 0;
 my $listen_host = '127.0.0.1';
 my $listen_port = 18085;
 my $replay_size = 200;
@@ -35,8 +37,12 @@ my $max_http_body_bytes = 262144;
 my $http_body_read_timeout = 2.0;
 my $ready_file = '';
 
+$SIG{PIPE} = 'IGNORE';
+
 GetOptions(
 	'socket=s' => \$socket_path,
+	'kore-host=s' => \$kore_host,
+	'kore-port=i' => \$kore_port,
 	'listen-host=s' => \$listen_host,
 	'listen-port=i' => \$listen_port,
 	'replay-size=i' => \$replay_size,
@@ -173,12 +179,25 @@ sub normalize_event {
 }
 
 sub connect_kore {
-	my $socket = IO::Socket::UNIX->new(
+	if ($kore_host ne '' && $kore_port > 0) {
+		return IO::Socket::INET->new(
+			PeerAddr => $kore_host,
+			PeerPort => $kore_port,
+			Proto    => 'tcp',
+			Timeout  => $connect_timeout,
+		);
+	}
+
+	return IO::Socket::UNIX->new(
 		Type => SOCK_STREAM,
 		Peer => $socket_path,
 		Timeout => $connect_timeout,
 	);
-	return $socket;
+}
+
+sub kore_endpoint_string {
+	return "tcp://$kore_host:$kore_port" if $kore_host ne '' && $kore_port > 0;
+	return $socket_path;
 }
 
 sub set_kore_socket {
@@ -222,7 +241,10 @@ sub build_health_payload {
 		service => 'openkore-remote-gateway',
 		time => scalar(time),
 			config => {
+				kore_endpoint => kore_endpoint_string(),
 				socket => $socket_path,
+				kore_host => $kore_host eq '' ? undef : $kore_host,
+				kore_port => $kore_port > 0 ? $kore_port : undef,
 				listen_host => $listen_host,
 				listen_port => $listen_port,
 				replay_size => $replay_size,
@@ -1041,7 +1063,11 @@ if ($auth_enabled) {
 	print "[gateway] auth revoke endpoint at http://$listen_host:$listen_port/auth/revoke\n";
 	print "[gateway] session file: $session_file\n";
 }
-print "[gateway] connecting to OpenKore socket: $socket_path\n";
+if (($kore_host eq '') != ($kore_port == 0)) {
+	die "Invalid arguments: use both --kore-host and --kore-port together, or neither\n";
+}
+
+print "[gateway] connecting to OpenKore endpoint: " . kore_endpoint_string() . "\n";
 load_users();
 load_sessions();
 add_event({ kind => 'gateway_event', ts => scalar(time), message => 'gateway_started' });
@@ -1051,7 +1077,7 @@ if ($ready_file ne '') {
 		pid => $$,
 		listen_host => $listen_host,
 		listen_port => $listen_port,
-		socket => $socket_path,
+		kore_endpoint => kore_endpoint_string(),
 		ready => JSON::PP::true,
 	}) . "\n";
 	close $rfh;

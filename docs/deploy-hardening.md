@@ -9,6 +9,7 @@
 ## New runtime flags
 - `--command-rate-limit <int>` (default: `30`)
 - `--command-rate-window <seconds>` (default: `60`)
+- `--kore-host <host>` + `--kore-port <port>` (optional TCP mode to reach OpenKore endpoint)
 
 ## Recommended launch (VPN-first)
 ```bash
@@ -27,6 +28,12 @@ perl tools/remote_gateway.pl \
 
 # users file example:
 # cp tools/gateway-users.example.json /etc/openkore/gateway-users.json
+```
+
+If your OpenKore endpoint is TCP (instead of Unix socket), replace `--socket ...` with:
+
+```bash
+--kore-host 127.0.0.1 --kore-port 2350
 ```
 
 ## Operational notes
