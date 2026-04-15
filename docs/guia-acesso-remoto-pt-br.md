@@ -21,6 +21,10 @@ Por quê:
 - O gateway conecta no OpenKore via socket Unix (`--socket`) **ou** via TCP (`--kore-host` + `--kore-port`).
 - O fluxo padrão do projeto usa caminhos Unix (`/etc/...`) e serviço `systemd`.
 
+> Importante: para funcionar, o endpoint precisa falar o protocolo de console do OpenKore (`set active/input`). Nem toda porta TCP do OpenKore (ex.: `XKore_port`) é compatível com esse protocolo.
+> No Windows nativo, você pode expor endpoint compatível iniciando com `OPENKORE_SOCKET_TCP_PORT` e `--interface=Socket`.
+> Atalho no Windows: `tools/start-openkore-socket-tcp.ps1` sobe OpenKore + gateway com um comando.
+
 Isso significa:
 
 - **Linux nativo**: cenário recomendado e documentado.
@@ -250,6 +254,8 @@ perl tools/remote_gateway.pl \
 ```
 
 > Nesse modo, use `--kore-host` + `--kore-port` juntos.
+> Importante: `XKore_port` no `config.txt` não garante compatibilidade com o protocolo de console (`set active/input`) usado pelo gateway.
+> Se a porta não for compatível, o `/health` ficará com `connected=false` e `/commands` retornará `503 core_unavailable`.
 
 ---
 

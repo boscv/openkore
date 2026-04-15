@@ -57,6 +57,30 @@ function Ensure-Dir {
     }
 }
 
+function Test-TcpEndpoint {
+    param(
+        [string]$Host,
+        [int]$Port,
+        [int]$TimeoutMs = 800
+    )
+
+    $client = New-Object System.Net.Sockets.TcpClient
+    try {
+        $iar = $client.BeginConnect($Host, $Port, $null, $null)
+        if (-not $iar.AsyncWaitHandle.WaitOne($TimeoutMs, $false)) {
+            return $false
+        }
+        $client.EndConnect($iar)
+        return $true
+    }
+    catch {
+        return $false
+    }
+    finally {
+        try { $client.Close() } catch {}
+    }
+}
+
 $OpenKoreRoot = Resolve-OpenKoreRoot -UserPath $OpenKoreRoot
 $gatewayScript = Join-Path $OpenKoreRoot "tools\remote_gateway.pl"
 $configDir = Join-Path $OpenKoreRoot "config"
@@ -104,6 +128,12 @@ if ($ListenPort -le 0 -or $ListenPort -gt 65535) {
 
 if ($CommandToken -eq "CHANGE_ME") {
     Write-Warning "Você ainda está usando token padrão CHANGE_ME. Troque antes de produção."
+}
+
+$koreEndpointReachable = Test-TcpEndpoint -Host $KoreHost -Port $KorePort
+if (-not $koreEndpointReachable) {
+    Write-Warning "Não foi possível conectar em $KoreHost`:$KorePort antes de iniciar o gateway."
+    Write-Warning "Se o /health mostrar connected=false, inicie o OpenKore com endpoint compatível: `$env:OPENKORE_SOCKET_TCP_PORT=`"$KorePort`"` + `--interface=Socket`."
 }
 
 $existingPid = $null

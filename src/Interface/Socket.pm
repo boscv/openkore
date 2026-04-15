@@ -169,6 +169,8 @@ package Interface::Socket::Server;
 
 use strict;
 use IO::Socket::UNIX;
+use IO::Socket::INET;
+use Errno qw(EADDRINUSE);
 use Base::Server;
 use base qw(Base::Server);
 use Settings;
@@ -184,31 +186,54 @@ sub new {
 	my ($class) = @_;
 	my $socket_file = "$Settings::logs_folder/console.socket";
 	my $pid_file = "$Settings::logs_folder/openkore.pid";
-	my $socket = new IO::Socket::UNIX(
-		Local => $socket_file,
-		Type => SOCK_STREAM,
-		Listen => 5
-	);
-	if (!$socket && $! == 98) {
-		$socket = new IO::Socket::UNIX(
-			Peer => $socket_file,
-			Type => SOCK_STREAM
+	my $tcp_host = $ENV{OPENKORE_SOCKET_TCP_HOST} || '127.0.0.1';
+	my $tcp_port = $ENV{OPENKORE_SOCKET_TCP_PORT} || 0;
+	my $use_tcp = ($tcp_port =~ /^\d+$/ && $tcp_port > 0);
+	my ($socket, $endpoint_desc);
+
+	if ($use_tcp) {
+		$socket = new IO::Socket::INET(
+			LocalAddr => $tcp_host,
+			LocalPort => $tcp_port,
+			Proto     => 'tcp',
+			Type      => SOCK_STREAM,
+			Listen    => 5,
+			ReuseAddr => 1
 		);
 		if (!$socket) {
-			unlink($socket_file);
-			$socket = new IO::Socket::UNIX(
-				Local => $socket_file,
-				Type => SOCK_STREAM,
-				Listen => 5
-			);
-		} else {
-			print STDERR "There is already an OpenKore instance listening at '$socket_file'.\n";
+			print STDERR "Cannot listen at '$tcp_host:$tcp_port': $!\n";
 			exit 1;
 		}
-	}
-	if (!$socket) {
-		print STDERR "Cannot listen at '$socket_file': $!\n";
-		exit 1;
+		$endpoint_desc = "$tcp_host:" . $socket->sockport;
+		print "Interface::Socket TCP endpoint listening at $endpoint_desc\n";
+	} else {
+		$socket = new IO::Socket::UNIX(
+			Local => $socket_file,
+			Type => SOCK_STREAM,
+			Listen => 5
+		);
+		if (!$socket && $! == EADDRINUSE) {
+			$socket = new IO::Socket::UNIX(
+				Peer => $socket_file,
+				Type => SOCK_STREAM
+			);
+			if (!$socket) {
+				unlink($socket_file);
+				$socket = new IO::Socket::UNIX(
+					Local => $socket_file,
+					Type => SOCK_STREAM,
+					Listen => 5
+				);
+			} else {
+				print STDERR "There is already an OpenKore instance listening at '$socket_file'.\n";
+				exit 1;
+			}
+		}
+		if (!$socket) {
+			print STDERR "Cannot listen at '$socket_file': $!\n";
+			exit 1;
+		}
+		$endpoint_desc = $socket_file;
 	}
 
 	my $f;
@@ -216,7 +241,7 @@ sub new {
 		print $f $$;
 		close($f);
 	} else {
-		unlink $socket_file;
+		unlink $socket_file if !$use_tcp;
 		print STDERR "Cannot write to PID file '$pid_file'.\n";
 		exit 1;
 	}
@@ -228,11 +253,13 @@ sub new {
 	$self->{messages} = [];
 	$self->{inputs} = [];
 	$self->{socket_file} = $socket_file;
+	$self->{use_tcp} = $use_tcp;
+	$self->{endpoint_desc} = $endpoint_desc;
 	$self->{pid_file} = $pid_file;
 	$self->{waitingForInput} = 0;
 
 	$SIG{INT} = $SIG{TERM} = $SIG{QUIT} = sub {
-		unlink $socket_file;
+		unlink $socket_file if !$use_tcp;
 		unlink $pid_file;
 		exit 2;
 	};
@@ -242,7 +269,7 @@ sub new {
 
 sub DESTROY {
 	my ($self) = @_;
-	unlink $self->{socket_file};
+	unlink $self->{socket_file} if !$self->{use_tcp};
 	unlink $self->{pid_file};
 	$self->SUPER::DESTROY();
 }
