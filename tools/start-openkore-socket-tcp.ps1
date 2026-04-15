@@ -120,7 +120,7 @@ function Write-EnvLauncherCmd {
         "set `"OPENKORE_SOCKET_TCP_HOST=$TargetHost`"",
         "set `"OPENKORE_SOCKET_TCP_PORT=$Port`"",
         "if `"%~1`"==`"`" goto :done",
-        "start `"`" %*",
+        "start `"`" cmd /k %*",
         ":done"
     ) | Set-Content -LiteralPath $cmdPath -Encoding ASCII
 
@@ -146,7 +146,7 @@ Ensure-Dir -Path $dataDir
 
 $envCmdPath = Write-EnvLauncherCmd -Root $OpenKoreRoot -TargetHost $SocketHost -Port $SocketPort
 Write-Host "Arquivo atualizado: $envCmdPath"
-Write-Host "Use assim: tools\\openkore-socket-env.cmd start.exe --interface=Socket (abre em nova janela)"
+Write-Host "Use assim: tools\\openkore-socket-env.cmd start.exe --interface=Socket (abre em nova janela interativa)"
 
 if (Test-Path -LiteralPath $openkorePidFile) {
     $existingPid = (Get-Content -LiteralPath $openkorePidFile -ErrorAction SilentlyContinue | Select-Object -First 1)
