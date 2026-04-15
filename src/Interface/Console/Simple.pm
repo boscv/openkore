@@ -31,7 +31,13 @@ use Globals qw(%consoleColors);
 use Interface;
 use base qw(Interface);
 use I18N qw(UTF8ToString);
-use if $^O ne 'MSWin32', 'Utils::Unix';
+
+BEGIN {
+	if ($^O ne 'MSWin32') {
+		require Utils::Unix;
+		Utils::Unix->import();
+	}
+}
 
 sub new {
 	my $class = shift;
