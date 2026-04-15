@@ -203,6 +203,7 @@ Esse `.cmd`:
 - abre OpenKore (launcher detectado automaticamente) com `--interface=Socket`;
 - configura `OPENKORE_SOCKET_TCP_HOST=127.0.0.1` e `OPENKORE_SOCKET_TCP_PORT=2350`;
 - inicia o gateway em `127.0.0.1:18085` **sem depender** de `start-gateway.ps1`.
+- o OpenKore é aberto via `cmd /k` para manter console interativo para digitação local.
 
 > Se seu objetivo é simplicidade, use somente `tools\run-remote.cmd` e ignore os outros scripts auxiliares.
 
