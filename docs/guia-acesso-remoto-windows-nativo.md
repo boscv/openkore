@@ -141,6 +141,8 @@ Depois, inicie do jeito que quiser:
 tools\openkore-socket-env.cmd start.exe --interface=Socket
 ```
 
+Esse launcher abre o OpenKore em nova janela (não “preso” ao PowerShell atual).
+
 Se quiser que o PS1 inicie OpenKore (opcional):
 
 ```powershell
