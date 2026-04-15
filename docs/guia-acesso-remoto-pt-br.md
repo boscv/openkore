@@ -28,6 +28,7 @@ Por quê:
 > A porta só existe enquanto o processo do OpenKore estiver rodando nesse modo.
 > O helper PS1 agora, por padrão, só prepara o arquivo `tools/openkore-socket-env.cmd`; iniciar OpenKore/gateway é opcional.
 > Se quiser zero fricção, use `tools/run-remote.cmd SEU_TOKEN` (one-shot para abrir OpenKore + gateway).
+> Para fluxo simples, use só `run-remote.cmd` e ignore os scripts auxiliares.
 
 Isso significa:
 

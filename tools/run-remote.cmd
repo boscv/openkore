@@ -14,6 +14,15 @@ set "OPENKORE_SOCKET_TCP_PORT=2350"
 set "COMMAND_TOKEN=%~1"
 if "%COMMAND_TOKEN%"=="" set "COMMAND_TOKEN=CHANGE_ME"
 
+if not exist "%ROOT%\logs" mkdir "%ROOT%\logs" >nul 2>&1
+if not exist "%ROOT%\data" mkdir "%ROOT%\data" >nul 2>&1
+if not exist "%ROOT%\config" mkdir "%ROOT%\config" >nul 2>&1
+if not exist "%ROOT%\config\gateway-users.json" (
+  if exist "%ROOT%\tools\gateway-users.example.json" (
+    copy /Y "%ROOT%\tools\gateway-users.example.json" "%ROOT%\config\gateway-users.json" >nul
+  )
+)
+
 set "LAUNCHER="
 if exist "%ROOT%\start.exe" set "LAUNCHER=%ROOT%\start.exe"
 if "%LAUNCHER%"=="" if exist "%ROOT%\tkstart.exe" set "LAUNCHER=%ROOT%\tkstart.exe"
@@ -33,7 +42,7 @@ echo [2/3] Aguardando 3s...
 timeout /t 3 /nobreak >nul
 
 echo [3/3] Iniciando gateway...
-powershell -NoProfile -ExecutionPolicy Bypass -File "%ROOT%\tools\start-gateway.ps1" -OpenKoreRoot "%ROOT%" -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "%COMMAND_TOKEN%"
+start "OpenKore Remote Gateway" perl "%ROOT%\tools\remote_gateway.pl" --kore-host 127.0.0.1 --kore-port 2350 --listen-host 127.0.0.1 --listen-port 18085 --command-token "%COMMAND_TOKEN%" --audit-file "%ROOT%\logs\gateway_audit.jsonl" --command-rate-limit 30 --command-rate-window 60 --auth-enabled --users-file "%ROOT%\config\gateway-users.json" --token-ttl 900 --session-file "%ROOT%\data\gateway_sessions.json"
 
 echo.
 echo Pronto. Abra: http://127.0.0.1:18085/
