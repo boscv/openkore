@@ -191,6 +191,19 @@ perl .\tools\remote_gateway.pl --kore-host 127.0.0.1 --kore-port 2350 --listen-h
 
 > Se quiser manter nativo no Windows, prefira abrir o endpoint com `OPENKORE_SOCKET_TCP_PORT` + `--interface=Socket` (bloco acima).
 
+### Modo ultra simples (recomendado)
+
+Sem digitar vários comandos: execute **um arquivo**:
+
+```text
+tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO
+```
+
+Esse `.cmd`:
+- abre OpenKore (launcher detectado automaticamente) com `--interface=Socket`;
+- configura `OPENKORE_SOCKET_TCP_HOST=127.0.0.1` e `OPENKORE_SOCKET_TCP_PORT=2350`;
+- inicia o gateway em `127.0.0.1:18085`.
+
 ---
 
 ## 7) Testar pelo Windows (browser + PowerShell)
