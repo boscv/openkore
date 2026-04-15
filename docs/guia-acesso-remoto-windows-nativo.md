@@ -110,7 +110,7 @@ Em outras palavras: deixar apenas `XKore_port` configurado não abre automaticam
 
 ### Como abrir endpoint TCP compatível no Windows nativo
 
-No mesmo PowerShell em que você vai rodar o OpenKore:
+Se você iniciar pelo `openkore.pl`:
 
 ```powershell
 $env:OPENKORE_SOCKET_TCP_HOST = "127.0.0.1"
@@ -119,6 +119,8 @@ perl .\openkore.pl --interface=Socket
 ```
 
 Esse comando inicia o OpenKore já com endpoint TCP compatível para o gateway.
+
+Se você iniciar por executável (`start.exe`, `tkstart.exe`, etc.), use o helper script que detecta launcher automaticamente e aplica as variáveis para o processo criado.
 
 ### Jeito curto (sem comandos longos): script pronto
 
@@ -132,6 +134,12 @@ Esse script:
 - inicia OpenKore com `--interface=Socket`;
 - habilita endpoint TCP compatível na `127.0.0.1:2350`;
 - inicia o gateway na `127.0.0.1:18085`.
+
+Se preferir **duplo clique** (sem digitar nada), execute:
+
+```text
+tools\start-openkore-socket-tcp.cmd
+```
 
 Exemplo deste guia (somente se você tiver um endpoint TCP compatível já ativo):
 

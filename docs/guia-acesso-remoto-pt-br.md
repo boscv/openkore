@@ -24,6 +24,7 @@ Por quê:
 > Importante: para funcionar, o endpoint precisa falar o protocolo de console do OpenKore (`set active/input`). Nem toda porta TCP do OpenKore (ex.: `XKore_port`) é compatível com esse protocolo.
 > No Windows nativo, você pode expor endpoint compatível iniciando com `OPENKORE_SOCKET_TCP_PORT` e `--interface=Socket`.
 > Atalho no Windows: `tools/start-openkore-socket-tcp.ps1` sobe OpenKore + gateway com um comando.
+> Se preferir duplo clique, use `tools/start-openkore-socket-tcp.cmd`.
 
 Isso significa:
 
