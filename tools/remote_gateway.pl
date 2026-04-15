@@ -7,7 +7,6 @@ use lib "$RealBin/../src";
 use lib "$RealBin/../src/deps";
 
 use IO::Select;
-use IO::Socket::UNIX;
 use IO::Socket::INET;
 use Getopt::Long qw(GetOptions);
 use Time::HiRes qw(time sleep);
@@ -36,6 +35,7 @@ my $session_file = 'gateway_sessions.json';
 my $max_http_body_bytes = 262144;
 my $http_body_read_timeout = 2.0;
 my $ready_file = '';
+my $has_unix_socket = eval { require IO::Socket::UNIX; 1 };
 
 $SIG{PIPE} = 'IGNORE';
 
@@ -188,8 +188,8 @@ sub connect_kore {
 		);
 	}
 
+	return if !$has_unix_socket;
 	return IO::Socket::UNIX->new(
-		Type => SOCK_STREAM,
 		Peer => $socket_path,
 		Timeout => $connect_timeout,
 	);
@@ -1065,6 +1065,9 @@ if ($auth_enabled) {
 }
 if (($kore_host eq '') != ($kore_port == 0)) {
 	die "Invalid arguments: use both --kore-host and --kore-port together, or neither\n";
+}
+if ($kore_host eq '' && $kore_port == 0 && !$has_unix_socket) {
+	die "Unix sockets are unavailable in this Perl runtime. Use --kore-host and --kore-port (TCP mode).\n";
 }
 
 print "[gateway] connecting to OpenKore endpoint: " . kore_endpoint_string() . "\n";

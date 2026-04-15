@@ -32,7 +32,7 @@ Se você usa Windows e quer evitar dor de cabeça, escolha uma destas opções:
 1. Rodar OpenKore + gateway em um VPS Linux (e acessar via SSH/VPN).
 2. Rodar ambos dentro do WSL2 (Ubuntu, por exemplo).
 
-Para passo a passo focado em Windows, veja: `docs/guia-acesso-remoto-windows-wsl2.md`.
+Para passo a passo focado em Windows nativo, veja: `docs/guia-acesso-remoto-windows-nativo.md`.
 
 ---
 
