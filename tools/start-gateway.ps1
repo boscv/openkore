@@ -59,14 +59,14 @@ function Ensure-Dir {
 
 function Test-TcpEndpoint {
     param(
-        [string]$Host,
+        [string]$TargetHost,
         [int]$Port,
         [int]$TimeoutMs = 800
     )
 
     $client = New-Object System.Net.Sockets.TcpClient
     try {
-        $iar = $client.BeginConnect($Host, $Port, $null, $null)
+        $iar = $client.BeginConnect($TargetHost, $Port, $null, $null)
         if (-not $iar.AsyncWaitHandle.WaitOne($TimeoutMs, $false)) {
             return $false
         }
@@ -130,7 +130,7 @@ if ($CommandToken -eq "CHANGE_ME") {
     Write-Warning "Você ainda está usando token padrão CHANGE_ME. Troque antes de produção."
 }
 
-$koreEndpointReachable = Test-TcpEndpoint -Host $KoreHost -Port $KorePort
+$koreEndpointReachable = Test-TcpEndpoint -TargetHost $KoreHost -Port $KorePort
 if (-not $koreEndpointReachable) {
     Write-Warning "Não foi possível conectar em $KoreHost`:$KorePort antes de iniciar o gateway."
     Write-Warning "Se o /health mostrar connected=false, inicie o OpenKore com endpoint compatível: `$env:OPENKORE_SOCKET_TCP_PORT=`"$KorePort`"` + `--interface=Socket`."

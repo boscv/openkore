@@ -51,7 +51,7 @@ function Ensure-Dir {
 
 function Wait-TcpOpen {
     param(
-        [string]$Host,
+        [string]$TargetHost,
         [int]$Port,
         [int]$TimeoutMs = 8000
     )
@@ -60,7 +60,7 @@ function Wait-TcpOpen {
     while (((Get-Date) - $start).TotalMilliseconds -lt $TimeoutMs) {
         $client = New-Object System.Net.Sockets.TcpClient
         try {
-            $iar = $client.BeginConnect($Host, $Port, $null, $null)
+            $iar = $client.BeginConnect($TargetHost, $Port, $null, $null)
             if ($iar.AsyncWaitHandle.WaitOne(250, $false)) {
                 $client.EndConnect($iar)
                 return $true
@@ -186,14 +186,14 @@ try {
         $openkoreProc = Start-Process -FilePath $openkoreFile -ArgumentList $openkoreArgs -WorkingDirectory $OpenKoreRoot -RedirectStandardOutput $openkoreOut -RedirectStandardError $openkoreErr -PassThru
         Set-Content -LiteralPath $openkorePidFile -Value $openkoreProc.Id -Encoding ASCII
 
-        if (Wait-TcpOpen -Host $SocketHost -Port $SocketPort -TimeoutMs 10000) {
+        if (Wait-TcpOpen -TargetHost $SocketHost -Port $SocketPort -TimeoutMs 10000) {
             Write-Host "OpenKore iniciado com '$launcherName' e endpoint TCP de console em $SocketHost`:$SocketPort (PID=$($openkoreProc.Id))."
         } else {
             Write-Warning "OpenKore iniciou (PID=$($openkoreProc.Id)), mas a porta $SocketHost`:$SocketPort não abriu a tempo."
             Write-Warning "Confira logs: $openkoreOut e $openkoreErr"
         }
     } else {
-        if (Wait-TcpOpen -Host $SocketHost -Port $SocketPort -TimeoutMs 2000) {
+        if (Wait-TcpOpen -TargetHost $SocketHost -Port $SocketPort -TimeoutMs 2000) {
             Write-Host "Endpoint TCP já estava ativo em $SocketHost`:$SocketPort. Reutilizando instância existente."
         } else {
             Write-Warning "OpenKore já estava aberto, mas a porta $SocketHost`:$SocketPort não está ativa."
