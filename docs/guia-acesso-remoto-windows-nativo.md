@@ -158,7 +158,15 @@ Se seu Windows não aceita SSH inbound, use VPN/Tailscale/ZeroTier e exponha ape
 
 ## 9) Inicialização automática no Windows
 
-Crie uma tarefa no **Task Scheduler** chamando:
+Use o script pronto: `scripts/start-gateway.ps1`.
+
+Exemplo manual (PowerShell):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-gateway.ps1 -OpenKoreRoot "C:\openkore" -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
+```
+
+Depois crie uma tarefa no **Task Scheduler** chamando:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File C:\openkore\scripts\start-gateway.ps1
