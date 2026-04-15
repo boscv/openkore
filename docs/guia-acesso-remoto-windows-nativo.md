@@ -141,6 +141,14 @@ Se preferir **duplo clique** (sem digitar nada), execute:
 tools\start-openkore-socket-tcp.cmd
 ```
 
+### Dúvida comum
+
+- **“Detecção automática” de quê?**  
+  Do executável de inicialização (`start.exe`, `tkstart.exe`, etc.) dentro da pasta do OpenKore.
+- **OpenKore precisa já estar aberto para a porta existir?**  
+  Sim: a porta só abre quando o processo do OpenKore sobe com `--interface=Socket` + `OPENKORE_SOCKET_TCP_*`.  
+  O script já faz isso para você. Se encontrar OpenKore já rodando, ele tenta reutilizar; se a porta não estiver ativa, avisa para reiniciar pelo script.
+
 Exemplo deste guia (somente se você tiver um endpoint TCP compatível já ativo):
 
 - host: `127.0.0.1`

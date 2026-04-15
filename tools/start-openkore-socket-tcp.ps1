@@ -118,6 +118,7 @@ $openkoreOut = Join-Path $logsDir "openkore_socket_tcp_stdout.log"
 $openkoreErr = Join-Path $logsDir "openkore_socket_tcp_stderr.log"
 $gatewayScript = Join-Path $OpenKoreRoot "tools\start-gateway.ps1"
 $launcher = Resolve-Launcher -Root $OpenKoreRoot -UserLauncherPath $LauncherPath
+$alreadyRunning = $false
 
 Ensure-Dir -Path $logsDir
 Ensure-Dir -Path $dataDir
@@ -128,6 +129,7 @@ if (Test-Path -LiteralPath $openkorePidFile) {
         $existingProc = Get-Process -Id $existingPid -ErrorAction SilentlyContinue
         if ($existingProc) {
             Write-Host "OpenKore já está em execução (PID=$existingPid)."
+            $alreadyRunning = $true
         }
     }
 }
@@ -136,23 +138,32 @@ Push-Location $OpenKoreRoot
 try {
     $env:OPENKORE_SOCKET_TCP_HOST = $SocketHost
     $env:OPENKORE_SOCKET_TCP_PORT = "$SocketPort"
-    $launcherName = [System.IO.Path]::GetFileName($launcher).ToLowerInvariant()
-    $openkoreArgs = @("--interface=Socket")
-    $openkoreFile = $launcher
+    if (-not $alreadyRunning) {
+        $launcherName = [System.IO.Path]::GetFileName($launcher).ToLowerInvariant()
+        $openkoreArgs = @("--interface=Socket")
+        $openkoreFile = $launcher
 
-    if ($launcherName -eq "openkore.pl") {
-        $openkoreFile = "perl"
-        $openkoreArgs = @(".\openkore.pl", "--interface=Socket")
-    }
+        if ($launcherName -eq "openkore.pl") {
+            $openkoreFile = "perl"
+            $openkoreArgs = @(".\openkore.pl", "--interface=Socket")
+        }
 
-    $openkoreProc = Start-Process -FilePath $openkoreFile -ArgumentList $openkoreArgs -WorkingDirectory $OpenKoreRoot -RedirectStandardOutput $openkoreOut -RedirectStandardError $openkoreErr -PassThru
-    Set-Content -LiteralPath $openkorePidFile -Value $openkoreProc.Id -Encoding ASCII
+        $openkoreProc = Start-Process -FilePath $openkoreFile -ArgumentList $openkoreArgs -WorkingDirectory $OpenKoreRoot -RedirectStandardOutput $openkoreOut -RedirectStandardError $openkoreErr -PassThru
+        Set-Content -LiteralPath $openkorePidFile -Value $openkoreProc.Id -Encoding ASCII
 
-    if (Wait-TcpOpen -Host $SocketHost -Port $SocketPort -TimeoutMs 10000) {
-        Write-Host "OpenKore iniciado com '$launcherName' e endpoint TCP de console em $SocketHost`:$SocketPort (PID=$($openkoreProc.Id))."
+        if (Wait-TcpOpen -Host $SocketHost -Port $SocketPort -TimeoutMs 10000) {
+            Write-Host "OpenKore iniciado com '$launcherName' e endpoint TCP de console em $SocketHost`:$SocketPort (PID=$($openkoreProc.Id))."
+        } else {
+            Write-Warning "OpenKore iniciou (PID=$($openkoreProc.Id)), mas a porta $SocketHost`:$SocketPort não abriu a tempo."
+            Write-Warning "Confira logs: $openkoreOut e $openkoreErr"
+        }
     } else {
-        Write-Warning "OpenKore iniciou (PID=$($openkoreProc.Id)), mas a porta $SocketHost`:$SocketPort não abriu a tempo."
-        Write-Warning "Confira logs: $openkoreOut e $openkoreErr"
+        if (Wait-TcpOpen -Host $SocketHost -Port $SocketPort -TimeoutMs 2000) {
+            Write-Host "Endpoint TCP já estava ativo em $SocketHost`:$SocketPort. Reutilizando instância existente."
+        } else {
+            Write-Warning "OpenKore já estava aberto, mas a porta $SocketHost`:$SocketPort não está ativa."
+            Write-Warning "Feche e inicie pelo script para aplicar OPENKORE_SOCKET_TCP_* e --interface=Socket."
+        }
     }
 
     if ($StartGateway) {

@@ -25,6 +25,7 @@ Por quê:
 > No Windows nativo, você pode expor endpoint compatível iniciando com `OPENKORE_SOCKET_TCP_PORT` e `--interface=Socket`.
 > Atalho no Windows: `tools/start-openkore-socket-tcp.ps1` sobe OpenKore + gateway com um comando.
 > Se preferir duplo clique, use `tools/start-openkore-socket-tcp.cmd`.
+> A porta só existe enquanto o processo do OpenKore estiver rodando nesse modo.
 
 Isso significa:
 
