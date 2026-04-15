@@ -124,16 +124,28 @@ Se você iniciar por executável (`start.exe`, `tkstart.exe`, etc.), use o helpe
 
 ### Jeito curto (sem comandos longos): script pronto
 
-Você pode subir OpenKore + gateway com **um único comando**:
+Você pode só preparar o ambiente (sem iniciar nada automaticamente):
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\start-openkore-socket-tcp.ps1 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\start-openkore-socket-tcp.ps1
 ```
 
 Esse script:
-- inicia OpenKore com `--interface=Socket`;
-- habilita endpoint TCP compatível na `127.0.0.1:2350`;
-- inicia o gateway na `127.0.0.1:18085`.
+- grava `tools\openkore-socket-env.cmd` com `OPENKORE_SOCKET_TCP_HOST/PORT`;
+- **não** inicia OpenKore nem gateway por padrão;
+- deixa você escolher como iniciar (`start.exe`, `tkstart.exe`, etc).
+
+Depois, inicie do jeito que quiser:
+
+```text
+tools\openkore-socket-env.cmd start.exe --interface=Socket
+```
+
+Se quiser que o PS1 inicie OpenKore (opcional):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\start-openkore-socket-tcp.ps1 -LaunchOpenKore
+```
 
 Se preferir **duplo clique** (sem digitar nada), execute:
 
@@ -147,7 +159,10 @@ tools\start-openkore-socket-tcp.cmd
   Do executável de inicialização (`start.exe`, `tkstart.exe`, etc.) dentro da pasta do OpenKore.
 - **OpenKore precisa já estar aberto para a porta existir?**  
   Sim: a porta só abre quando o processo do OpenKore sobe com `--interface=Socket` + `OPENKORE_SOCKET_TCP_*`.  
-  O script já faz isso para você. Se encontrar OpenKore já rodando, ele tenta reutilizar; se a porta não estiver ativa, avisa para reiniciar pelo script.
+  O script prepara o ambiente; você escolhe como abrir o OpenKore. Opcionalmente ele também pode iniciar OpenKore com `-LaunchOpenKore`.
+
+- **Erro `XSTools.dll is not found` ao usar `perl .\openkore.pl` no Windows**  
+  Use os launchers compilados (`start.exe`, `tkstart.exe`, `wxstart.exe`, etc.) em vez do `perl openkore.pl` puro no Windows.
 
 Exemplo deste guia (somente se você tiver um endpoint TCP compatível já ativo):
 

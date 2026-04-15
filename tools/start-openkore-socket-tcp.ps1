@@ -3,7 +3,8 @@ param(
     [string]$LauncherPath = "",
     [string]$SocketHost = "127.0.0.1",
     [int]$SocketPort = 2350,
-    [switch]$StartGateway = $true,
+    [switch]$LaunchOpenKore = $false,
+    [switch]$StartGateway = $false,
     [string]$GatewayListenHost = "127.0.0.1",
     [int]$GatewayListenPort = 18085,
     [string]$CommandToken = "CHANGE_ME"
@@ -105,6 +106,27 @@ function Resolve-Launcher {
     throw "Nenhum launcher encontrado (start.exe/wxstart.exe/winguistart.exe/tkstart.exe/vxstart.exe/openkore.pl)."
 }
 
+function Write-EnvLauncherCmd {
+    param(
+        [string]$Root,
+        [string]$Host,
+        [int]$Port
+    )
+
+    $cmdPath = Join-Path $Root "tools\openkore-socket-env.cmd"
+    @(
+        "@echo off",
+        "setlocal",
+        "set `"OPENKORE_SOCKET_TCP_HOST=$Host`"",
+        "set `"OPENKORE_SOCKET_TCP_PORT=$Port`"",
+        "if `"%~1`"==`"`" goto :done",
+        "%*",
+        ":done"
+    ) | Set-Content -LiteralPath $cmdPath -Encoding ASCII
+
+    return $cmdPath
+}
+
 if ($SocketPort -le 0 -or $SocketPort -gt 65535) {
     throw "SocketPort inválida: $SocketPort"
 }
@@ -117,11 +139,14 @@ $openkorePidFile = Join-Path $dataDir "openkore_socket_tcp.pid"
 $openkoreOut = Join-Path $logsDir "openkore_socket_tcp_stdout.log"
 $openkoreErr = Join-Path $logsDir "openkore_socket_tcp_stderr.log"
 $gatewayScript = Join-Path $OpenKoreRoot "tools\start-gateway.ps1"
-$launcher = Resolve-Launcher -Root $OpenKoreRoot -UserLauncherPath $LauncherPath
 $alreadyRunning = $false
 
 Ensure-Dir -Path $logsDir
 Ensure-Dir -Path $dataDir
+
+$envCmdPath = Write-EnvLauncherCmd -Root $OpenKoreRoot -Host $SocketHost -Port $SocketPort
+Write-Host "Arquivo atualizado: $envCmdPath"
+Write-Host "Use assim: tools\\openkore-socket-env.cmd start.exe --interface=Socket"
 
 if (Test-Path -LiteralPath $openkorePidFile) {
     $existingPid = (Get-Content -LiteralPath $openkorePidFile -ErrorAction SilentlyContinue | Select-Object -First 1)
@@ -133,6 +158,16 @@ if (Test-Path -LiteralPath $openkorePidFile) {
         }
     }
 }
+
+if (-not $LaunchOpenKore) {
+    if ($StartGateway) {
+        Write-Warning "-StartGateway foi ignorado porque -LaunchOpenKore não foi usado."
+    }
+    Write-Host "Configuração pronta. O script não iniciou OpenKore automaticamente."
+    return
+}
+
+$launcher = Resolve-Launcher -Root $OpenKoreRoot -UserLauncherPath $LauncherPath
 
 Push-Location $OpenKoreRoot
 try {
