@@ -60,6 +60,7 @@ $configDir = Join-Path $OpenKoreRoot "config"
 $logsDir = Join-Path $OpenKoreRoot "logs"
 $dataDir = Join-Path $OpenKoreRoot "data"
 $usersFile = Join-Path $configDir "gateway-users.json"
+$usersTemplate = Join-Path $OpenKoreRoot "tools\gateway-users.example.json"
 $auditFile = Join-Path $logsDir "gateway_audit.jsonl"
 $sessionFile = Join-Path $dataDir "gateway_sessions.json"
 $pidFile = Join-Path $dataDir "gateway.pid"
@@ -71,7 +72,24 @@ Ensure-Dir -Path $logsDir
 Ensure-Dir -Path $dataDir
 
 Assert-FileExists -Path $gatewayScript
-Assert-FileExists -Path $usersFile
+
+if (-not (Test-Path -LiteralPath $usersFile)) {
+    if (Test-Path -LiteralPath $usersTemplate) {
+        Copy-Item -LiteralPath $usersTemplate -Destination $usersFile -Force
+        Write-Warning "Arquivo $usersFile não existia. Copiado do template gateway-users.example.json. Troque as senhas padrão."
+    } else {
+        @'
+{
+  "users": [
+    { "username": "viewer_user", "password": "change_me_viewer", "role": "viewer" },
+    { "username": "operator_user", "password": "change_me_operator", "role": "operator" },
+    { "username": "admin_user", "password": "change_me_admin", "role": "admin" }
+  ]
+}
+'@ | Set-Content -LiteralPath $usersFile -Encoding UTF8
+        Write-Warning "Arquivo $usersFile criado automaticamente. Troque as senhas padrão."
+    }
+}
 
 if ($KorePort -le 0 -or $KorePort -gt 65535) {
     throw "KorePort inválida: $KorePort"

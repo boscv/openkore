@@ -163,6 +163,14 @@ Use o script pronto: `scripts/start-gateway.ps1`.
 Ele detecta automaticamente a raiz do OpenKore quando executado de dentro do repositório.
 Também existe atalho em `tools/start-gateway.ps1`.
 
+Comando mínimo (sem parâmetros):
+
+```powershell
+.\tools\start-gateway.ps1
+```
+
+Esse modo usa defaults e cria `config\gateway-users.json` automaticamente (a partir do template) caso não exista.
+
 Exemplo manual (PowerShell):
 
 ```powershell
