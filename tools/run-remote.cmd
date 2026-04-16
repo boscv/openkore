@@ -32,8 +32,8 @@ if not defined LAUNCHER if exist "%ROOT%\vxstart.exe" set "LAUNCHER=%ROOT%\vxsta
 
 if not defined LAUNCHER goto :launcher_missing
 
-echo [1/3] Iniciando OpenKore com interface Socket em nova janela...
-start "OpenKore Socket" cmd /k ""%LAUNCHER%" --interface=Socket"
+echo [1/3] Iniciando OpenKore com interface Socket (launcher normal)...
+start "OpenKore Socket" "%LAUNCHER%" --interface=Socket
 
 echo [2/3] Aguardando 3s...
 timeout /t 3 /nobreak >nul
