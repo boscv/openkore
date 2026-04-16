@@ -170,6 +170,7 @@ package Interface::Socket::Server;
 use strict;
 use IO::Socket::UNIX;
 use IO::Socket::INET;
+use Socket ();
 use Errno qw(EADDRINUSE);
 use Base::Server;
 use base qw(Base::Server);
@@ -187,9 +188,10 @@ sub new {
 	my $socket_file = "$Settings::logs_folder/console.socket";
 	my $pid_file = "$Settings::logs_folder/openkore.pid";
 	my $tcp_host = $ENV{OPENKORE_SOCKET_TCP_HOST} || '127.0.0.1';
+	my $unix_socket_supported = eval { Socket::pack_sockaddr_un($socket_file); 1 };
 	my $tcp_port = defined $ENV{OPENKORE_SOCKET_TCP_PORT}
 		? $ENV{OPENKORE_SOCKET_TCP_PORT}
-		: (($^O eq 'MSWin32') ? 2350 : 0);
+		: ((!$unix_socket_supported || $^O eq 'MSWin32') ? 2350 : 0);
 	my $use_tcp = ($tcp_port =~ /^\d+$/ && $tcp_port > 0);
 	my ($socket, $endpoint_desc);
 
@@ -209,6 +211,11 @@ sub new {
 		$endpoint_desc = "$tcp_host:" . $socket->sockport;
 		print "Interface::Socket TCP endpoint listening at $endpoint_desc\n";
 	} else {
+		if (!$unix_socket_supported) {
+			print STDERR "UNIX sockets are not supported by this Perl build.\n";
+			print STDERR "Set OPENKORE_SOCKET_TCP_PORT (example: 2350) or run with Windows TCP defaults.\n";
+			exit 1;
+		}
 		$socket = new IO::Socket::UNIX(
 			Local => $socket_file,
 			Type => SOCK_STREAM,
