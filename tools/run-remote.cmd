@@ -3,12 +3,15 @@ setlocal ENABLEEXTENSIONS
 
 REM One-shot launcher: OpenKore Socket TCP + Remote Gateway (Windows).
 REM Usage:
-REM   tools\run-remote.cmd YOUR_LONG_RANDOM_TOKEN
+REM   tools\run-remote.cmd YOUR_LONG_RANDOM_TOKEN start.exe
+REM If launcher is omitted, defaults to start.exe.
 
 cd /d "%~dp0.."
 set "ROOT=%CD%"
 set "COMMAND_TOKEN=%~1"
 if "%COMMAND_TOKEN%"=="" set "COMMAND_TOKEN=CHANGE_ME"
+set "LAUNCHER_NAME=%~2"
+if "%LAUNCHER_NAME%"=="" set "LAUNCHER_NAME=start.exe"
 
 set "OPENKORE_SOCKET_TCP_HOST=127.0.0.1"
 set "OPENKORE_SOCKET_TCP_PORT=2350"
@@ -23,14 +26,8 @@ if not exist "%ROOT%\config\gateway-users.json" (
   )
 )
 
-set "LAUNCHER="
-if exist "%ROOT%\start.exe" set "LAUNCHER=%ROOT%\start.exe"
-if not defined LAUNCHER if exist "%ROOT%\tkstart.exe" set "LAUNCHER=%ROOT%\tkstart.exe"
-if not defined LAUNCHER if exist "%ROOT%\wxstart.exe" set "LAUNCHER=%ROOT%\wxstart.exe"
-if not defined LAUNCHER if exist "%ROOT%\winguistart.exe" set "LAUNCHER=%ROOT%\winguistart.exe"
-if not defined LAUNCHER if exist "%ROOT%\vxstart.exe" set "LAUNCHER=%ROOT%\vxstart.exe"
-
-if not defined LAUNCHER goto :launcher_missing
+set "LAUNCHER=%ROOT%\%LAUNCHER_NAME%"
+if not exist "%LAUNCHER%" goto :launcher_missing
 
 echo [1/3] Iniciando OpenKore com interface Socket (launcher normal)...
 start "OpenKore Socket" "%LAUNCHER%" --interface=Socket
@@ -46,6 +43,8 @@ echo Pronto. Abra: http://127.0.0.1:18085/
 exit /b 0
 
 :launcher_missing
-echo [ERRO] Nenhum launcher encontrado.
-echo        Esperado: start.exe, tkstart.exe, wxstart.exe, winguistart.exe ou vxstart.exe na raiz.
+echo [ERRO] Launcher nao encontrado: %LAUNCHER_NAME%
+echo        Informe explicitamente no comando, por exemplo:
+echo        tools\run-remote.cmd SEU_TOKEN start.exe
+echo        tools\run-remote.cmd SEU_TOKEN tkstart.exe
 exit /b 1

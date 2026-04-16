@@ -113,11 +113,11 @@ Em outras palavras: deixar apenas `XKore_port` configurado não abre automaticam
 Use **só** este arquivo:
 
 ```text
-tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO
+tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO start.exe
 ```
 
 Ele já:
-- abre OpenKore com `--interface=Socket` usando launcher normal (`start.exe`, `tkstart.exe`, etc.);
+- abre OpenKore com `--interface=Socket` usando o launcher que **você** informar (`start.exe`, `tkstart.exe`, etc.);
 - configura endpoint TCP de console em `127.0.0.1:2350`;
 - inicia o gateway em `127.0.0.1:18085`.
 

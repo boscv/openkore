@@ -22,7 +22,7 @@ Por quê:
 - O fluxo padrão do projeto usa caminhos Unix (`/etc/...`) e serviço `systemd`.
 
 > Importante: para funcionar, o endpoint precisa falar o protocolo de console do OpenKore (`set active/input`). Nem toda porta TCP do OpenKore (ex.: `XKore_port`) é compatível com esse protocolo.
-> No Windows nativo, para fluxo simples, use só `tools/run-remote.cmd SEU_TOKEN`.
+> No Windows nativo, para fluxo simples, use só `tools/run-remote.cmd SEU_TOKEN start.exe` (ou `tkstart.exe`, etc.).
 > Esse comando único abre OpenKore + gateway e expõe o endpoint TCP compatível.
 
 Isso significa:
