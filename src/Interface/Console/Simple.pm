@@ -31,17 +31,29 @@ use Globals qw(%consoleColors);
 use Interface;
 use base qw(Interface);
 use I18N qw(UTF8ToString);
-use Utils::Unix;
+
+BEGIN {
+	if ($^O ne 'MSWin32') {
+		require Utils::Unix;
+		Utils::Unix->import();
+	}
+}
 
 sub new {
 	my $class = shift;
 	binmode STDOUT;
 	STDOUT->autoflush(0);
-	return bless {}, $class;
+	my $self = bless {}, $class;
+	if ($^O eq 'MSWin32') {
+		if (open(my $conin, '<', 'CONIN$')) {
+			$self->{conin} = $conin;
+		}
+	}
+	return $self;
 }
 
 sub DESTROY {
-	print STDOUT Utils::Unix::getColor('default');
+	print STDOUT Utils::Unix::getColor('default') if $^O ne 'MSWin32';
 	STDOUT->flush;
 }
 
@@ -49,23 +61,26 @@ sub getInput {
 	my ($self, $timeout) = @_;
 	my $line;
 	my $bits;
+	my $in = $self->{conin} || \*STDIN;
+	my $fd = fileno($in);
+	return undef if !defined $fd;
 
 	if ($timeout < 0) {
 		my $done;
 		while (!$done) {
 			$bits = '';
-			vec($bits, fileno(STDIN), 1) = 1;
+			vec($bits, $fd, 1) = 1;
 			if (select($bits, undef, undef, 1) > 0) {
-				$line = <STDIN>;
+				$line = <$in>;
 				$done = 1;
 			}
 		}
 
 	} else {
 		$bits = '';
-		vec($bits, fileno(STDIN), 1) = 1;
+		vec($bits, $fd, 1) = 1;
 		if (select($bits, undef, undef, $timeout) > 0) {
-			$line = <STDIN>;
+			$line = <$in>;
 		}
 	}
 
@@ -79,10 +94,13 @@ sub getInput {
 
 sub writeOutput {
 	my ($self, $type, $message, $domain) = @_;
-	my ($code, $reset) = (
-		Utils::Unix::getColorForMessage(\%consoleColors, $type, $domain),
-		Utils::Unix::getColor('reset'),
-	);
+	my ($code, $reset) = ('', '');
+	if ($^O ne 'MSWin32') {
+		($code, $reset) = (
+			Utils::Unix::getColorForMessage(\%consoleColors, $type, $domain),
+			Utils::Unix::getColor('reset'),
+		);
+	}
 	$message =~ s/\n/$reset\n$code/sg;
 	$message = $code.$message.$reset;
 	

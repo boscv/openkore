@@ -99,10 +99,37 @@ python -m json.tool .\config\gateway-users.json | Out-Null; Write-Host "JSON OK"
 
 Você precisa saber host/porta do endpoint TCP.
 
-Exemplo deste guia:
+### Pré-requisito crítico
 
-- host: `127.0.0.1`
-- porta: `2350`
+O `remote_gateway.pl` só consegue falar com um endpoint que implemente o protocolo de console do OpenKore (`set active` / `input`).
+Esse endpoint é nativo da **Interface Socket** (arquivo `console.socket`).
+
+Em outras palavras: deixar apenas `XKore_port` configurado não abre automaticamente esse protocolo para o gateway.
+
+⚠️ **Importante:** no OpenKore padrão, `XKore_port` (ex.: `2350`) **não é automaticamente** o endpoint de console remoto esperado pelo `remote_gateway.pl` (`set active/input`).
+
+### Fluxo único (simples, recomendado)
+
+> No Windows, ao usar `--interface=Socket`, o OpenKore agora usa TCP por padrão em `127.0.0.1:2350` se `OPENKORE_SOCKET_TCP_PORT` não estiver definido.
+
+Use **só** este arquivo:
+
+```text
+tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO start.exe
+```
+
+Ele já:
+- abre **uma janela separada** para OpenKore com `--interface=Socket` usando o launcher que **você** informar (`start.exe`, `tkstart.exe`, etc.);
+- configura endpoint TCP de console em `127.0.0.1:2350`;
+- abre **outra janela separada** para o gateway em `127.0.0.1:18085`.
+
+Valide:
+
+```powershell
+Test-NetConnection 127.0.0.1 -Port 2350
+```
+
+Se `TcpTestSucceeded` for `False`, o gateway vai subir com `/health`, mas ficará com `connected=false` e retornará `503 core_unavailable` em `/commands`.
 
 ---
 
@@ -113,6 +140,24 @@ No PowerShell, dentro de `C:\openkore`:
 ```powershell
 perl .\tools\remote_gateway.pl --kore-host 127.0.0.1 --kore-port 2350 --listen-host 127.0.0.1 --listen-port 18085 --command-token "UM_TOKEN_LONGO_E_ALEATORIO" --audit-file ".\\logs\\gateway_audit.jsonl" --command-rate-limit 30 --command-rate-window 60 --auth-enabled --users-file ".\\config\\gateway-users.json" --token-ttl 900 --session-file ".\\data\\gateway_sessions.json"
 ```
+
+> Se quiser manter nativo no Windows, prefira abrir o endpoint com `OPENKORE_SOCKET_TCP_PORT` + `--interface=Socket` (bloco acima).
+
+### Modo ultra simples (recomendado)
+
+Sem digitar vários comandos: execute **um arquivo**:
+
+```text
+tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO
+```
+
+Esse `.cmd`:
+- abre OpenKore (launcher detectado automaticamente) com `--interface=Socket`;
+- configura `OPENKORE_SOCKET_TCP_HOST=127.0.0.1` e `OPENKORE_SOCKET_TCP_PORT=2350`;
+- inicia o gateway em `127.0.0.1:18085` **sem depender** de `start-gateway.ps1`.
+- o OpenKore é aberto pelo launcher normal (`start.exe`/`tkstart.exe`/etc), como no fluxo de duplo clique.
+
+> Se seu objetivo é simplicidade, use somente `tools\run-remote.cmd` e ignore os outros scripts auxiliares.
 
 ---
 
@@ -158,21 +203,16 @@ Se seu Windows não aceita SSH inbound, use VPN/Tailscale/ZeroTier e exponha ape
 
 ## 9) Inicialização automática no Windows
 
-Use o script pronto: `scripts/start-gateway.ps1`.
-
-Ele detecta automaticamente a raiz do OpenKore quando executado de dentro do repositório.
-Também existe atalho em `tools/start-gateway.ps1`.
-
-Exemplo manual (PowerShell):
+Para manter simples, agende **um comando só**:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-gateway.ps1 -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& { cd 'C:\openkore'; .\tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO }"
 ```
 
 Depois crie uma tarefa no **Task Scheduler** chamando:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File C:\openkore\scripts\start-gateway.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& { cd 'C:\openkore'; .\tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO }"
 ```
 
 ---
@@ -180,6 +220,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File C:\openkore\scripts\start-ga
 ## 10) Troubleshooting comum (Windows nativo)
 
 - **Gateway não inicia com erro de conexão**: host/porta TCP do OpenKore incorretos.
+- **`Status conectado ao OpenKore: False` + erro `core_unavailable (503)` na UI**:
+  - O gateway está de pé, mas **não conseguiu abrir sessão com o endpoint do OpenKore**.
+  - Confira no PowerShell se a porta realmente aceita TCP:
+    ```powershell
+    Test-NetConnection 127.0.0.1 -Port 2350
+    ```
+  - Se `TcpTestSucceeded` vier `False`, a porta configurada em `--kore-port` está incorreta/inativa.
+  - Atenção: `XKore_port` pode existir no `config.txt` e **mesmo assim não ser** o endpoint que fala o protocolo de console (`set active/input`) esperado pelo `remote_gateway.pl`.
 - **porta 18085 não abre no Windows**: confirme que gateway está rodando e bound em `127.0.0.1`.
 - **401/403**: revisar usuário/senha/token/header.
 - **sem eventos**: OpenKore não está acessível no endpoint TCP configurado.
