@@ -187,7 +187,9 @@ sub new {
 	my $socket_file = "$Settings::logs_folder/console.socket";
 	my $pid_file = "$Settings::logs_folder/openkore.pid";
 	my $tcp_host = $ENV{OPENKORE_SOCKET_TCP_HOST} || '127.0.0.1';
-	my $tcp_port = $ENV{OPENKORE_SOCKET_TCP_PORT} || 0;
+	my $tcp_port = defined $ENV{OPENKORE_SOCKET_TCP_PORT}
+		? $ENV{OPENKORE_SOCKET_TCP_PORT}
+		: (($^O eq 'MSWin32') ? 2350 : 0);
 	my $use_tcp = ($tcp_port =~ /^\d+$/ && $tcp_port > 0);
 	my ($socket, $endpoint_desc);
 
@@ -230,7 +232,12 @@ sub new {
 			}
 		}
 		if (!$socket) {
-			print STDERR "Cannot listen at '$socket_file': $!\n";
+			if ($^O eq 'MSWin32') {
+				print STDERR "Cannot listen at UNIX socket '$socket_file' on Windows: $!\n";
+				print STDERR "Set OPENKORE_SOCKET_TCP_PORT (example: 2350) to use TCP console endpoint.\n";
+			} else {
+				print STDERR "Cannot listen at '$socket_file': $!\n";
+			}
 			exit 1;
 		}
 		$endpoint_desc = $socket_file;

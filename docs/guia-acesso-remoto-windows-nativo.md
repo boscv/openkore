@@ -110,6 +110,8 @@ Em outras palavras: deixar apenas `XKore_port` configurado não abre automaticam
 
 ### Fluxo único (simples, recomendado)
 
+> No Windows, ao usar `--interface=Socket`, o OpenKore agora usa TCP por padrão em `127.0.0.1:2350` se `OPENKORE_SOCKET_TCP_PORT` não estiver definido.
+
 Use **só** este arquivo:
 
 ```text
