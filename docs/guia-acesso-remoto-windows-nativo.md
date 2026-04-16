@@ -117,9 +117,9 @@ tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO start.exe
 ```
 
 Ele já:
-- abre OpenKore com `--interface=Socket` usando o launcher que **você** informar (`start.exe`, `tkstart.exe`, etc.);
+- abre **uma janela separada** para OpenKore com `--interface=Socket` usando o launcher que **você** informar (`start.exe`, `tkstart.exe`, etc.);
 - configura endpoint TCP de console em `127.0.0.1:2350`;
-- inicia o gateway em `127.0.0.1:18085`.
+- abre **outra janela separada** para o gateway em `127.0.0.1:18085`.
 
 Valide:
 

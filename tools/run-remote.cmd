@@ -29,17 +29,20 @@ if not exist "%ROOT%\config\gateway-users.json" (
 set "LAUNCHER=%ROOT%\%LAUNCHER_NAME%"
 if not exist "%LAUNCHER%" goto :launcher_missing
 
-echo [1/3] Iniciando OpenKore com interface Socket (launcher normal)...
-start "OpenKore Socket" "%LAUNCHER%" --interface=Socket
+echo [1/3] Abrindo OpenKore em janela separada (interface do launcher)...
+start "OpenKore Socket" cmd /k "cd /d \"%ROOT%\" && set OPENKORE_SOCKET_TCP_HOST=%OPENKORE_SOCKET_TCP_HOST% && set OPENKORE_SOCKET_TCP_PORT=%OPENKORE_SOCKET_TCP_PORT% && \"%LAUNCHER%\" --interface=Socket"
 
 echo [2/3] Aguardando 3s...
 timeout /t 3 /nobreak >nul
 
-echo [3/3] Iniciando gateway em nova janela...
-start "OpenKore Remote Gateway" perl "%ROOT%\tools\remote_gateway.pl" --kore-host 127.0.0.1 --kore-port 2350 --listen-host 127.0.0.1 --listen-port 18085 --command-token "%COMMAND_TOKEN%" --audit-file "%ROOT%\logs\gateway_audit.jsonl" --command-rate-limit 30 --command-rate-window 60 --auth-enabled --users-file "%ROOT%\config\gateway-users.json" --token-ttl 900 --session-file "%ROOT%\data\gateway_sessions.json"
+echo [3/3] Abrindo gateway em outra janela separada...
+start "OpenKore Remote Gateway" cmd /k "cd /d \"%ROOT%\" && perl \"%ROOT%\tools\remote_gateway.pl\" --kore-host 127.0.0.1 --kore-port 2350 --listen-host 127.0.0.1 --listen-port 18085 --command-token \"%COMMAND_TOKEN%\" --audit-file \"%ROOT%\logs\gateway_audit.jsonl\" --command-rate-limit 30 --command-rate-window 60 --auth-enabled --users-file \"%ROOT%\config\gateway-users.json\" --token-ttl 900 --session-file \"%ROOT%\data\gateway_sessions.json\""
 
 echo.
-echo Pronto. Abra: http://127.0.0.1:18085/
+echo Pronto. Janelas abertas separadamente:
+echo  - OpenKore (launcher/interface)
+echo  - Remote Gateway
+echo UI Web: http://127.0.0.1:18085/
 exit /b 0
 
 :launcher_missing
