@@ -22,13 +22,8 @@ Por quê:
 - O fluxo padrão do projeto usa caminhos Unix (`/etc/...`) e serviço `systemd`.
 
 > Importante: para funcionar, o endpoint precisa falar o protocolo de console do OpenKore (`set active/input`). Nem toda porta TCP do OpenKore (ex.: `XKore_port`) é compatível com esse protocolo.
-> No Windows nativo, você pode expor endpoint compatível iniciando com `OPENKORE_SOCKET_TCP_PORT` e `--interface=Socket`.
-> Atalho no Windows: `tools/start-openkore-socket-tcp.ps1` prepara o ambiente TCP do socket de console com um comando.
-> Se preferir duplo clique, use `tools/start-openkore-socket-tcp.cmd`.
-> A porta só existe enquanto o processo do OpenKore estiver rodando nesse modo.
-> O helper PS1 agora, por padrão, só prepara o arquivo `tools/openkore-socket-env.cmd`; iniciar OpenKore/gateway é opcional.
-> Se quiser zero fricção, use `tools/run-remote.cmd SEU_TOKEN` (one-shot para abrir OpenKore + gateway).
-> Para fluxo simples, use só `run-remote.cmd` e ignore os scripts auxiliares.
+> No Windows nativo, para fluxo simples, use só `tools/run-remote.cmd SEU_TOKEN`.
+> Esse comando único abre OpenKore + gateway e expõe o endpoint TCP compatível.
 
 Isso significa:
 

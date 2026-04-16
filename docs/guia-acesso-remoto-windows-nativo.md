@@ -108,70 +108,20 @@ Em outras palavras: deixar apenas `XKore_port` configurado não abre automaticam
 
 ⚠️ **Importante:** no OpenKore padrão, `XKore_port` (ex.: `2350`) **não é automaticamente** o endpoint de console remoto esperado pelo `remote_gateway.pl` (`set active/input`).
 
-### Como abrir endpoint TCP compatível no Windows nativo
+### Fluxo único (simples, recomendado)
 
-Se você iniciar pelo `openkore.pl`:
-
-```powershell
-$env:OPENKORE_SOCKET_TCP_HOST = "127.0.0.1"
-$env:OPENKORE_SOCKET_TCP_PORT = "2350"
-perl .\openkore.pl --interface=Socket
-```
-
-Esse comando inicia o OpenKore já com endpoint TCP compatível para o gateway.
-
-Se você iniciar por executável (`start.exe`, `tkstart.exe`, etc.), use o helper script que detecta launcher automaticamente e aplica as variáveis para o processo criado.
-
-### Jeito curto (sem comandos longos): script pronto
-
-Você pode só preparar o ambiente (sem iniciar nada automaticamente):
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\start-openkore-socket-tcp.ps1
-```
-
-Esse script:
-- grava `tools\openkore-socket-env.cmd` com `OPENKORE_SOCKET_TCP_HOST/PORT`;
-- **não** inicia OpenKore nem gateway por padrão;
-- deixa você escolher como iniciar (`start.exe`, `tkstart.exe`, etc).
-
-Depois, inicie do jeito que quiser:
+Use **só** este arquivo:
 
 ```text
-tools\openkore-socket-env.cmd start.exe --interface=Socket
+tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO
 ```
 
-Esse launcher abre o OpenKore em nova janela **interativa** (não “preso” ao PowerShell atual), mantendo digitação no console.
+Ele já:
+- abre OpenKore com `--interface=Socket` usando launcher normal (`start.exe`, `tkstart.exe`, etc.);
+- configura endpoint TCP de console em `127.0.0.1:2350`;
+- inicia o gateway em `127.0.0.1:18085`.
 
-Se quiser que o PS1 inicie OpenKore (opcional):
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\start-openkore-socket-tcp.ps1 -LaunchOpenKore
-```
-
-Se preferir **duplo clique** (sem digitar nada), execute:
-
-```text
-tools\start-openkore-socket-tcp.cmd
-```
-
-### Dúvida comum
-
-- **“Detecção automática” de quê?**  
-  Do executável de inicialização (`start.exe`, `tkstart.exe`, etc.) dentro da pasta do OpenKore.
-- **OpenKore precisa já estar aberto para a porta existir?**  
-  Sim: a porta só abre quando o processo do OpenKore sobe com `--interface=Socket` + `OPENKORE_SOCKET_TCP_*`.  
-  O script prepara o ambiente; você escolhe como abrir o OpenKore. Opcionalmente ele também pode iniciar OpenKore com `-LaunchOpenKore`.
-
-- **Erro `XSTools.dll is not found` ao usar `perl .\openkore.pl` no Windows**  
-  Use os launchers compilados (`start.exe`, `tkstart.exe`, `wxstart.exe`, etc.) em vez do `perl openkore.pl` puro no Windows.
-
-Exemplo deste guia (somente se você tiver um endpoint TCP compatível já ativo):
-
-- host: `127.0.0.1`
-- porta: `2350`
-
-Valide antes de subir o gateway:
+Valide:
 
 ```powershell
 Test-NetConnection 127.0.0.1 -Port 2350
@@ -251,21 +201,16 @@ Se seu Windows não aceita SSH inbound, use VPN/Tailscale/ZeroTier e exponha ape
 
 ## 9) Inicialização automática no Windows
 
-Use o script pronto: `scripts/start-gateway.ps1`.
-
-Ele detecta automaticamente a raiz do OpenKore quando executado de dentro do repositório.
-Também existe atalho em `tools/start-gateway.ps1`.
-
-Exemplo manual (PowerShell):
+Para manter simples, agende **um comando só**:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-gateway.ps1 -KoreHost "127.0.0.1" -KorePort 2350 -ListenHost "127.0.0.1" -ListenPort 18085 -CommandToken "UM_TOKEN_LONGO_E_ALEATORIO"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& { cd 'C:\openkore'; .\tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO }"
 ```
 
 Depois crie uma tarefa no **Task Scheduler** chamando:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File C:\openkore\scripts\start-gateway.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& { cd 'C:\openkore'; .\tools\run-remote.cmd UM_TOKEN_LONGO_E_ALEATORIO }"
 ```
 
 ---
