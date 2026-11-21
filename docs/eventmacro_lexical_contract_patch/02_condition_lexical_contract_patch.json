@@ -1,0 +1,3839 @@
+[
+  {
+    "name": "AttackEnd",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/AttackEnd.pm:-1",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "AttackStart",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/AttackStart.pm:-1",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "AttackStartRegex",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/AttackStartRegex.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "BaseLevel",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/BaseLevel.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "BusMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/BusMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "CartCurrentSize",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CartCurrentSize.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CartCurrentWeight",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CartCurrentWeight.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CartMaxSize",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CartMaxSize.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CartMaxWeight",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CartMaxWeight.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CharCurrentWeight",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CharCurrentWeight.pm:13",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CharMaxWeight",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CharMaxWeight.pm:13",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "ChatRoomNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ChatRoomNear.pm:13",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "ConfigKey",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKey.pm:15",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=15",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyDefined",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDefined.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyDualDifferentDefinedValue",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDualDifferentDefinedValue.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyDualSameDefinedValue",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyDualSameDefinedValue.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyNot",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyNot.pm:15",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=15",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyNotExist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyNotExist.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ConfigKeyUndefined",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ConfigKeyUndefined.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "Console",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/Console.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "CurrentHP",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CurrentHP.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "CurrentSP",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/CurrentSP.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "Eval",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/Eval.pm:10",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=10",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "EvalHook",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/EvalHook.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "FreeSkillPoints",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/FreeSkillPoints.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "FreeStatPoints",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/FreeStatPoints.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "GuildMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/GuildMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "GuildMsgDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/GuildMsgDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "GuildMsgName",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/GuildMsgName.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "GuildMsgNameDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/GuildMsgNameDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InCart",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InCart.pm:9",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=9",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InCartID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InCartID.pm:8",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=8",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InChatRoom",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InChatRoom.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InCity",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InCity.pm:17",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=17",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InInventory",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InInventory.pm:9",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=9",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InInventoryID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InInventoryID.pm:9",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=9",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InLockMap",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InLockMap.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InMap",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InMap.pm:-1",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "InMapRegex",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InMapRegex.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "InProgressBar",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InProgressBar.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InPvP",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InPvP.pm:23",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=23",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "InSaveMap",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InSaveMap.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "InStorage",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InStorage.pm:9",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=9",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InStorageID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InStorageID.pm:10",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=10",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InventoryCurrentSize",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InventoryCurrentSize.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "InventoryReady",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/InventoryReady.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsEquippedID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsEquippedID.pm:18",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=18",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsInCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsInCoordinate.pm:9",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=9",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsInMapAndCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsInMapAndCoordinate.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsNotEquippedID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsNotEquippedID.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsNotInCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsNotInCoordinate.pm:10",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=10",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "IsNotInMapAndCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/IsNotInMapAndCoordinate.pm:8",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=8",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "JobID",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/JobID.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "JobIDNot",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/JobIDNot.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "JobLevel",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/JobLevel.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "LocalMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/LocalMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "MapLoaded",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MapLoaded.pm:-1",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "MaxHP",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MaxHP.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "MaxSP",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MaxSP.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "MobNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MobNear.pm:17",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=17",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "MobNearCount",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MobNearCount.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "MobNearDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MobNearDist.pm:25",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=25",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "MobNotNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/MobNotNear.pm:16",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "NoMobNear",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NoMobNear.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NoNpcNear",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NoNpcNear.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NoPlayerNear",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NoPlayerNear.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NoPortalNear",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NoPortalNear.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NotInMap",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NotInMap.pm:7",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=7",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "NpcMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "NpcMsgDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcMsgDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NpcMsgName",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcMsgName.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NpcMsgNameDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcMsgNameDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NpcNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcNear.pm:17",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=17",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "NpcNearCount",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcNearCount.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "NpcNearDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcNearDist.pm:25",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=25",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "NpcNotNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/NpcNotNear.pm:16",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "OnCharLogIn",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 0,
+    "accepted_separators": [
+      "none"
+    ],
+    "forbidden_separators": [
+      "comma separated args",
+      "inline positional args"
+    ],
+    "accepted_forms": [
+      "<cond> (no arguments)"
+    ],
+    "rejected_forms": [
+      "<cond> anything"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/OnCharLogIn.pm:-1",
+    "proof_excerpt": "parser_mode=simple_event; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Condition sem argumentos com gatilho simples.",
+    "generation_block_reason": "",
+    "positional_arguments": []
+  },
+  {
+    "name": "PartyMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PartyMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "PartyMsgDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PartyMsgDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PartyMsgName",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PartyMsgName.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PartyMsgNameDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PartyMsgNameDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PlayerNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PlayerNear.pm:17",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=17",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "PlayerNearCount",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PlayerNearCount.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "PlayerNearDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PlayerNearDist.pm:25",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=25",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PlayerNotNear",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PlayerNotNear.pm:16",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "PortalNearCount",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PortalNearCount.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "PrivMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PrivMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "PrivMsgDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PrivMsgDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PrivMsgName",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PrivMsgName.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PrivMsgNameDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PrivMsgNameDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PubMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PubMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "PubMsgDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PubMsgDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PubMsgName",
+    "current_status_before_patch": "EXPLAIN_ONLY",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PubMsgName.pm:-1",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "PubMsgNameDist",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/PubMsgNameDist.pm:16",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=16",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestActive",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestActive.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestComplete",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestComplete.pm:12",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=12",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestHuntCompleted",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": "2 per member (quest_id mob_id)",
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "single/multiple whitespace between quest_id and mob_id inside each member"
+    ],
+    "forbidden_separators": [
+      "comma between quest_id and mob_id inside same member",
+      "missing whitespace between quest_id and mob_id"
+    ],
+    "accepted_forms": [
+      "QuestHuntCompleted 1001 1002, 1003 1004",
+      "QuestHuntCompleted $q1 $m1, $q2 $m2"
+    ],
+    "rejected_forms": [
+      "QuestHuntCompleted 1001,1002",
+      "QuestHuntCompleted 1001"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestHuntCompleted.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "_parse_syntax define explicitamente CSV externo + pares posicionais internos.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i.arg1 = quest_id (numeric or variable, non-system)",
+      "member_i.arg2 = mob_id (numeric or variable, non-system)"
+    ]
+  },
+  {
+    "name": "QuestHuntOngoing",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": "2 per member (quest_id mob_id)",
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "single/multiple whitespace between quest_id and mob_id inside each member"
+    ],
+    "forbidden_separators": [
+      "comma between quest_id and mob_id inside same member",
+      "missing whitespace between quest_id and mob_id"
+    ],
+    "accepted_forms": [
+      "QuestHuntCompleted 1001 1002, 1003 1004",
+      "QuestHuntCompleted $q1 $m1, $q2 $m2"
+    ],
+    "rejected_forms": [
+      "QuestHuntCompleted 1001,1002",
+      "QuestHuntCompleted 1001"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestHuntOngoing.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "_parse_syntax define explicitamente CSV externo + pares posicionais internos.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i.arg1 = quest_id (numeric or variable, non-system)",
+      "member_i.arg2 = mob_id (numeric or variable, non-system)"
+    ]
+  },
+  {
+    "name": "QuestInactive",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestInactive.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestIncomplete",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestIncomplete.pm:12",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=12",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestNotComplete",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestNotComplete.pm:12",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=12",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestNotIncomplete",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestNotIncomplete.pm:12",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=12",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestOnTime",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestOnTime.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "QuestTimeOverdue",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/QuestTimeOverdue.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "ShopOpened",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ShopOpened.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "SimpleHookEvent",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/SimpleHookEvent.pm:10",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=10",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "SkillLevel",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/SkillLevel.pm:18",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=18",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "Spirits",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/Spirits.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "StatAdded",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "comma + optional spaces between members",
+      "whitespace positional inside member when member has subfields"
+    ],
+    "forbidden_separators": [
+      "semicolon separated list",
+      "pipe separated list"
+    ],
+    "accepted_forms": [
+      "<cond> member1, member2, ..."
+    ],
+    "rejected_forms": [
+      "<cond> member1 member2 (sem vírgula entre membros quando lista esperada)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/StatAdded.pm:26",
+    "proof_excerpt": "parser_mode=csv_list; parse_syntax_line=26",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Separador por vírgula comprovado na família csv_list.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "member_i: token or positional tuple depending on condition implementation"
+    ]
+  },
+  {
+    "name": "StatusActiveHandle",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/StatusActiveHandle.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "StatusInactiveHandle",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/StatusInactiveHandle.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "StorageOpened",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/StorageOpened.pm:13",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=13",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "SystemMsg",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 1,
+    "accepted_separators": [
+      "whitespace before regex literal only"
+    ],
+    "forbidden_separators": [
+      "comma separated positional args"
+    ],
+    "accepted_forms": [
+      "<cond> /pattern/flags"
+    ],
+    "rejected_forms": [
+      "<cond> pattern sem delimitadores"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/SystemMsg.pm:-1",
+    "proof_excerpt": "parser_mode=regex_literal; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Regex delimitada é requisito lexical explícito da família regex_literal.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: regex literal /.../flags"
+    ]
+  },
+  {
+    "name": "VarValue",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/VarValue.pm:10",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=10",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "Zeny",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/Zeny.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "ZenyChanged",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "GENERATION_SAFE",
+    "lexical_contract_status": "COMPLETE",
+    "generation_status": "GENERATION_SAFE",
+    "required_arity": 2,
+    "accepted_separators": [
+      "whitespace only between lhs/operator/rhs"
+    ],
+    "forbidden_separators": [
+      "comma separated",
+      "semicolon separated"
+    ],
+    "accepted_forms": [
+      "<cond> <op> <numeric_or_percent>"
+    ],
+    "rejected_forms": [
+      "<cond>,<op>,<value>",
+      "<cond> <value> (sem operator)"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/ZenyChanged.pm:-1",
+    "proof_excerpt": "parser_mode=numeric_comparison; parse_syntax_line=-1",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "Aridade e separador whitespace com operador são consistentes na família numeric_comparison.",
+    "generation_block_reason": "",
+    "positional_arguments": [
+      "arg1: numeric lhs/variable",
+      "arg2: numeric rhs with comparison operator"
+    ]
+  },
+  {
+    "name": "isInMapAndCloseToCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/isInMapAndCloseToCoordinate.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  },
+  {
+    "name": "isNotInMapOrNotCloseToCoordinate",
+    "current_status_before_patch": "GENERATION_SAFE",
+    "current_status_after_patch": "EXPLAIN_ONLY",
+    "lexical_contract_status": "PARTIAL",
+    "generation_status": "EXPLAIN_ONLY",
+    "required_arity": "1+ (varia por condition)",
+    "accepted_separators": [
+      "whitespace positional (provado)",
+      "regex literal delimitada quando applicable (parcial)",
+      "range literal quando applicable (parcial)"
+    ],
+    "forbidden_separators": [
+      "comma como substituto universal de positional whitespace",
+      "formas compostas não comprovadas"
+    ],
+    "accepted_forms": [
+      "numeric comparison form (provada por parser family)",
+      "regex literal form (quando accepts_regex=true)",
+      "range form (quando accepts_range=true)"
+    ],
+    "rejected_forms": [
+      "deduzir forma única universal para toda a família composite_regex_numeric"
+    ],
+    "proof_source": "plugins/eventMacro/eventMacro/Condition/isNotInMapOrNotCloseToCoordinate.pm:14",
+    "proof_excerpt": "parser_mode=composite_regex_numeric; parse_syntax_line=14",
+    "examples_validated": [],
+    "examples_rejected": [],
+    "generation_safe_reason": "",
+    "generation_block_reason": "Contrato lexical heterogêneo; parser_mode isolado não fecha aridade/ordem/separador para geração automática segura.",
+    "positional_arguments": [
+      "varia por condition; exige leitura do módulo"
+    ]
+  }
+]

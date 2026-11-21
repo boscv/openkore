@@ -1,0 +1,432 @@
+[
+  {
+    "id": "valid_hp_pot",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "priority",
+      "timeout"
+    ]
+  },
+  {
+    "id": "valid_login_call",
+    "type": "valid",
+    "used_conditions": [
+      "OnCharLogIn"
+    ],
+    "used_functions": [
+      "arg"
+    ],
+    "used_parameters": [
+      "call",
+      "run-once"
+    ]
+  },
+  {
+    "id": "valid_attack_trigger",
+    "type": "valid",
+    "used_conditions": [
+      "AttackStart"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "delay",
+      "repeat"
+    ]
+  },
+  {
+    "id": "valid_privmsg_regex",
+    "type": "valid",
+    "used_conditions": [
+      "PrivMsg"
+    ],
+    "used_functions": [
+      "split"
+    ],
+    "used_parameters": [
+      "call",
+      "timeout"
+    ]
+  },
+  {
+    "id": "valid_quest_hunt_completed",
+    "type": "valid",
+    "used_conditions": [
+      "QuestHuntCompleted"
+    ],
+    "used_functions": [
+      "config"
+    ],
+    "used_parameters": [
+      "call",
+      "orphan"
+    ]
+  },
+  {
+    "id": "valid_quest_hunt_ongoing",
+    "type": "valid",
+    "used_conditions": [
+      "QuestHuntOngoing"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "macro_delay"
+    ]
+  },
+  {
+    "id": "valid_baselevel_numeric",
+    "type": "valid",
+    "used_conditions": [
+      "BaseLevel"
+    ],
+    "used_functions": [
+      "defined"
+    ],
+    "used_parameters": [
+      "call",
+      "exclusive"
+    ]
+  },
+  {
+    "id": "valid_inlockmap_boolean",
+    "type": "valid",
+    "used_conditions": [
+      "InLockMap"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "timeout"
+    ]
+  },
+  {
+    "id": "valid_jobs_csv",
+    "type": "valid",
+    "used_conditions": [
+      "JobID"
+    ],
+    "used_functions": [
+      "exists"
+    ],
+    "used_parameters": [
+      "call",
+      "delay"
+    ]
+  },
+  {
+    "id": "valid_jobid_not",
+    "type": "valid",
+    "used_conditions": [
+      "JobIDNot"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "repeat"
+    ]
+  },
+  {
+    "id": "valid_city_progress_combo",
+    "type": "valid",
+    "used_conditions": [
+      "InCity",
+      "InProgressBar"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "self_interruptible"
+    ]
+  },
+  {
+    "id": "valid_chatroom_guard",
+    "type": "valid",
+    "used_conditions": [
+      "InChatRoom"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "disabled"
+    ]
+  },
+  {
+    "id": "valid_coordinate_pair",
+    "type": "valid",
+    "used_conditions": [
+      "IsInCoordinate"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "timeout"
+    ]
+  },
+  {
+    "id": "valid_coordinate_negation",
+    "type": "valid",
+    "used_conditions": [
+      "IsNotInCoordinate"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "priority"
+    ]
+  },
+  {
+    "id": "valid_map_and_coordinate",
+    "type": "valid",
+    "used_conditions": [
+      "IsInMapAndCoordinate"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "macro_delay"
+    ]
+  },
+  {
+    "id": "valid_console_reentry_safe",
+    "type": "valid",
+    "used_conditions": [
+      "Console"
+    ],
+    "used_functions": [
+      "strip"
+    ],
+    "used_parameters": [
+      "call",
+      "repeat",
+      "self_interruptible"
+    ]
+  },
+  {
+    "id": "valid_inventory_weight_loop",
+    "type": "valid",
+    "used_conditions": [
+      "InventoryCurrentSize",
+      "CharCurrentWeight"
+    ],
+    "used_functions": [
+      "rand"
+    ],
+    "used_parameters": [
+      "call",
+      "repeat",
+      "delay"
+    ]
+  },
+  {
+    "id": "valid_partymsg_split",
+    "type": "valid",
+    "used_conditions": [
+      "PartyMsg"
+    ],
+    "used_functions": [
+      "split",
+      "keys"
+    ],
+    "used_parameters": [
+      "call",
+      "orphan"
+    ]
+  },
+  {
+    "id": "valid_pubmsg_values",
+    "type": "valid",
+    "used_conditions": [
+      "PubMsg"
+    ],
+    "used_functions": [
+      "values"
+    ],
+    "used_parameters": [
+      "call",
+      "run-once"
+    ]
+  },
+  {
+    "id": "valid_storage_access",
+    "type": "valid",
+    "used_conditions": [
+      "InStorage"
+    ],
+    "used_functions": [
+      "push",
+      "pop"
+    ],
+    "used_parameters": [
+      "call",
+      "overrideAI"
+    ]
+  },
+  {
+    "id": "valid_loop_unshift_shift",
+    "type": "valid",
+    "used_conditions": [
+      "LocalMsg"
+    ],
+    "used_functions": [
+      "unshift",
+      "shift",
+      "delete"
+    ],
+    "used_parameters": [
+      "call",
+      "repeat",
+      "exclusive"
+    ]
+  },
+  {
+    "id": "valid_mapregex_timeout",
+    "type": "valid",
+    "used_conditions": [
+      "InMapRegex"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "timeout",
+      "priority"
+    ]
+  },
+  {
+    "id": "valid_orphan_recovery_case",
+    "type": "valid",
+    "used_conditions": [
+      "InMap"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "call",
+      "orphan",
+      "macro_delay"
+    ]
+  },
+  {
+    "id": "valid_reentrancy_chat_keyword",
+    "type": "valid",
+    "used_conditions": [
+      "PrivMsg"
+    ],
+    "used_functions": [
+      "arg",
+      "split"
+    ],
+    "used_parameters": [
+      "call",
+      "self_interruptible",
+      "repeat"
+    ]
+  },
+  {
+    "id": "invalid_partial_condition_eval",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "cart"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_condition_nonpcnear",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "npc"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_condition_nomobnear",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "monster"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_function_eval",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "eval"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_function_inventory",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "inventory"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_function_monster",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [
+      "monster"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_partial_parameter_checkonai",
+    "type": "valid",
+    "used_conditions": [
+      "CurrentHP"
+    ],
+    "used_functions": [],
+    "used_parameters": [
+      "CheckOnAI",
+      "call"
+    ]
+  },
+  {
+    "id": "invalid_mixed_partial_condition_and_function",
+    "type": "valid",
+    "used_conditions": [
+      "QuestActive"
+    ],
+    "used_functions": [
+      "inventory"
+    ],
+    "used_parameters": [
+      "call"
+    ]
+  }
+]
